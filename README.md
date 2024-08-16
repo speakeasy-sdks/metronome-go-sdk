@@ -438,6 +438,12 @@ func main() {
 ```
 <!-- End Pagination [pagination] -->
 
+<!-- Start Special Types [types] -->
+## Special Types
+
+
+<!-- End Special Types [types] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

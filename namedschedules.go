@@ -11,6 +11,7 @@ import (
 	"github.com/Metronome-Industries/metronome-go-sdk/models/components"
 	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
 	"github.com/Metronome-Industries/metronome-go-sdk/models/sdkerrors"
+	"github.com/Metronome-Industries/metronome-go-sdk/retry"
 	"github.com/cenkalti/backoff/v4"
 	"io"
 	"net/http"
@@ -89,6 +90,16 @@ func (s *NamedSchedules) GetCustomerNamedSchedule(ctx context.Context, request *
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -97,11 +108,7 @@ func (s *NamedSchedules) GetCustomerNamedSchedule(ctx context.Context, request *
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -269,6 +276,16 @@ func (s *NamedSchedules) UpdateCustomerNamedSchedule(ctx context.Context, reques
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -277,11 +294,7 @@ func (s *NamedSchedules) UpdateCustomerNamedSchedule(ctx context.Context, reques
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -438,6 +451,16 @@ func (s *NamedSchedules) GetContractNamedSchedule(ctx context.Context, request *
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -446,11 +469,7 @@ func (s *NamedSchedules) GetContractNamedSchedule(ctx context.Context, request *
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -618,6 +637,16 @@ func (s *NamedSchedules) UpdateContractNamedSchedule(ctx context.Context, reques
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -626,11 +655,7 @@ func (s *NamedSchedules) UpdateContractNamedSchedule(ctx context.Context, reques
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -787,6 +812,16 @@ func (s *NamedSchedules) GetRateCardNamedSchedule(ctx context.Context, request *
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -795,11 +830,7 @@ func (s *NamedSchedules) GetRateCardNamedSchedule(ctx context.Context, request *
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -967,6 +998,16 @@ func (s *NamedSchedules) UpdateRateCardNamedSchedule(ctx context.Context, reques
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -975,11 +1016,7 @@ func (s *NamedSchedules) UpdateRateCardNamedSchedule(ctx context.Context, reques
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {

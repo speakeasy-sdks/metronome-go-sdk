@@ -1,0 +1,29 @@
+speakeasyVersion: 1.371.0
+sources:
+    Metronome-OAS:
+        sourceNamespace: metronome-oas
+        sourceRevisionDigest: sha256:37c5c77a2e12ed74ef67126bdf5b4a5b9b7dc7994bc38605079b46b30efb2d55
+        sourceBlobDigest: sha256:63e70f92fd86fc1253fa35b6b46a5a0c6608e2d6eb11d83e83582c424526b46f
+        tags:
+            - latest
+targets:
+    metronome:
+        source: Metronome-OAS
+        sourceNamespace: metronome-oas
+        sourceRevisionDigest: sha256:37c5c77a2e12ed74ef67126bdf5b4a5b9b7dc7994bc38605079b46b30efb2d55
+        sourceBlobDigest: sha256:63e70f92fd86fc1253fa35b6b46a5a0c6608e2d6eb11d83e83582c424526b46f
+        outLocation: /home/luke/github/metronome-go-sdk
+workflow:
+    workflowVersion: 1.0.0
+    sources:
+        Metronome-OAS:
+            inputs:
+                - location: https://api.metronome.com/v1/openapi/contracts.json
+            overlays:
+                - location: Speakeasy-Suggested-Overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/lukehagar/lukehagar/metronome-oas
+    targets:
+        metronome:
+            target: go
+            source: Metronome-OAS

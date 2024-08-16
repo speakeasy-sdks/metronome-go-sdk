@@ -11,6 +11,7 @@ import (
 	"github.com/Metronome-Industries/metronome-go-sdk/models/components"
 	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
 	"github.com/Metronome-Industries/metronome-go-sdk/models/sdkerrors"
+	"github.com/Metronome-Industries/metronome-go-sdk/retry"
 	"github.com/cenkalti/backoff/v4"
 	"github.com/spyzhov/ajson"
 	"io"
@@ -91,6 +92,16 @@ func (s *Contracts) SetCustomerBillableStatus(ctx context.Context, request *oper
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -99,11 +110,7 @@ func (s *Contracts) SetCustomerBillableStatus(ctx context.Context, request *oper
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -303,6 +310,16 @@ func (s *Contracts) GetProduct(ctx context.Context, request *operations.GetProdu
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -311,11 +328,7 @@ func (s *Contracts) GetProduct(ctx context.Context, request *operations.GetProdu
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -509,6 +522,16 @@ func (s *Contracts) ListProducts(ctx context.Context, limit *int64, nextPage *st
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -517,11 +540,7 @@ func (s *Contracts) ListProducts(ctx context.Context, limit *int64, nextPage *st
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -727,6 +746,16 @@ func (s *Contracts) CreateProduct(ctx context.Context, request *operations.Creat
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -735,11 +764,7 @@ func (s *Contracts) CreateProduct(ctx context.Context, request *operations.Creat
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -923,6 +948,16 @@ func (s *Contracts) UpdateProduct(ctx context.Context, request *operations.Updat
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -931,11 +966,7 @@ func (s *Contracts) UpdateProduct(ctx context.Context, request *operations.Updat
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -1135,6 +1166,16 @@ func (s *Contracts) ArchiveProductListItem(ctx context.Context, request *operati
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -1143,11 +1184,7 @@ func (s *Contracts) ArchiveProductListItem(ctx context.Context, request *operati
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -1357,6 +1394,16 @@ func (s *Contracts) GetRateSchedule(ctx context.Context, limit *int64, nextPage 
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -1365,11 +1412,7 @@ func (s *Contracts) GetRateSchedule(ctx context.Context, limit *int64, nextPage 
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -1547,6 +1590,16 @@ func (s *Contracts) GetRates(ctx context.Context, limit *int64, nextPage *string
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -1555,11 +1608,7 @@ func (s *Contracts) GetRates(ctx context.Context, limit *int64, nextPage *string
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -1727,6 +1776,16 @@ func (s *Contracts) GetRateCard(ctx context.Context, request *operations.GetRate
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -1735,11 +1794,7 @@ func (s *Contracts) GetRateCard(ctx context.Context, request *operations.GetRate
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -1933,6 +1988,16 @@ func (s *Contracts) ListRateCards(ctx context.Context, limit *int64, nextPage *s
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -1941,11 +2006,7 @@ func (s *Contracts) ListRateCards(ctx context.Context, limit *int64, nextPage *s
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -2151,6 +2212,16 @@ func (s *Contracts) CreateRateCard(ctx context.Context, request *operations.Crea
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -2159,11 +2230,7 @@ func (s *Contracts) CreateRateCard(ctx context.Context, request *operations.Crea
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -2347,6 +2414,16 @@ func (s *Contracts) UpdateRateCard(ctx context.Context, request *operations.Upda
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -2355,11 +2432,7 @@ func (s *Contracts) UpdateRateCard(ctx context.Context, request *operations.Upda
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -2559,6 +2632,16 @@ func (s *Contracts) AddRate(ctx context.Context, request *operations.AddRateRequ
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -2567,11 +2650,7 @@ func (s *Contracts) AddRate(ctx context.Context, request *operations.AddRateRequ
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -2771,6 +2850,16 @@ func (s *Contracts) AddRates(ctx context.Context, request *operations.AddRatesRe
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -2779,11 +2868,7 @@ func (s *Contracts) AddRates(ctx context.Context, request *operations.AddRatesRe
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -2983,6 +3068,16 @@ func (s *Contracts) SetRateCardProductsOrder(ctx context.Context, request *opera
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -2991,11 +3086,7 @@ func (s *Contracts) SetRateCardProductsOrder(ctx context.Context, request *opera
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -3195,6 +3286,16 @@ func (s *Contracts) MoveRateCardProducts(ctx context.Context, request *operation
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -3203,11 +3304,7 @@ func (s *Contracts) MoveRateCardProducts(ctx context.Context, request *operation
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -3407,6 +3504,16 @@ func (s *Contracts) GetContract(ctx context.Context, request *operations.GetCont
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -3415,11 +3522,7 @@ func (s *Contracts) GetContract(ctx context.Context, request *operations.GetCont
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -3603,6 +3706,16 @@ func (s *Contracts) ListContracts(ctx context.Context, request *operations.ListC
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -3611,11 +3724,7 @@ func (s *Contracts) ListContracts(ctx context.Context, request *operations.ListC
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -3799,6 +3908,16 @@ func (s *Contracts) CreateContract(ctx context.Context, request *operations.Crea
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -3807,11 +3926,7 @@ func (s *Contracts) CreateContract(ctx context.Context, request *operations.Crea
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -4011,6 +4126,16 @@ func (s *Contracts) AmendContract(ctx context.Context, request *operations.Amend
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -4019,11 +4144,7 @@ func (s *Contracts) AmendContract(ctx context.Context, request *operations.Amend
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -4223,6 +4344,16 @@ func (s *Contracts) ArchiveContract(ctx context.Context, request *operations.Arc
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -4231,11 +4362,7 @@ func (s *Contracts) ArchiveContract(ctx context.Context, request *operations.Arc
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -4435,6 +4562,16 @@ func (s *Contracts) SetUsageFilter(ctx context.Context, request *operations.SetU
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -4443,11 +4580,7 @@ func (s *Contracts) SetUsageFilter(ctx context.Context, request *operations.SetU
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -4636,6 +4769,16 @@ func (s *Contracts) AddManualBalanceLedgerEntry(ctx context.Context, request *op
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -4644,11 +4787,7 @@ func (s *Contracts) AddManualBalanceLedgerEntry(ctx context.Context, request *op
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -4837,6 +4976,16 @@ func (s *Contracts) UpdateContractEndDate(ctx context.Context, request *operatio
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -4845,11 +4994,7 @@ func (s *Contracts) UpdateContractEndDate(ctx context.Context, request *operatio
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -5059,6 +5204,16 @@ func (s *Contracts) GetContractRateSchedule(ctx context.Context, limit *int64, n
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -5067,11 +5222,7 @@ func (s *Contracts) GetContractRateSchedule(ctx context.Context, limit *int64, n
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -5239,6 +5390,16 @@ func (s *Contracts) ListCustomerCommits(ctx context.Context, request *operations
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -5247,11 +5408,7 @@ func (s *Contracts) ListCustomerCommits(ctx context.Context, request *operations
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -5465,6 +5622,16 @@ func (s *Contracts) CreateCustomerCommit(ctx context.Context, request *operation
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -5473,11 +5640,7 @@ func (s *Contracts) CreateCustomerCommit(ctx context.Context, request *operation
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -5677,6 +5840,16 @@ func (s *Contracts) UpdateCommitEndDate(ctx context.Context, request *operations
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -5685,11 +5858,7 @@ func (s *Contracts) UpdateCommitEndDate(ctx context.Context, request *operations
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -5889,6 +6058,16 @@ func (s *Contracts) ListCustomerCredits(ctx context.Context, request *operations
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -5897,11 +6076,7 @@ func (s *Contracts) ListCustomerCredits(ctx context.Context, request *operations
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -6115,6 +6290,16 @@ func (s *Contracts) CreateCustomerCredit(ctx context.Context, request *operation
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -6123,11 +6308,7 @@ func (s *Contracts) CreateCustomerCredit(ctx context.Context, request *operation
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -6327,6 +6508,16 @@ func (s *Contracts) UpdateCreditEndDate(ctx context.Context, request *operations
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -6335,11 +6526,7 @@ func (s *Contracts) UpdateCreditEndDate(ctx context.Context, request *operations
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -6539,6 +6726,16 @@ func (s *Contracts) ListCustomerBalances(ctx context.Context, request *operation
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -6547,11 +6744,7 @@ func (s *Contracts) ListCustomerBalances(ctx context.Context, request *operation
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
@@ -6765,6 +6958,16 @@ func (s *Contracts) ScheduleProServicesInvoice(ctx context.Context, request *ope
 	if retryConfig == nil {
 		if globalRetryConfig != nil {
 			retryConfig = globalRetryConfig
+		} else {
+			retryConfig = &retry.Config{
+				Strategy: "backoff", Backoff: &retry.BackoffStrategy{
+					InitialInterval: 500,
+					MaxInterval:     60000,
+					Exponent:        1.5,
+					MaxElapsedTime:  3600000,
+				},
+				RetryConnectionErrors: true,
+			}
 		}
 	}
 
@@ -6773,11 +6976,7 @@ func (s *Contracts) ScheduleProServicesInvoice(ctx context.Context, request *ope
 		httpRes, err = utils.Retry(ctx, utils.Retries{
 			Config: retryConfig,
 			StatusCodes: []string{
-				"429",
-				"500",
-				"502",
-				"503",
-				"504",
+				"5XX",
 			},
 		}, func() (*http.Response, error) {
 			if req.Body != nil {
