@@ -15,8 +15,8 @@ Set a customer's billable status. This endpoint's availability is dependent on y
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )

@@ -20,8 +20,8 @@ Get a specific product
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -74,8 +74,8 @@ List products
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -142,8 +142,8 @@ Create a new product
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -198,9 +198,9 @@ Update a product
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -256,8 +256,8 @@ Archive a product
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )

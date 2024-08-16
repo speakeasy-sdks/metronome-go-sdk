@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Metronome-Industries/metronome-go-sdk/models/components"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/components"
 )
 
 // RegenerateInvoiceRequestBody - The invoice id to regenerate

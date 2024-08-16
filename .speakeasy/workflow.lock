@@ -2,7 +2,7 @@ speakeasyVersion: 1.374.1
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:35de7244ce03adc13f9bec9a7fbeb7ed2693cbd19c200fe935bdeccea54bcbd7
+        sourceRevisionDigest: sha256:7756c2f7e60ae2cf4210df40816596e2447f1744b94767f26239aa042a7261ee
         sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
         tags:
             - latest
@@ -11,7 +11,7 @@ targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:35de7244ce03adc13f9bec9a7fbeb7ed2693cbd19c200fe935bdeccea54bcbd7
+        sourceRevisionDigest: sha256:7756c2f7e60ae2cf4210df40816596e2447f1744b94767f26239aa042a7261ee
         sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
         outLocation: /github/workspace/repo
 workflow:

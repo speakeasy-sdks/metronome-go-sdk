@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/Metronome-Industries/metronome-go-sdk/internal/utils"
-	"github.com/Metronome-Industries/metronome-go-sdk/retry"
+	"github.com/speakeasy-sdks/metronome-go-sdk/internal/utils"
+	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
 	"time"
 )
 

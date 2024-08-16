@@ -1,4 +1,4 @@
-module github.com/Metronome-Industries/metronome-go-sdk
+module github.com/speakeasy-sdks/metronome-go-sdk
 
 go 1.20
 
