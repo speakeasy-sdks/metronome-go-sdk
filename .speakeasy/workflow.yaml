@@ -6,7 +6,7 @@ sources:
         overlays:
           - location: Speakeasy-Suggested-Overlay.yaml
         registry:
-            location: registry.speakeasyapi.dev/lukehagar/lukehagar/metronome-oas
+            location: registry.speakeasyapi.dev/metronome/metronome/metronome-oas
 targets:
     metronome:
         target: go
