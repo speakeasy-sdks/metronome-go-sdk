@@ -11,7 +11,7 @@
 ## SDK Installation
 
 ```bash
-go get github.com/Metronome-Industries/metronome-go-sdk
+go get github.com/speakeasy-sdks/metronome-go-sdk
 ```
 <!-- End SDK Installation [installation] -->
 
