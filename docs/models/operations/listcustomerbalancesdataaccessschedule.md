@@ -1,0 +1,11 @@
+# ListCustomerBalancesDataAccessSchedule
+
+The schedule that the customer will gain access to the credits.
+
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `CreditType`                                                                                                                             | [*operations.ListCustomerBalancesDataContractsCreditType](../../models/operations/listcustomerbalancesdatacontractscredittype.md)        | :heavy_minus_sign:                                                                                                                       | N/A                                                                                                                                      |
+| `ScheduleItems`                                                                                                                          | [][operations.ListCustomerBalancesDataContractsScheduleItems](../../models/operations/listcustomerbalancesdatacontractsscheduleitems.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |

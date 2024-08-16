@@ -1,0 +1,9 @@
+# ListRateCardsCreditTypeConversions
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `FiatPerCustomCredit`                                                                                | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `CustomCreditType`                                                                                   | [operations.ListRateCardsCustomCreditType](../../models/operations/listratecardscustomcredittype.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

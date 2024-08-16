@@ -1,0 +1,11 @@
+# ExternalInvoice
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `BillingProviderType`                                                            | [operations.BillingProviderType](../../models/operations/billingprovidertype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `InvoiceID`                                                                      | **string*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `IssuedAtTimestamp`                                                              | [*time.Time](https://pkg.go.dev/time#Time)                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `ExternalStatus`                                                                 | [*operations.ExternalStatus](../../models/operations/externalstatus.md)          | :heavy_minus_sign:                                                               | N/A                                                                              |

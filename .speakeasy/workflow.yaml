@@ -1,0 +1,11 @@
+workflowVersion: 1.0.0
+sources:
+    Metronome-OAS:
+        inputs:
+            - location: https://api.metronome.com/v1/openapi/contracts.json
+        registry:
+            location: registry.speakeasyapi.dev/lukehagar/lukehagar/metronome-oas
+targets:
+    metronome:
+        target: go
+        source: Metronome-OAS

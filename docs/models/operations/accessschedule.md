@@ -1,0 +1,11 @@
+# AccessSchedule
+
+Required: Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `CreditTypeID`                                                         | **string*                                                              | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `ScheduleItems`                                                        | [][operations.ScheduleItems](../../models/operations/scheduleitems.md) | :heavy_check_mark:                                                     | N/A                                                                    |

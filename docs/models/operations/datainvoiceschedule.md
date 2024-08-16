@@ -1,0 +1,11 @@
+# DataInvoiceSchedule
+
+The schedule that the customer will be invoiced for this commit.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `CreditType`                                                                                                           | [*operations.ListCustomerBalancesDataCreditType](../../models/operations/listcustomerbalancesdatacredittype.md)        | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `ScheduleItems`                                                                                                        | [][operations.ListCustomerBalancesDataScheduleItems](../../models/operations/listcustomerbalancesdatascheduleitems.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |

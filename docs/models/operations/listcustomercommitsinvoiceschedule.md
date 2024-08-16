@@ -1,0 +1,11 @@
+# ListCustomerCommitsInvoiceSchedule
+
+The schedule that the customer will be invoiced for this commit.
+
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `CreditType`                                                                                                                   | [*operations.ListCustomerCommitsContractsCreditType](../../models/operations/listcustomercommitscontractscredittype.md)        | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `ScheduleItems`                                                                                                                | [][operations.ListCustomerCommitsContractsScheduleItems](../../models/operations/listcustomercommitscontractsscheduleitems.md) | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |

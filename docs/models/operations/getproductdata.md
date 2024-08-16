@@ -1,0 +1,14 @@
+# GetProductData
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `ID`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `Type`                                                                 | [operations.GetProductType](../../models/operations/getproducttype.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `ArchivedAt`                                                           | [*time.Time](https://pkg.go.dev/time#Time)                             | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `Initial`                                                              | [operations.Initial](../../models/operations/initial.md)               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `Current`                                                              | [operations.Current](../../models/operations/current.md)               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `Updates`                                                              | [][operations.Updates](../../models/operations/updates.md)             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `CustomFields`                                                         | map[string]*string*                                                    | :heavy_minus_sign:                                                     | N/A                                                                    |
