@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: metronome overlay
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/contract-pricing/products/list"]["post"]
+    update:
+      "x-speakeasy-pagination": {"type": "cursor", "inputs": [{"name": "next_page", "in": "parameters", "type": "cursor"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"nextCursor": "$.next_page"}}
+  - target: $["paths"]["/contract-pricing/rate-cards/list"]["post"]
+    update:
+      "x-speakeasy-pagination": {"type": "cursor", "inputs": [{"name": "next_page", "in": "parameters", "type": "cursor"}, {"name": "limit", "in": "parameters", "type": "limit"}], "outputs": {"nextCursor": "$.next_page"}}
+  - target: $["paths"]["/contracts/customerCommits/list"]["post"]
+    update:
+      "x-speakeasy-pagination": {"type": "cursor", "inputs": [{"name": "next_page", "in": "requestBody", "type": "cursor"}], "outputs": {"nextCursor": "$.next_page"}}
+  - target: $["paths"]["/contracts/customerCredits/list"]["post"]
+    update:
+      "x-speakeasy-pagination": {"type": "cursor", "inputs": [{"name": "next_page", "in": "requestBody", "type": "cursor"}], "outputs": {"nextCursor": "$.next_page"}}
+  - target: $["paths"]["/contracts/customerBalances/list"]["post"]
+    update:
+      "x-speakeasy-pagination": {"type": "cursor", "inputs": [{"name": "next_page", "in": "requestBody", "type": "cursor"}], "outputs": {"nextCursor": "$.next_page"}}

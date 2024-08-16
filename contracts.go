@@ -12,9 +12,11 @@ import (
 	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
 	"github.com/Metronome-Industries/metronome-go-sdk/models/sdkerrors"
 	"github.com/cenkalti/backoff/v4"
+	"github.com/spyzhov/ajson"
 	"io"
 	"net/http"
 	"net/url"
+	"strconv"
 )
 
 // Contracts provide an alternative to plans for provisioning and invoicing customers. Use these endpoints to create and update contracts data.
@@ -600,6 +602,44 @@ func (s *Contracts) ListProducts(ctx context.Context, limit *int64, nextPage *st
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.ListProductsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			nC, err := ajson.Eval(b, "$.next_page")
+			if err != nil {
+				return nil, err
+			}
+			var nCVal string
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				// GetNumeric returns as float64 so convert to the appropriate type.
+				nCVal = strconv.FormatFloat(numVal, 'f', 0, 64)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(string)
+			}
+
+			return s.ListProducts(
+				ctx,
+				limit,
+				&nCVal,
+				requestBody,
+				opts...,
+			)
+		}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -1986,6 +2026,44 @@ func (s *Contracts) ListRateCards(ctx context.Context, limit *int64, nextPage *s
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.ListRateCardsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			nC, err := ajson.Eval(b, "$.next_page")
+			if err != nil {
+				return nil, err
+			}
+			var nCVal string
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				// GetNumeric returns as float64 so convert to the appropriate type.
+				nCVal = strconv.FormatFloat(numVal, 'f', 0, 64)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(string)
+			}
+
+			return s.ListRateCards(
+				ctx,
+				limit,
+				&nCVal,
+				requestBody,
+				opts...,
+			)
+		}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -5254,6 +5332,52 @@ func (s *Contracts) ListCustomerCommits(ctx context.Context, request *operations
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.ListCustomerCommitsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			nC, err := ajson.Eval(b, "$.next_page")
+			if err != nil {
+				return nil, err
+			}
+			var nCVal string
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				// GetNumeric returns as float64 so convert to the appropriate type.
+				nCVal = strconv.FormatFloat(numVal, 'f', 0, 64)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(string)
+			}
+
+			return s.ListCustomerCommits(
+				ctx,
+				&operations.ListCustomerCommitsRequestBody{
+					CustomerID:             request.CustomerID,
+					CommitID:               request.CommitID,
+					CoveringDate:           request.CoveringDate,
+					StartingAt:             request.StartingAt,
+					EffectiveBefore:        request.EffectiveBefore,
+					IncludeContractCommits: request.IncludeContractCommits,
+					IncludeArchived:        request.IncludeArchived,
+					IncludeLedgers:         request.IncludeLedgers,
+					NextPage:               &nCVal,
+				},
+				opts...,
+			)
+		}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -5858,6 +5982,52 @@ func (s *Contracts) ListCustomerCredits(ctx context.Context, request *operations
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.ListCustomerCreditsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			nC, err := ajson.Eval(b, "$.next_page")
+			if err != nil {
+				return nil, err
+			}
+			var nCVal string
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				// GetNumeric returns as float64 so convert to the appropriate type.
+				nCVal = strconv.FormatFloat(numVal, 'f', 0, 64)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(string)
+			}
+
+			return s.ListCustomerCredits(
+				ctx,
+				&operations.ListCustomerCreditsRequestBody{
+					CustomerID:             request.CustomerID,
+					CreditID:               request.CreditID,
+					CoveringDate:           request.CoveringDate,
+					StartingAt:             request.StartingAt,
+					EffectiveBefore:        request.EffectiveBefore,
+					IncludeContractCredits: request.IncludeContractCredits,
+					IncludeArchived:        request.IncludeArchived,
+					IncludeLedgers:         request.IncludeLedgers,
+					NextPage:               &nCVal,
+				},
+				opts...,
+			)
+		}
 
 	switch {
 	case httpRes.StatusCode == 200:
@@ -6462,6 +6632,52 @@ func (s *Contracts) ListCustomerBalances(ctx context.Context, request *operation
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.ListCustomerBalancesResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			nC, err := ajson.Eval(b, "$.next_page")
+			if err != nil {
+				return nil, err
+			}
+			var nCVal string
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				// GetNumeric returns as float64 so convert to the appropriate type.
+				nCVal = strconv.FormatFloat(numVal, 'f', 0, 64)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(string)
+			}
+
+			return s.ListCustomerBalances(
+				ctx,
+				&operations.ListCustomerBalancesRequestBody{
+					CustomerID:              request.CustomerID,
+					ID:                      request.ID,
+					CoveringDate:            request.CoveringDate,
+					StartingAt:              request.StartingAt,
+					EffectiveBefore:         request.EffectiveBefore,
+					IncludeContractBalances: request.IncludeContractBalances,
+					IncludeArchived:         request.IncludeArchived,
+					IncludeLedgers:          request.IncludeLedgers,
+					NextPage:                &nCVal,
+				},
+				opts...,
+			)
+		}
 
 	switch {
 	case httpRes.StatusCode == 200:

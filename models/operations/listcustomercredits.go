@@ -984,6 +984,8 @@ type ListCustomerCreditsResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Success
 	Object *ListCustomerCreditsResponseBody
+
+	Next func() (*ListCustomerCreditsResponse, error)
 }
 
 func (o *ListCustomerCreditsResponse) GetHTTPMeta() components.HTTPMetadata {

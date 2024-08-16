@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a0e700a4-3263-4494-abca-a51edefef8d9
 management:
-  docChecksum: b8c7433446a7319ed006106ae83e8c72
+  docChecksum: 6e6950a451f0506b95d6f782764fa7cd
   docVersion: 1.0.0
-  speakeasyVersion: 1.371.0
+  speakeasyVersion: 1.372.0
   generationVersion: 2.399.0
-  releaseVersion: 0.0.1
-  configChecksum: e02c5e6f63a5adb2068a6d9cf7956737
+  releaseVersion: 0.1.0
+  configChecksum: e2b092d9e53018fb8a008f7af323f6b9
 features:
   go:
     additionalDependencies: 0.1.0
@@ -21,6 +21,7 @@ features:
     globalServerURLs: 2.82.2
     intellisenseMarkdownSupport: 0.1.0
     nullables: 0.1.0
+    pagination: 2.82.1
     responseFormat: 0.1.2
     retries: 2.83.0
     sdkHooks: 0.1.0

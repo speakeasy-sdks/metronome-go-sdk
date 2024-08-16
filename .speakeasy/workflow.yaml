@@ -3,6 +3,8 @@ sources:
     Metronome-OAS:
         inputs:
             - location: https://api.metronome.com/v1/openapi/contracts.json
+        overlays:
+          - location: metronome-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/lukehagar/lukehagar/metronome-oas
 targets:
