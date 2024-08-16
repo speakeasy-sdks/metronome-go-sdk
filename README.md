@@ -1,20 +1,11 @@
-# github.com/Metronome-Industries/metronome-go-sdk
-
-<div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=github-com/metronome-industries/metronome-go-sdk&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
+<div align="center">
+    <img src="https://avatars.githubusercontent.com/u/60759619?s=200&v=4">
+    <h1>Golang SDK</h1>
+        <p><strong>Billing that accelerates you</strong></p>
+        <p>Meet the usage-based billing platform built for modern software companies. Launch products faster, offer any pricing model, and streamline finance workflows without writing code.</p>
+    <a href="https://docs.metronome.com"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
+    <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
 </div>
-
-
-## 🏗 **Welcome to your new SDK!** 🏗
-
-It has been generated successfully based on your OpenAPI spec. However, it is not yet ready for production use. Here are some next steps:
-- [ ] 🛠 Make your SDK feel handcrafted by [customizing it](https://www.speakeasy.com/docs/customize-sdks)
-- [ ] ♻️ Refine your SDK quickly by iterating locally with the [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy)
-- [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasy.com/docs/advanced-setup/publish-sdks)
-- [ ] ✨ When ready to productionize, delete this section from the README
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
