@@ -1,20 +1,22 @@
-speakeasyVersion: 1.371.0
+speakeasyVersion: 1.374.1
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
-        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
+        sourceRevisionDigest: sha256:4d2df47a65938bc53888e46bba30f912ba50a356f877c4315fcd5a03758306da
+        sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
         tags:
             - latest
+            - main
 targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
-        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
-        outLocation: /home/luke/github/metronome-go-sdk
+        sourceRevisionDigest: sha256:4d2df47a65938bc53888e46bba30f912ba50a356f877c4315fcd5a03758306da
+        sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         Metronome-OAS:
             inputs:
