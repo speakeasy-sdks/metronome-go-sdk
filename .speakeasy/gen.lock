@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.374.1
   generationVersion: 2.401.2
-  releaseVersion: 0.2.1
-  configChecksum: f471178251abeac86c0f59744e95bd84
+  releaseVersion: 0.2.2
+  configChecksum: 65b053ace9066d9ff74dc8f8f65eba58
   repoURL: https://github.com/speakeasy-sdks/metronome-go-sdk.git
   installationURL: https://github.com/speakeasy-sdks/metronome-go-sdk
 features:
