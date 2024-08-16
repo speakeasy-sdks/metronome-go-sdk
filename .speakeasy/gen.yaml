@@ -32,5 +32,5 @@ go:
   maxMethodParams: 4
   methodArguments: require-security-and-request
   outputModelSuffix: output
-  packageName: github.com/Metronome-Industries/metronome-go-sdk
+  packageName: https://github.com/speakeasy-sdks/metronome-go-sdk
   responseFormat: envelope-http
