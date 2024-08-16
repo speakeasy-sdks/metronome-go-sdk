@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a0e700a4-3263-4494-abca-a51edefef8d9
 management:
-  docChecksum: 3b16879cbe7b9d9cf0b80c969a0a9d2a
+  docChecksum: 8ab4d8f436057419ca945475504a742c
   docVersion: 1.0.0
   speakeasyVersion: 1.371.0
   generationVersion: 2.399.0
-  releaseVersion: 0.1.1
-  configChecksum: 8019ea985514adf8b40a21c672e6de17
+  releaseVersion: 0.1.4
+  configChecksum: 71828600dab2fb96fbce7093ae2bc9a1
 features:
   go:
     additionalDependencies: 0.1.0
@@ -91,31 +91,8 @@ generatedFiles:
   - /models/operations/updateratecardnamedschedule.go
   - /models/components/httpmetadata.go
   - /models/components/security.go
-  - /models/sdkerrors/setcustomerbillablestatus.go
-  - /models/sdkerrors/getproduct.go
-  - /models/sdkerrors/createproduct.go
-  - /models/sdkerrors/updateproduct.go
-  - /models/sdkerrors/archiveproductlistitem.go
-  - /models/sdkerrors/getratecard.go
-  - /models/sdkerrors/createratecard.go
-  - /models/sdkerrors/updateratecard.go
-  - /models/sdkerrors/addrate.go
-  - /models/sdkerrors/addrates.go
-  - /models/sdkerrors/setratecardproductsorder.go
-  - /models/sdkerrors/moveratecardproducts.go
-  - /models/sdkerrors/getcontract.go
-  - /models/sdkerrors/listcontracts.go
-  - /models/sdkerrors/createcontract.go
-  - /models/sdkerrors/amendcontract.go
-  - /models/sdkerrors/archivecontract.go
-  - /models/sdkerrors/setusagefilter.go
-  - /models/sdkerrors/addmanualbalanceledgerentry.go
-  - /models/sdkerrors/updatecontractenddate.go
-  - /models/sdkerrors/createcustomercommit.go
-  - /models/sdkerrors/updatecommitenddate.go
-  - /models/sdkerrors/createcustomercredit.go
-  - /models/sdkerrors/updatecreditenddate.go
-  - /models/sdkerrors/scheduleproservicesinvoice.go
+  - /models/sdkerrors/badrequest.go
+  - /models/sdkerrors/notfound.go
   - docs/models/operations/billablestatus.md
   - docs/models/operations/setcustomerbillablestatusrequestbody.md
   - docs/models/operations/currentbillablestatus.md
@@ -1155,49 +1132,8 @@ generatedFiles:
   - docs/models/operations/updateratecardnamedscheduleresponse.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/security.md
-  - docs/models/sdkerrors/setcustomerbillablestatuscontractsresponsebody.md
-  - docs/models/sdkerrors/setcustomerbillablestatusresponsebody.md
-  - docs/models/sdkerrors/getproductresponsebody.md
-  - docs/models/sdkerrors/createproductresponsebody.md
-  - docs/models/sdkerrors/updateproductcontractsresponsebody.md
-  - docs/models/sdkerrors/updateproductresponsebody.md
-  - docs/models/sdkerrors/archiveproductlistitemcontractsresponsebody.md
-  - docs/models/sdkerrors/archiveproductlistitemresponsebody.md
-  - docs/models/sdkerrors/getratecardresponsebody.md
-  - docs/models/sdkerrors/createratecardresponsebody.md
-  - docs/models/sdkerrors/updateratecardcontractsresponsebody.md
-  - docs/models/sdkerrors/updateratecardresponsebody.md
-  - docs/models/sdkerrors/addratecontractsresponsebody.md
-  - docs/models/sdkerrors/addrateresponsebody.md
-  - docs/models/sdkerrors/addratescontractsresponsebody.md
-  - docs/models/sdkerrors/addratesresponsebody.md
-  - docs/models/sdkerrors/setratecardproductsordercontractsresponsebody.md
-  - docs/models/sdkerrors/setratecardproductsorderresponsebody.md
-  - docs/models/sdkerrors/moveratecardproductscontractsresponsebody.md
-  - docs/models/sdkerrors/moveratecardproductsresponsebody.md
-  - docs/models/sdkerrors/getcontractresponsebody.md
-  - docs/models/sdkerrors/listcontractsresponsebody.md
-  - docs/models/sdkerrors/createcontractcontractsresponsebody.md
-  - docs/models/sdkerrors/createcontractresponsebody.md
-  - docs/models/sdkerrors/amendcontractcontractsresponsebody.md
-  - docs/models/sdkerrors/amendcontractresponsebody.md
-  - docs/models/sdkerrors/archivecontractcontractsresponsebody.md
-  - docs/models/sdkerrors/archivecontractresponsebody.md
-  - docs/models/sdkerrors/setusagefiltercontractsresponsebody.md
-  - docs/models/sdkerrors/setusagefilterresponsebody.md
-  - docs/models/sdkerrors/addmanualbalanceledgerentrycontractsresponsebody.md
-  - docs/models/sdkerrors/addmanualbalanceledgerentryresponsebody.md
-  - docs/models/sdkerrors/updatecontractenddatecontractsresponsebody.md
-  - docs/models/sdkerrors/updatecontractenddateresponsebody.md
-  - docs/models/sdkerrors/createcustomercommitcontractsresponsebody.md
-  - docs/models/sdkerrors/createcustomercommitresponsebody.md
-  - docs/models/sdkerrors/updatecommitenddatecontractsresponsebody.md
-  - docs/models/sdkerrors/updatecommitenddateresponsebody.md
-  - docs/models/sdkerrors/createcustomercreditcontractsresponsebody.md
-  - docs/models/sdkerrors/createcustomercreditresponsebody.md
-  - docs/models/sdkerrors/updatecreditenddatecontractsresponsebody.md
-  - docs/models/sdkerrors/updatecreditenddateresponsebody.md
-  - docs/models/sdkerrors/scheduleproservicesinvoiceresponsebody.md
+  - docs/models/sdkerrors/badrequest.md
+  - docs/models/sdkerrors/notfound.md
   - docs/sdks/metronome/README.md
   - docs/models/operations/option.md
   - docs/sdks/contracts/README.md

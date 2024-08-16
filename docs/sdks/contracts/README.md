@@ -87,11 +87,11 @@ func main() {
 ### Response
 
 **[*operations.SetCustomerBillableStatusResponse](../../models/operations/setcustomerbillablestatusresponse.md), error**
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| sdkerrors.SetCustomerBillableStatusResponseBody          | 400                                                      | application/json                                         |
-| sdkerrors.SetCustomerBillableStatusContractsResponseBody | 404                                                      | application/json                                         |
-| sdkerrors.SDKError                                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## GetProduct
 
@@ -142,10 +142,10 @@ func main() {
 ### Response
 
 **[*operations.GetProductResponse](../../models/operations/getproductresponse.md), error**
-| Error Object                     | Status Code                      | Content Type                     |
-| -------------------------------- | -------------------------------- | -------------------------------- |
-| sdkerrors.GetProductResponseBody | 404                              | application/json                 |
-| sdkerrors.SDKError               | 4xx-5xx                          | */*                              |
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.NotFound | 404                | application/json   |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListProducts
 
@@ -266,10 +266,10 @@ func main() {
 ### Response
 
 **[*operations.CreateProductResponse](../../models/operations/createproductresponse.md), error**
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| sdkerrors.CreateProductResponseBody | 400                                 | application/json                    |
-| sdkerrors.SDKError                  | 4xx-5xx                             | */*                                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## UpdateProduct
 
@@ -323,11 +323,11 @@ func main() {
 ### Response
 
 **[*operations.UpdateProductResponse](../../models/operations/updateproductresponse.md), error**
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| sdkerrors.UpdateProductResponseBody          | 400                                          | application/json                             |
-| sdkerrors.UpdateProductContractsResponseBody | 404                                          | application/json                             |
-| sdkerrors.SDKError                           | 4xx-5xx                                      | */*                                          |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## ArchiveProductListItem
 
@@ -378,11 +378,11 @@ func main() {
 ### Response
 
 **[*operations.ArchiveProductListItemResponse](../../models/operations/archiveproductlistitemresponse.md), error**
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| sdkerrors.ArchiveProductListItemResponseBody          | 400                                                   | application/json                                      |
-| sdkerrors.ArchiveProductListItemContractsResponseBody | 404                                                   | application/json                                      |
-| sdkerrors.SDKError                                    | 4xx-5xx                                               | */*                                                   |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## GetRateSchedule
 
@@ -472,6 +472,8 @@ func main() {
     s := metronomegosdk.New(
         metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
+    var limit *int64 = metronomegosdk.Int64(10)
+
     var requestBody *operations.GetRatesRequestBody = &operations.GetRatesRequestBody{
         RateCardID: "f3d51ae8-f283-44e1-9933-a3cf9ad7a6fe",
         At: types.MustTimeFromString("2024-01-01T00:00:00.000Z"),
@@ -486,7 +488,7 @@ func main() {
         },
     }
     ctx := context.Background()
-    res, err := s.Contracts.GetRates(ctx, nil, nil, requestBody)
+    res, err := s.Contracts.GetRates(ctx, limit, nil, requestBody)
     if err != nil {
         log.Fatal(err)
     }
@@ -500,13 +502,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `limit`                                                                           | **int64*                                                                          | :heavy_minus_sign:                                                                | Max number of results that should be returned                                     |
-| `nextPage`                                                                        | **string*                                                                         | :heavy_minus_sign:                                                                | Cursor that indicates where the next page of results should start.                |
-| `requestBody`                                                                     | [*operations.GetRatesRequestBody](../../models/operations/getratesrequestbody.md) | :heavy_minus_sign:                                                                | Rate schedule filter options.                                                     |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
+| `limit`                                                                           | **int64*                                                                          | :heavy_minus_sign:                                                                | Max number of results that should be returned                                     | 10                                                                                |
+| `nextPage`                                                                        | **string*                                                                         | :heavy_minus_sign:                                                                | Cursor that indicates where the next page of results should start.                |                                                                                   |
+| `requestBody`                                                                     | [*operations.GetRatesRequestBody](../../models/operations/getratesrequestbody.md) | :heavy_minus_sign:                                                                | Rate schedule filter options.                                                     |                                                                                   |
+| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |                                                                                   |
 
 
 ### Response
@@ -565,10 +567,10 @@ func main() {
 ### Response
 
 **[*operations.GetRateCardResponse](../../models/operations/getratecardresponse.md), error**
-| Error Object                      | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| sdkerrors.GetRateCardResponseBody | 404                               | application/json                  |
-| sdkerrors.SDKError                | 4xx-5xx                           | */*                               |
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.NotFound | 404                | application/json   |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListRateCards
 
@@ -698,10 +700,10 @@ func main() {
 ### Response
 
 **[*operations.CreateRateCardResponse](../../models/operations/createratecardresponse.md), error**
-| Error Object                         | Status Code                          | Content Type                         |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| sdkerrors.CreateRateCardResponseBody | 400                                  | application/json                     |
-| sdkerrors.SDKError                   | 4xx-5xx                              | */*                                  |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## UpdateRateCard
 
@@ -754,11 +756,11 @@ func main() {
 ### Response
 
 **[*operations.UpdateRateCardResponse](../../models/operations/updateratecardresponse.md), error**
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| sdkerrors.UpdateRateCardResponseBody          | 400                                           | application/json                              |
-| sdkerrors.UpdateRateCardContractsResponseBody | 404                                           | application/json                              |
-| sdkerrors.SDKError                            | 4xx-5xx                                       | */*                                           |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## AddRate
 
@@ -816,11 +818,11 @@ func main() {
 ### Response
 
 **[*operations.AddRateResponse](../../models/operations/addrateresponse.md), error**
-| Error Object                           | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| sdkerrors.AddRateResponseBody          | 400                                    | application/json                       |
-| sdkerrors.AddRateContractsResponseBody | 404                                    | application/json                       |
-| sdkerrors.SDKError                     | 4xx-5xx                                | */*                                    |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## AddRates
 
@@ -898,11 +900,11 @@ func main() {
 ### Response
 
 **[*operations.AddRatesResponse](../../models/operations/addratesresponse.md), error**
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| sdkerrors.AddRatesResponseBody          | 400                                     | application/json                        |
-| sdkerrors.AddRatesContractsResponseBody | 404                                     | application/json                        |
-| sdkerrors.SDKError                      | 4xx-5xx                                 | */*                                     |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## SetRateCardProductsOrder
 
@@ -957,11 +959,11 @@ func main() {
 ### Response
 
 **[*operations.SetRateCardProductsOrderResponse](../../models/operations/setratecardproductsorderresponse.md), error**
-| Error Object                                            | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| sdkerrors.SetRateCardProductsOrderResponseBody          | 400                                                     | application/json                                        |
-| sdkerrors.SetRateCardProductsOrderContractsResponseBody | 404                                                     | application/json                                        |
-| sdkerrors.SDKError                                      | 4xx-5xx                                                 | */*                                                     |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## MoveRateCardProducts
 
@@ -1022,11 +1024,11 @@ func main() {
 ### Response
 
 **[*operations.MoveRateCardProductsResponse](../../models/operations/moveratecardproductsresponse.md), error**
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| sdkerrors.MoveRateCardProductsResponseBody          | 400                                                 | application/json                                    |
-| sdkerrors.MoveRateCardProductsContractsResponseBody | 404                                                 | application/json                                    |
-| sdkerrors.SDKError                                  | 4xx-5xx                                             | */*                                                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## GetContract
 
@@ -1078,10 +1080,10 @@ func main() {
 ### Response
 
 **[*operations.GetContractResponse](../../models/operations/getcontractresponse.md), error**
-| Error Object                      | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| sdkerrors.GetContractResponseBody | 404                               | application/json                  |
-| sdkerrors.SDKError                | 4xx-5xx                           | */*                               |
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.NotFound | 404                | application/json   |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## ListContracts
 
@@ -1131,10 +1133,10 @@ func main() {
 ### Response
 
 **[*operations.ListContractsResponse](../../models/operations/listcontractsresponse.md), error**
-| Error Object                        | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| sdkerrors.ListContractsResponseBody | 404                                 | application/json                    |
-| sdkerrors.SDKError                  | 4xx-5xx                             | */*                                 |
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.NotFound | 404                | application/json   |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## CreateContract
 
@@ -1188,11 +1190,11 @@ func main() {
 ### Response
 
 **[*operations.CreateContractResponse](../../models/operations/createcontractresponse.md), error**
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| sdkerrors.CreateContractResponseBody          | 400                                           | application/json                              |
-| sdkerrors.CreateContractContractsResponseBody | 404                                           | application/json                              |
-| sdkerrors.SDKError                            | 4xx-5xx                                       | */*                                           |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## AmendContract
 
@@ -1246,11 +1248,11 @@ func main() {
 ### Response
 
 **[*operations.AmendContractResponse](../../models/operations/amendcontractresponse.md), error**
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| sdkerrors.AmendContractResponseBody          | 400                                          | application/json                             |
-| sdkerrors.AmendContractContractsResponseBody | 404                                          | application/json                             |
-| sdkerrors.SDKError                           | 4xx-5xx                                      | */*                                          |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## ArchiveContract
 
@@ -1302,11 +1304,11 @@ func main() {
 ### Response
 
 **[*operations.ArchiveContractResponse](../../models/operations/archivecontractresponse.md), error**
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| sdkerrors.ArchiveContractResponseBody          | 400                                            | application/json                               |
-| sdkerrors.ArchiveContractContractsResponseBody | 404                                            | application/json                               |
-| sdkerrors.SDKError                             | 4xx-5xx                                        | */*                                            |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## SetUsageFilter
 
@@ -1365,11 +1367,11 @@ func main() {
 ### Response
 
 **[*operations.SetUsageFilterResponse](../../models/operations/setusagefilterresponse.md), error**
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| sdkerrors.SetUsageFilterResponseBody          | 400                                           | application/json                              |
-| sdkerrors.SetUsageFilterContractsResponseBody | 404                                           | application/json                              |
-| sdkerrors.SDKError                            | 4xx-5xx                                       | */*                                           |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## AddManualBalanceLedgerEntry
 
@@ -1425,11 +1427,11 @@ func main() {
 ### Response
 
 **[*operations.AddManualBalanceLedgerEntryResponse](../../models/operations/addmanualbalanceledgerentryresponse.md), error**
-| Error Object                                               | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| sdkerrors.AddManualBalanceLedgerEntryResponseBody          | 400                                                        | application/json                                           |
-| sdkerrors.AddManualBalanceLedgerEntryContractsResponseBody | 404                                                        | application/json                                           |
-| sdkerrors.SDKError                                         | 4xx-5xx                                                    | */*                                                        |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## UpdateContractEndDate
 
@@ -1483,11 +1485,11 @@ func main() {
 ### Response
 
 **[*operations.UpdateContractEndDateResponse](../../models/operations/updatecontractenddateresponse.md), error**
-| Error Object                                         | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| sdkerrors.UpdateContractEndDateResponseBody          | 400                                                  | application/json                                     |
-| sdkerrors.UpdateContractEndDateContractsResponseBody | 404                                                  | application/json                                     |
-| sdkerrors.SDKError                                   | 4xx-5xx                                              | */*                                                  |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## GetContractRateSchedule
 
@@ -1699,11 +1701,11 @@ func main() {
 ### Response
 
 **[*operations.CreateCustomerCommitResponse](../../models/operations/createcustomercommitresponse.md), error**
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| sdkerrors.CreateCustomerCommitResponseBody          | 400                                                 | application/json                                    |
-| sdkerrors.CreateCustomerCommitContractsResponseBody | 404                                                 | application/json                                    |
-| sdkerrors.SDKError                                  | 4xx-5xx                                             | */*                                                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## UpdateCommitEndDate
 
@@ -1758,11 +1760,11 @@ func main() {
 ### Response
 
 **[*operations.UpdateCommitEndDateResponse](../../models/operations/updatecommitenddateresponse.md), error**
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| sdkerrors.UpdateCommitEndDateResponseBody          | 400                                                | application/json                                   |
-| sdkerrors.UpdateCommitEndDateContractsResponseBody | 404                                                | application/json                                   |
-| sdkerrors.SDKError                                 | 4xx-5xx                                            | */*                                                |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## ListCustomerCredits
 
@@ -1895,11 +1897,11 @@ func main() {
 ### Response
 
 **[*operations.CreateCustomerCreditResponse](../../models/operations/createcustomercreditresponse.md), error**
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| sdkerrors.CreateCustomerCreditResponseBody          | 400                                                 | application/json                                    |
-| sdkerrors.CreateCustomerCreditContractsResponseBody | 404                                                 | application/json                                    |
-| sdkerrors.SDKError                                  | 4xx-5xx                                             | */*                                                 |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## UpdateCreditEndDate
 
@@ -1953,11 +1955,11 @@ func main() {
 ### Response
 
 **[*operations.UpdateCreditEndDateResponse](../../models/operations/updatecreditenddateresponse.md), error**
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| sdkerrors.UpdateCreditEndDateResponseBody          | 400                                                | application/json                                   |
-| sdkerrors.UpdateCreditEndDateContractsResponseBody | 404                                                | application/json                                   |
-| sdkerrors.SDKError                                 | 4xx-5xx                                            | */*                                                |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ## ListCustomerBalances
 
@@ -2074,7 +2076,7 @@ func main() {
 ### Response
 
 **[*operations.ScheduleProServicesInvoiceResponse](../../models/operations/scheduleproservicesinvoiceresponse.md), error**
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| sdkerrors.ScheduleProServicesInvoiceResponseBody | 404                                              | application/json                                 |
-| sdkerrors.SDKError                               | 4xx-5xx                                          | */*                                              |
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.NotFound | 404                | application/json   |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

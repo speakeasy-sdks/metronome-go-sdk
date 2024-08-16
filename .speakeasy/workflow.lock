@@ -2,16 +2,16 @@ speakeasyVersion: 1.371.0
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:37c5c77a2e12ed74ef67126bdf5b4a5b9b7dc7994bc38605079b46b30efb2d55
-        sourceBlobDigest: sha256:63e70f92fd86fc1253fa35b6b46a5a0c6608e2d6eb11d83e83582c424526b46f
+        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
+        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
         tags:
             - latest
 targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:37c5c77a2e12ed74ef67126bdf5b4a5b9b7dc7994bc38605079b46b30efb2d55
-        sourceBlobDigest: sha256:63e70f92fd86fc1253fa35b6b46a5a0c6608e2d6eb11d83e83582c424526b46f
+        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
+        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
         outLocation: /home/luke/github/metronome-go-sdk
 workflow:
     workflowVersion: 1.0.0

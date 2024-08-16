@@ -150,9 +150,9 @@ func New(opts ...SDKOption) *Metronome {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.1.1",
+			SDKVersion:        "0.1.4",
 			GenVersion:        "2.399.0",
-			UserAgent:         "speakeasy-sdk/go 0.1.1 2.399.0 1.0.0 github.com/Metronome-Industries/metronome-go-sdk",
+			UserAgent:         "speakeasy-sdk/go 0.1.4 2.399.0 1.0.0 github.com/Metronome-Industries/metronome-go-sdk",
 			Hooks:             hooks.New(),
 		},
 	}

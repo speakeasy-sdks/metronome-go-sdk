@@ -192,11 +192,11 @@ func main() {
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| sdkerrors.SetCustomerBillableStatusResponseBody          | 400                                                      | application/json                                         |
-| sdkerrors.SetCustomerBillableStatusContractsResponseBody | 404                                                      | application/json                                         |
-| sdkerrors.SDKError                                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| sdkerrors.BadRequest | 400                  | application/json     |
+| sdkerrors.NotFound   | 404                  | application/json     |
+| sdkerrors.SDKError   | 4xx-5xx              | */*                  |
 
 ### Example
 
@@ -221,13 +221,13 @@ func main() {
 	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
 	if err != nil {
 
-		var e *sdkerrors.SetCustomerBillableStatusResponseBody
+		var e *sdkerrors.BadRequest
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *sdkerrors.SetCustomerBillableStatusContractsResponseBody
+		var e *sdkerrors.NotFound
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())

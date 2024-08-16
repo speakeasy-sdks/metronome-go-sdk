@@ -15,6 +15,33 @@ actions:
         statusCodes:
           - 5XX
         retryConnectionErrors: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
   - target: $["paths"]["/contract-pricing/products/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -28,6 +55,63 @@ actions:
             type: limit
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/getRates"]["post"]["parameters"][0]["schema"]
+    update:
+      example: 10
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -41,6 +125,251 @@ actions:
             type: limit
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["scheduled_charges"]["items"]["properties"]["schedule"]["properties"]["recurring_schedule"]["properties"]["amount_distribution"]["enum"][*]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["scheduled_charges"]["items"]["properties"]["schedule"]["properties"]["recurring_schedule"]["properties"]["amount_distribution"]["enum"]
+    update:
+      - null
+      - DIVIDED
+      - divided
+      - DIVIDED_ROUNDED
+      - divided_rounded
+      - EACH
+      - each
+  - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["transition"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"][*]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["transition"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"]
+    update:
+      - null
+      - remove
+      - as_is
+      - REMOVE
+      - AS_IS
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
   - target: $["paths"]["/contracts/customerCommits/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -51,6 +380,42 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
   - target: $["paths"]["/contracts/customerCredits/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -61,6 +426,42 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/BadRequest"
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
   - target: $["paths"]["/contracts/customerBalances/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -71,3 +472,65 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["components"]["responses"]["NotFound"]["content"]["application/json"]["schema"]
+    update:
+      $ref: "#/components/schemas/NotFound"
+  - target: $["components"]["responses"]["NotFound"]["content"]["application/json"]["schema"]["required"]
+    remove: true
+  - target: $["components"]["responses"]["NotFound"]["content"]["application/json"]["schema"]["type"]
+    remove: true
+  - target: $["components"]["responses"]["NotFound"]["content"]["application/json"]["schema"]["properties"]
+    remove: true
+  - target: $["components"]["schemas"]
+    update:
+      NotFound:
+        required:
+          - message
+        type: object
+        properties:
+        message:
+          type: string
+  - target: $["components"]["schemas"]
+    update:
+      BadRequest:
+        required:
+          - message
+        type: object
+        properties:
+        message:
+          type: string
+  - target: $["components"]["schemas"]["CustomerAlert"]["properties"]["customer_status"]["enum"][*]
+    remove: true
+  - target: $["components"]["schemas"]["CustomerAlert"]["properties"]["customer_status"]["enum"]
+    update:
+      - null
+      - ok
+      - in_alarm
+      - evaluating
+  - target: $["components"]["schemas"]["CreateContractPayload"]["properties"]["transition"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"][*]
+    remove: true
+  - target: $["components"]["schemas"]["CreateContractPayload"]["properties"]["transition"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"]
+    update:
+      - null
+      - remove
+      - as_is
+      - REMOVE
+      - AS_IS
+  - target: $["components"]["schemas"]["ContractTransitionInput"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"][*]
+    remove: true
+  - target: $["components"]["schemas"]["ContractTransitionInput"]["properties"]["future_invoice_behavior"]["properties"]["trueup"]["enum"]
+    update:
+      - null
+      - remove
+      - as_is
+      - REMOVE
+      - AS_IS
