@@ -15,7 +15,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

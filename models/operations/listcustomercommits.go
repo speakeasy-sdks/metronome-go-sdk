@@ -246,26 +246,26 @@ func (o *ListCustomerCommitsAccessSchedule) GetScheduleItems() []ListCustomerCom
 	return o.ScheduleItems
 }
 
-type ListCustomerCommitsContractsCreditType struct {
+type ListCustomerCommitsCustomerCommitsCreditType struct {
 	Name string `json:"name"`
 	ID   string `json:"id"`
 }
 
-func (o *ListCustomerCommitsContractsCreditType) GetName() string {
+func (o *ListCustomerCommitsCustomerCommitsCreditType) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ListCustomerCommitsContractsCreditType) GetID() string {
+func (o *ListCustomerCommitsCustomerCommitsCreditType) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-type ListCustomerCommitsContractsScheduleItems struct {
+type ListCustomerCommitsCustomerCommitsScheduleItems struct {
 	ID        string    `json:"id"`
 	InvoiceID string    `json:"invoice_id"`
 	Amount    float64   `json:"amount"`
@@ -274,53 +274,53 @@ type ListCustomerCommitsContractsScheduleItems struct {
 	Timestamp time.Time `json:"timestamp"`
 }
 
-func (l ListCustomerCommitsContractsScheduleItems) MarshalJSON() ([]byte, error) {
+func (l ListCustomerCommitsCustomerCommitsScheduleItems) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerCommitsContractsScheduleItems) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerCommitsCustomerCommitsScheduleItems) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetID() string {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetInvoiceID() string {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetInvoiceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.InvoiceID
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetAmount() float64 {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetUnitPrice() float64 {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetUnitPrice() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.UnitPrice
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetQuantity() float64 {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetQuantity() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Quantity
 }
 
-func (o *ListCustomerCommitsContractsScheduleItems) GetTimestamp() time.Time {
+func (o *ListCustomerCommitsCustomerCommitsScheduleItems) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
@@ -329,18 +329,18 @@ func (o *ListCustomerCommitsContractsScheduleItems) GetTimestamp() time.Time {
 
 // ListCustomerCommitsInvoiceSchedule - The schedule that the customer will be invoiced for this commit.
 type ListCustomerCommitsInvoiceSchedule struct {
-	CreditType    *ListCustomerCommitsContractsCreditType     `json:"credit_type,omitempty"`
-	ScheduleItems []ListCustomerCommitsContractsScheduleItems `json:"schedule_items,omitempty"`
+	CreditType    *ListCustomerCommitsCustomerCommitsCreditType     `json:"credit_type,omitempty"`
+	ScheduleItems []ListCustomerCommitsCustomerCommitsScheduleItems `json:"schedule_items,omitempty"`
 }
 
-func (o *ListCustomerCommitsInvoiceSchedule) GetCreditType() *ListCustomerCommitsContractsCreditType {
+func (o *ListCustomerCommitsInvoiceSchedule) GetCreditType() *ListCustomerCommitsCustomerCommitsCreditType {
 	if o == nil {
 		return nil
 	}
 	return o.CreditType
 }
 
-func (o *ListCustomerCommitsInvoiceSchedule) GetScheduleItems() []ListCustomerCommitsContractsScheduleItems {
+func (o *ListCustomerCommitsInvoiceSchedule) GetScheduleItems() []ListCustomerCommitsCustomerCommitsScheduleItems {
 	if o == nil {
 		return nil
 	}
@@ -378,33 +378,33 @@ func (o *RolledOverFrom) GetContractID() string {
 	return o.ContractID
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13TypePostpaidCommitExpiration ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type = "POSTPAID_COMMIT_EXPIRATION"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13TypePostpaidCommitExpiration ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type = "POSTPAID_COMMIT_EXPIRATION"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_EXPIRATION":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type: %v", v)
 	}
 }
 
 type Thirteen struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type `json:"type"`
+	Timestamp time.Time                                                                                `json:"timestamp"`
+	Amount    float64                                                                                  `json:"amount"`
 }
 
 func (t Thirteen) MarshalJSON() ([]byte, error) {
@@ -418,9 +418,9 @@ func (t *Thirteen) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Thirteen) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type {
+func (o *Thirteen) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData13Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData13Type("")
 	}
 	return o.Type
 }
@@ -439,34 +439,34 @@ func (o *Thirteen) GetAmount() float64 {
 	return o.Amount
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12TypePostpaidCommitManual ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type = "POSTPAID_COMMIT_MANUAL"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12TypePostpaidCommitManual ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type = "POSTPAID_COMMIT_MANUAL"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_MANUAL":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type: %v", v)
 	}
 }
 
 type Twelve struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
-	Reason    string                                                                             `json:"reason"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type `json:"type"`
+	Timestamp time.Time                                                                                `json:"timestamp"`
+	Amount    float64                                                                                  `json:"amount"`
+	Reason    string                                                                                   `json:"reason"`
 }
 
 func (t Twelve) MarshalJSON() ([]byte, error) {
@@ -480,9 +480,9 @@ func (t *Twelve) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Twelve) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type {
+func (o *Twelve) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData12Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData12Type("")
 	}
 	return o.Type
 }
@@ -508,34 +508,34 @@ func (o *Twelve) GetReason() string {
 	return o.Reason
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11TypePrepaidCommitManual ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type = "PREPAID_COMMIT_MANUAL"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11TypePrepaidCommitManual ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type = "PREPAID_COMMIT_MANUAL"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_MANUAL":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type: %v", v)
 	}
 }
 
 type Eleven struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
-	Reason    string                                                                             `json:"reason"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type `json:"type"`
+	Timestamp time.Time                                                                                `json:"timestamp"`
+	Amount    float64                                                                                  `json:"amount"`
+	Reason    string                                                                                   `json:"reason"`
 }
 
 func (e Eleven) MarshalJSON() ([]byte, error) {
@@ -549,9 +549,9 @@ func (e *Eleven) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Eleven) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type {
+func (o *Eleven) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData11Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData11Type("")
 	}
 	return o.Type
 }
@@ -577,34 +577,34 @@ func (o *Eleven) GetReason() string {
 	return o.Reason
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10TypePostpaidCommitTrueup ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type = "POSTPAID_COMMIT_TRUEUP"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10TypePostpaidCommitTrueup ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type = "POSTPAID_COMMIT_TRUEUP"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_TRUEUP":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type: %v", v)
 	}
 }
 
 type Ten struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
-	InvoiceID string                                                                             `json:"invoice_id"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type `json:"type"`
+	Timestamp time.Time                                                                                `json:"timestamp"`
+	Amount    float64                                                                                  `json:"amount"`
+	InvoiceID string                                                                                   `json:"invoice_id"`
 }
 
 func (t Ten) MarshalJSON() ([]byte, error) {
@@ -618,9 +618,9 @@ func (t *Ten) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ten) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type {
+func (o *Ten) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData10Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData10Type("")
 	}
 	return o.Type
 }
@@ -646,35 +646,35 @@ func (o *Ten) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9TypePostpaidCommitRollover ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type = "POSTPAID_COMMIT_ROLLOVER"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9TypePostpaidCommitRollover ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type = "POSTPAID_COMMIT_ROLLOVER"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_ROLLOVER":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type: %v", v)
 	}
 }
 
 type Nine struct {
-	Type          ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type `json:"type"`
-	Timestamp     time.Time                                                                         `json:"timestamp"`
-	Amount        float64                                                                           `json:"amount"`
-	SegmentID     string                                                                            `json:"segment_id"`
-	NewContractID string                                                                            `json:"new_contract_id"`
+	Type          ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type `json:"type"`
+	Timestamp     time.Time                                                                               `json:"timestamp"`
+	Amount        float64                                                                                 `json:"amount"`
+	SegmentID     string                                                                                  `json:"segment_id"`
+	NewContractID string                                                                                  `json:"new_contract_id"`
 }
 
 func (n Nine) MarshalJSON() ([]byte, error) {
@@ -688,9 +688,9 @@ func (n *Nine) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Nine) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type {
+func (o *Nine) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyData9Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyData9Type("")
 	}
 	return o.Type
 }
@@ -723,35 +723,35 @@ func (o *Nine) GetNewContractID() string {
 	return o.NewContractID
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataTypePostpaidCommitAutomatedInvoiceDeduction ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType = "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataTypePostpaidCommitAutomatedInvoiceDeduction ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType = "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType: %v", v)
 	}
 }
 
 type Eight struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType `json:"type"`
-	Timestamp time.Time                                                                        `json:"timestamp"`
-	Amount    float64                                                                          `json:"amount"`
-	SegmentID string                                                                           `json:"segment_id"`
-	InvoiceID string                                                                           `json:"invoice_id"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType `json:"type"`
+	Timestamp time.Time                                                                              `json:"timestamp"`
+	Amount    float64                                                                                `json:"amount"`
+	SegmentID string                                                                                 `json:"segment_id"`
+	InvoiceID string                                                                                 `json:"invoice_id"`
 }
 
 func (e Eight) MarshalJSON() ([]byte, error) {
@@ -765,9 +765,9 @@ func (e *Eight) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Eight) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType {
+func (o *Eight) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyDataType("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyDataType("")
 	}
 	return o.Type
 }
@@ -800,33 +800,33 @@ func (o *Eight) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyTypePostpaidCommitInitialBalance ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType = "POSTPAID_COMMIT_INITIAL_BALANCE"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyTypePostpaidCommitInitialBalance ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType = "POSTPAID_COMMIT_INITIAL_BALANCE"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_INITIAL_BALANCE":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType: %v", v)
 	}
 }
 
 type Seven struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Timestamp time.Time                                                                    `json:"timestamp"`
-	Amount    float64                                                                      `json:"amount"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Timestamp time.Time                                                                          `json:"timestamp"`
+	Amount    float64                                                                            `json:"amount"`
 }
 
 func (s Seven) MarshalJSON() ([]byte, error) {
@@ -840,9 +840,9 @@ func (s *Seven) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Seven) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (o *Seven) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONResponseBodyType("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONResponseBodyType("")
 	}
 	return o.Type
 }
@@ -861,35 +861,35 @@ func (o *Seven) GetAmount() float64 {
 	return o.Amount
 }
 
-type ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200ApplicationJSONTypePrepaidCommitCredited ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType = "PREPAID_COMMIT_CREDITED"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONTypePrepaidCommitCredited ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType = "PREPAID_COMMIT_CREDITED"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType) ToPointer() *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_CREDITED":
-		*e = ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType: %v", v)
 	}
 }
 
 type Six struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType `json:"type"`
-	Timestamp time.Time                                                        `json:"timestamp"`
-	Amount    float64                                                          `json:"amount"`
-	SegmentID string                                                           `json:"segment_id"`
-	InvoiceID string                                                           `json:"invoice_id"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType `json:"type"`
+	Timestamp time.Time                                                              `json:"timestamp"`
+	Amount    float64                                                                `json:"amount"`
+	SegmentID string                                                                 `json:"segment_id"`
+	InvoiceID string                                                                 `json:"invoice_id"`
 }
 
 func (s Six) MarshalJSON() ([]byte, error) {
@@ -903,9 +903,9 @@ func (s *Six) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Six) GetType() ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType {
+func (o *Six) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200ApplicationJSONType("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200ApplicationJSONType("")
 	}
 	return o.Type
 }
@@ -938,35 +938,35 @@ func (o *Six) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCommitsLedgerContractsResponse200Type string
+type ListCustomerCommitsLedgerCustomerCommitsResponse200Type string
 
 const (
-	ListCustomerCommitsLedgerContractsResponse200TypePrepaidCommitCanceled ListCustomerCommitsLedgerContractsResponse200Type = "PREPAID_COMMIT_CANCELED"
+	ListCustomerCommitsLedgerCustomerCommitsResponse200TypePrepaidCommitCanceled ListCustomerCommitsLedgerCustomerCommitsResponse200Type = "PREPAID_COMMIT_CANCELED"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponse200Type) ToPointer() *ListCustomerCommitsLedgerContractsResponse200Type {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponse200Type) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponse200Type {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponse200Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_CANCELED":
-		*e = ListCustomerCommitsLedgerContractsResponse200Type(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponse200Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponse200Type: %v", v)
 	}
 }
 
 type Five struct {
-	Type      ListCustomerCommitsLedgerContractsResponse200Type `json:"type"`
-	Timestamp time.Time                                         `json:"timestamp"`
-	Amount    float64                                           `json:"amount"`
-	SegmentID string                                            `json:"segment_id"`
-	InvoiceID string                                            `json:"invoice_id"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponse200Type `json:"type"`
+	Timestamp time.Time                                               `json:"timestamp"`
+	Amount    float64                                                 `json:"amount"`
+	SegmentID string                                                  `json:"segment_id"`
+	InvoiceID string                                                  `json:"invoice_id"`
 }
 
 func (f Five) MarshalJSON() ([]byte, error) {
@@ -980,9 +980,9 @@ func (f *Five) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Five) GetType() ListCustomerCommitsLedgerContractsResponse200Type {
+func (o *Five) GetType() ListCustomerCommitsLedgerCustomerCommitsResponse200Type {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponse200Type("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponse200Type("")
 	}
 	return o.Type
 }
@@ -1015,34 +1015,34 @@ func (o *Five) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCommitsLedgerContractsResponseType string
+type ListCustomerCommitsLedgerCustomerCommitsResponseType string
 
 const (
-	ListCustomerCommitsLedgerContractsResponseTypePrepaidCommitExpiration ListCustomerCommitsLedgerContractsResponseType = "PREPAID_COMMIT_EXPIRATION"
+	ListCustomerCommitsLedgerCustomerCommitsResponseTypePrepaidCommitExpiration ListCustomerCommitsLedgerCustomerCommitsResponseType = "PREPAID_COMMIT_EXPIRATION"
 )
 
-func (e ListCustomerCommitsLedgerContractsResponseType) ToPointer() *ListCustomerCommitsLedgerContractsResponseType {
+func (e ListCustomerCommitsLedgerCustomerCommitsResponseType) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsResponseType {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsResponseType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsResponseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_EXPIRATION":
-		*e = ListCustomerCommitsLedgerContractsResponseType(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsResponseType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsResponseType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsResponseType: %v", v)
 	}
 }
 
 type Four struct {
-	Type      ListCustomerCommitsLedgerContractsResponseType `json:"type"`
-	Timestamp time.Time                                      `json:"timestamp"`
-	Amount    float64                                        `json:"amount"`
-	SegmentID string                                         `json:"segment_id"`
+	Type      ListCustomerCommitsLedgerCustomerCommitsResponseType `json:"type"`
+	Timestamp time.Time                                            `json:"timestamp"`
+	Amount    float64                                              `json:"amount"`
+	SegmentID string                                               `json:"segment_id"`
 }
 
 func (f Four) MarshalJSON() ([]byte, error) {
@@ -1056,9 +1056,9 @@ func (f *Four) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Four) GetType() ListCustomerCommitsLedgerContractsResponseType {
+func (o *Four) GetType() ListCustomerCommitsLedgerCustomerCommitsResponseType {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsResponseType("")
+		return ListCustomerCommitsLedgerCustomerCommitsResponseType("")
 	}
 	return o.Type
 }
@@ -1084,35 +1084,35 @@ func (o *Four) GetSegmentID() string {
 	return o.SegmentID
 }
 
-type ListCustomerCommitsLedgerContractsType string
+type ListCustomerCommitsLedgerCustomerCommitsType string
 
 const (
-	ListCustomerCommitsLedgerContractsTypePrepaidCommitRollover ListCustomerCommitsLedgerContractsType = "PREPAID_COMMIT_ROLLOVER"
+	ListCustomerCommitsLedgerCustomerCommitsTypePrepaidCommitRollover ListCustomerCommitsLedgerCustomerCommitsType = "PREPAID_COMMIT_ROLLOVER"
 )
 
-func (e ListCustomerCommitsLedgerContractsType) ToPointer() *ListCustomerCommitsLedgerContractsType {
+func (e ListCustomerCommitsLedgerCustomerCommitsType) ToPointer() *ListCustomerCommitsLedgerCustomerCommitsType {
 	return &e
 }
-func (e *ListCustomerCommitsLedgerContractsType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCommitsLedgerCustomerCommitsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_ROLLOVER":
-		*e = ListCustomerCommitsLedgerContractsType(v)
+		*e = ListCustomerCommitsLedgerCustomerCommitsType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerContractsType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCommitsLedgerCustomerCommitsType: %v", v)
 	}
 }
 
 type Three struct {
-	Type          ListCustomerCommitsLedgerContractsType `json:"type"`
-	Timestamp     time.Time                              `json:"timestamp"`
-	Amount        float64                                `json:"amount"`
-	SegmentID     string                                 `json:"segment_id"`
-	NewContractID string                                 `json:"new_contract_id"`
+	Type          ListCustomerCommitsLedgerCustomerCommitsType `json:"type"`
+	Timestamp     time.Time                                    `json:"timestamp"`
+	Amount        float64                                      `json:"amount"`
+	SegmentID     string                                       `json:"segment_id"`
+	NewContractID string                                       `json:"new_contract_id"`
 }
 
 func (t Three) MarshalJSON() ([]byte, error) {
@@ -1126,9 +1126,9 @@ func (t *Three) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Three) GetType() ListCustomerCommitsLedgerContractsType {
+func (o *Three) GetType() ListCustomerCommitsLedgerCustomerCommitsType {
 	if o == nil {
-		return ListCustomerCommitsLedgerContractsType("")
+		return ListCustomerCommitsLedgerCustomerCommitsType("")
 	}
 	return o.Type
 }

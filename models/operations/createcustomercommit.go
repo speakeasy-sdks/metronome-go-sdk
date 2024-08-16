@@ -102,7 +102,7 @@ func (o *CreateCustomerCommitAccessSchedule) GetScheduleItems() []CreateCustomer
 	return o.ScheduleItems
 }
 
-type CreateCustomerCommitContractsScheduleItems struct {
+type CreateCustomerCommitCustomerCommitsScheduleItems struct {
 	// Unit price for the charge. Will be multiplied by quantity to determine the amount and must be specified with quantity. If specified amount cannot be provided.
 	UnitPrice *float64 `json:"unit_price,omitempty"`
 	// Quantity for the charge. Will be multiplied by unit_price to determine the amount and must be specified with unit_price. If specified amount cannot be provided.
@@ -113,39 +113,39 @@ type CreateCustomerCommitContractsScheduleItems struct {
 	Timestamp time.Time `json:"timestamp"`
 }
 
-func (c CreateCustomerCommitContractsScheduleItems) MarshalJSON() ([]byte, error) {
+func (c CreateCustomerCommitCustomerCommitsScheduleItems) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *CreateCustomerCommitContractsScheduleItems) UnmarshalJSON(data []byte) error {
+func (c *CreateCustomerCommitCustomerCommitsScheduleItems) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *CreateCustomerCommitContractsScheduleItems) GetUnitPrice() *float64 {
+func (o *CreateCustomerCommitCustomerCommitsScheduleItems) GetUnitPrice() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.UnitPrice
 }
 
-func (o *CreateCustomerCommitContractsScheduleItems) GetQuantity() *float64 {
+func (o *CreateCustomerCommitCustomerCommitsScheduleItems) GetQuantity() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Quantity
 }
 
-func (o *CreateCustomerCommitContractsScheduleItems) GetAmount() *float64 {
+func (o *CreateCustomerCommitCustomerCommitsScheduleItems) GetAmount() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Amount
 }
 
-func (o *CreateCustomerCommitContractsScheduleItems) GetTimestamp() time.Time {
+func (o *CreateCustomerCommitCustomerCommitsScheduleItems) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
@@ -315,7 +315,7 @@ type CreateCustomerCommitInvoiceSchedule struct {
 	// Defaults to USD if not passed. Only USD is supported at this time.
 	CreditTypeID *string `json:"credit_type_id,omitempty"`
 	// Either provide amount or provide both unit_price and quantity.
-	ScheduleItems []CreateCustomerCommitContractsScheduleItems `json:"schedule_items,omitempty"`
+	ScheduleItems []CreateCustomerCommitCustomerCommitsScheduleItems `json:"schedule_items,omitempty"`
 	// Enter the unit price and quantity for the charge or instead only send the amount. If amount is sent, the unit price is assumed to be the amount and quantity is inferred to be 1.
 	RecurringSchedule *CreateCustomerCommitRecurringSchedule `json:"recurring_schedule,omitempty"`
 }
@@ -327,7 +327,7 @@ func (o *CreateCustomerCommitInvoiceSchedule) GetCreditTypeID() *string {
 	return o.CreditTypeID
 }
 
-func (o *CreateCustomerCommitInvoiceSchedule) GetScheduleItems() []CreateCustomerCommitContractsScheduleItems {
+func (o *CreateCustomerCommitInvoiceSchedule) GetScheduleItems() []CreateCustomerCommitCustomerCommitsScheduleItems {
 	if o == nil {
 		return nil
 	}

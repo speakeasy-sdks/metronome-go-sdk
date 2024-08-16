@@ -205,20 +205,20 @@ func (o *GetRateCardCurrent) GetTiers() []GetRateCardTiers {
 	return o.Tiers
 }
 
-type GetRateCardContractsRateType string
+type GetRateCardRateCardsRateType string
 
 const (
-	GetRateCardContractsRateTypeFlat         GetRateCardContractsRateType = "FLAT"
-	GetRateCardContractsRateTypePercentage   GetRateCardContractsRateType = "PERCENTAGE"
-	GetRateCardContractsRateTypeSubscription GetRateCardContractsRateType = "SUBSCRIPTION"
-	GetRateCardContractsRateTypeCustom       GetRateCardContractsRateType = "CUSTOM"
-	GetRateCardContractsRateTypeTiered       GetRateCardContractsRateType = "TIERED"
+	GetRateCardRateCardsRateTypeFlat         GetRateCardRateCardsRateType = "FLAT"
+	GetRateCardRateCardsRateTypePercentage   GetRateCardRateCardsRateType = "PERCENTAGE"
+	GetRateCardRateCardsRateTypeSubscription GetRateCardRateCardsRateType = "SUBSCRIPTION"
+	GetRateCardRateCardsRateTypeCustom       GetRateCardRateCardsRateType = "CUSTOM"
+	GetRateCardRateCardsRateTypeTiered       GetRateCardRateCardsRateType = "TIERED"
 )
 
-func (e GetRateCardContractsRateType) ToPointer() *GetRateCardContractsRateType {
+func (e GetRateCardRateCardsRateType) ToPointer() *GetRateCardRateCardsRateType {
 	return &e
 }
-func (e *GetRateCardContractsRateType) UnmarshalJSON(data []byte) error {
+func (e *GetRateCardRateCardsRateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -233,45 +233,45 @@ func (e *GetRateCardContractsRateType) UnmarshalJSON(data []byte) error {
 	case "CUSTOM":
 		fallthrough
 	case "TIERED":
-		*e = GetRateCardContractsRateType(v)
+		*e = GetRateCardRateCardsRateType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRateCardContractsRateType: %v", v)
+		return fmt.Errorf("invalid value for GetRateCardRateCardsRateType: %v", v)
 	}
 }
 
-type GetRateCardContractsCreditType struct {
+type GetRateCardRateCardsCreditType struct {
 	Name string `json:"name"`
 	ID   string `json:"id"`
 }
 
-func (o *GetRateCardContractsCreditType) GetName() string {
+func (o *GetRateCardRateCardsCreditType) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *GetRateCardContractsCreditType) GetID() string {
+func (o *GetRateCardRateCardsCreditType) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-type GetRateCardContractsTiers struct {
+type GetRateCardRateCardsTiers struct {
 	Size  *float64 `json:"size,omitempty"`
 	Price float64  `json:"price"`
 }
 
-func (o *GetRateCardContractsTiers) GetSize() *float64 {
+func (o *GetRateCardRateCardsTiers) GetSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Size
 }
 
-func (o *GetRateCardContractsTiers) GetPrice() float64 {
+func (o *GetRateCardRateCardsTiers) GetPrice() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -281,9 +281,9 @@ func (o *GetRateCardContractsTiers) GetPrice() float64 {
 type GetRateCardUpdates struct {
 	ID           string                          `json:"id"`
 	ProductID    string                          `json:"product_id"`
-	RateType     GetRateCardContractsRateType    `json:"rate_type"`
+	RateType     GetRateCardRateCardsRateType    `json:"rate_type"`
 	Price        *float64                        `json:"price,omitempty"`
-	CreditType   *GetRateCardContractsCreditType `json:"credit_type,omitempty"`
+	CreditType   *GetRateCardRateCardsCreditType `json:"credit_type,omitempty"`
 	CustomRate   map[string]any                  `json:"custom_rate,omitempty"`
 	Quantity     *float64                        `json:"quantity,omitempty"`
 	IsProrated   *bool                           `json:"is_prorated,omitempty"`
@@ -292,7 +292,7 @@ type GetRateCardUpdates struct {
 	CreatedAt    time.Time                       `json:"created_at"`
 	CreatedBy    string                          `json:"created_by"`
 	EndingBefore *time.Time                      `json:"ending_before,omitempty"`
-	Tiers        []GetRateCardContractsTiers     `json:"tiers,omitempty"`
+	Tiers        []GetRateCardRateCardsTiers     `json:"tiers,omitempty"`
 }
 
 func (g GetRateCardUpdates) MarshalJSON() ([]byte, error) {
@@ -320,9 +320,9 @@ func (o *GetRateCardUpdates) GetProductID() string {
 	return o.ProductID
 }
 
-func (o *GetRateCardUpdates) GetRateType() GetRateCardContractsRateType {
+func (o *GetRateCardUpdates) GetRateType() GetRateCardRateCardsRateType {
 	if o == nil {
-		return GetRateCardContractsRateType("")
+		return GetRateCardRateCardsRateType("")
 	}
 	return o.RateType
 }
@@ -334,7 +334,7 @@ func (o *GetRateCardUpdates) GetPrice() *float64 {
 	return o.Price
 }
 
-func (o *GetRateCardUpdates) GetCreditType() *GetRateCardContractsCreditType {
+func (o *GetRateCardUpdates) GetCreditType() *GetRateCardRateCardsCreditType {
 	if o == nil {
 		return nil
 	}
@@ -397,7 +397,7 @@ func (o *GetRateCardUpdates) GetEndingBefore() *time.Time {
 	return o.EndingBefore
 }
 
-func (o *GetRateCardUpdates) GetTiers() []GetRateCardContractsTiers {
+func (o *GetRateCardUpdates) GetTiers() []GetRateCardRateCardsTiers {
 	if o == nil {
 		return nil
 	}

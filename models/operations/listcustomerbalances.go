@@ -158,65 +158,65 @@ func (o *ListCustomerBalancesDataProduct) GetName() string {
 	return o.Name
 }
 
-type ListCustomerBalancesDataContractsCreditType struct {
+type ListCustomerBalancesDataCustomerBalancesCreditType struct {
 	Name string `json:"name"`
 	ID   string `json:"id"`
 }
 
-func (o *ListCustomerBalancesDataContractsCreditType) GetName() string {
+func (o *ListCustomerBalancesDataCustomerBalancesCreditType) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *ListCustomerBalancesDataContractsCreditType) GetID() string {
+func (o *ListCustomerBalancesDataCustomerBalancesCreditType) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-type ListCustomerBalancesDataContractsScheduleItems struct {
+type ListCustomerBalancesDataCustomerBalancesScheduleItems struct {
 	ID           string    `json:"id"`
 	Amount       float64   `json:"amount"`
 	StartingAt   time.Time `json:"starting_at"`
 	EndingBefore time.Time `json:"ending_before"`
 }
 
-func (l ListCustomerBalancesDataContractsScheduleItems) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesDataCustomerBalancesScheduleItems) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesDataContractsScheduleItems) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesDataCustomerBalancesScheduleItems) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesDataContractsScheduleItems) GetID() string {
+func (o *ListCustomerBalancesDataCustomerBalancesScheduleItems) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *ListCustomerBalancesDataContractsScheduleItems) GetAmount() float64 {
+func (o *ListCustomerBalancesDataCustomerBalancesScheduleItems) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesDataContractsScheduleItems) GetStartingAt() time.Time {
+func (o *ListCustomerBalancesDataCustomerBalancesScheduleItems) GetStartingAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.StartingAt
 }
 
-func (o *ListCustomerBalancesDataContractsScheduleItems) GetEndingBefore() time.Time {
+func (o *ListCustomerBalancesDataCustomerBalancesScheduleItems) GetEndingBefore() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
@@ -225,456 +225,456 @@ func (o *ListCustomerBalancesDataContractsScheduleItems) GetEndingBefore() time.
 
 // ListCustomerBalancesDataAccessSchedule - The schedule that the customer will gain access to the credits.
 type ListCustomerBalancesDataAccessSchedule struct {
-	CreditType    *ListCustomerBalancesDataContractsCreditType     `json:"credit_type,omitempty"`
-	ScheduleItems []ListCustomerBalancesDataContractsScheduleItems `json:"schedule_items"`
+	CreditType    *ListCustomerBalancesDataCustomerBalancesCreditType     `json:"credit_type,omitempty"`
+	ScheduleItems []ListCustomerBalancesDataCustomerBalancesScheduleItems `json:"schedule_items"`
 }
 
-func (o *ListCustomerBalancesDataAccessSchedule) GetCreditType() *ListCustomerBalancesDataContractsCreditType {
+func (o *ListCustomerBalancesDataAccessSchedule) GetCreditType() *ListCustomerBalancesDataCustomerBalancesCreditType {
 	if o == nil {
 		return nil
 	}
 	return o.CreditType
 }
 
-func (o *ListCustomerBalancesDataAccessSchedule) GetScheduleItems() []ListCustomerBalancesDataContractsScheduleItems {
+func (o *ListCustomerBalancesDataAccessSchedule) GetScheduleItems() []ListCustomerBalancesDataCustomerBalancesScheduleItems {
 	if o == nil {
-		return []ListCustomerBalancesDataContractsScheduleItems{}
+		return []ListCustomerBalancesDataCustomerBalancesScheduleItems{}
 	}
 	return o.ScheduleItems
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26TypeCreditManual ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type = "CREDIT_MANUAL"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26TypeCreditManual ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type = "CREDIT_MANUAL"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_MANUAL":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts6 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type `json:"type"`
-	Timestamp time.Time                                                                           `json:"timestamp"`
-	Amount    float64                                                                             `json:"amount"`
-	Reason    string                                                                              `json:"reason"`
+type ListCustomerBalancesLedgerCustomerBalances6 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type `json:"type"`
+	Timestamp time.Time                                                                                  `json:"timestamp"`
+	Amount    float64                                                                                    `json:"amount"`
+	Reason    string                                                                                     `json:"reason"`
 }
 
-func (l ListCustomerBalancesLedgerContracts6) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances6) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts6) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances6) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts6) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances6) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData26Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData26Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts6) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances6) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts6) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances6) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts6) GetReason() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances6) GetReason() string {
 	if o == nil {
 		return ""
 	}
 	return o.Reason
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25TypeCreditCredited ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type = "CREDIT_CREDITED"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25TypeCreditCredited ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type = "CREDIT_CREDITED"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_CREDITED":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts5 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type `json:"type"`
-	Timestamp time.Time                                                                           `json:"timestamp"`
-	Amount    float64                                                                             `json:"amount"`
-	SegmentID string                                                                              `json:"segment_id"`
-	InvoiceID string                                                                              `json:"invoice_id"`
+type ListCustomerBalancesLedgerCustomerBalances5 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type `json:"type"`
+	Timestamp time.Time                                                                                  `json:"timestamp"`
+	Amount    float64                                                                                    `json:"amount"`
+	SegmentID string                                                                                     `json:"segment_id"`
+	InvoiceID string                                                                                     `json:"invoice_id"`
 }
 
-func (l ListCustomerBalancesLedgerContracts5) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances5) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts5) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances5) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts5) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances5) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData25Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData25Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts5) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances5) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts5) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances5) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts5) GetSegmentID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances5) GetSegmentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SegmentID
 }
 
-func (o *ListCustomerBalancesLedgerContracts5) GetInvoiceID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances5) GetInvoiceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24TypeCreditCanceled ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type = "CREDIT_CANCELED"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24TypeCreditCanceled ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type = "CREDIT_CANCELED"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_CANCELED":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts4 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type `json:"type"`
-	Timestamp time.Time                                                                           `json:"timestamp"`
-	Amount    float64                                                                             `json:"amount"`
-	SegmentID string                                                                              `json:"segment_id"`
-	InvoiceID string                                                                              `json:"invoice_id"`
+type ListCustomerBalancesLedgerCustomerBalances4 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type `json:"type"`
+	Timestamp time.Time                                                                                  `json:"timestamp"`
+	Amount    float64                                                                                    `json:"amount"`
+	SegmentID string                                                                                     `json:"segment_id"`
+	InvoiceID string                                                                                     `json:"invoice_id"`
 }
 
-func (l ListCustomerBalancesLedgerContracts4) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances4) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts4) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances4) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts4) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances4) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData24Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts4) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances4) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts4) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances4) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts4) GetSegmentID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances4) GetSegmentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SegmentID
 }
 
-func (o *ListCustomerBalancesLedgerContracts4) GetInvoiceID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances4) GetInvoiceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23TypeCreditExpiration ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type = "CREDIT_EXPIRATION"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23TypeCreditExpiration ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type = "CREDIT_EXPIRATION"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_EXPIRATION":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts3 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type `json:"type"`
-	Timestamp time.Time                                                                           `json:"timestamp"`
-	Amount    float64                                                                             `json:"amount"`
-	SegmentID string                                                                              `json:"segment_id"`
+type ListCustomerBalancesLedgerCustomerBalances3 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type `json:"type"`
+	Timestamp time.Time                                                                                  `json:"timestamp"`
+	Amount    float64                                                                                    `json:"amount"`
+	SegmentID string                                                                                     `json:"segment_id"`
 }
 
-func (l ListCustomerBalancesLedgerContracts3) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts3) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts3) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances3) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData23Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData23Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts3) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances3) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts3) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances3) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts3) GetSegmentID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances3) GetSegmentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SegmentID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22TypeCreditAutomatedInvoiceDeduction ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type = "CREDIT_AUTOMATED_INVOICE_DEDUCTION"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22TypeCreditAutomatedInvoiceDeduction ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type = "CREDIT_AUTOMATED_INVOICE_DEDUCTION"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_AUTOMATED_INVOICE_DEDUCTION":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts2 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type `json:"type"`
-	Timestamp time.Time                                                                           `json:"timestamp"`
-	Amount    float64                                                                             `json:"amount"`
-	SegmentID string                                                                              `json:"segment_id"`
-	InvoiceID string                                                                              `json:"invoice_id"`
+type ListCustomerBalancesLedgerCustomerBalances2 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type `json:"type"`
+	Timestamp time.Time                                                                                  `json:"timestamp"`
+	Amount    float64                                                                                    `json:"amount"`
+	SegmentID string                                                                                     `json:"segment_id"`
+	InvoiceID string                                                                                     `json:"invoice_id"`
 }
 
-func (l ListCustomerBalancesLedgerContracts2) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts2) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts2) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances2) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData22Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts2) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances2) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts2) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances2) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts2) GetSegmentID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances2) GetSegmentID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SegmentID
 }
 
-func (o *ListCustomerBalancesLedgerContracts2) GetInvoiceID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances2) GetInvoiceID() string {
 	if o == nil {
 		return ""
 	}
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2TypeCreditSegmentStart ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type = "CREDIT_SEGMENT_START"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2TypeCreditSegmentStart ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type = "CREDIT_SEGMENT_START"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_SEGMENT_START":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type: %v", v)
 	}
 }
 
-type ListCustomerBalancesLedgerContracts1 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
-	SegmentID string                                                                             `json:"segment_id"`
+type ListCustomerBalancesLedgerCustomerBalances1 struct {
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type `json:"type"`
+	Timestamp time.Time                                                                                 `json:"timestamp"`
+	Amount    float64                                                                                   `json:"amount"`
+	SegmentID string                                                                                    `json:"segment_id"`
 }
 
-func (l ListCustomerBalancesLedgerContracts1) MarshalJSON() ([]byte, error) {
+func (l ListCustomerBalancesLedgerCustomerBalances1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(l, "", false)
 }
 
-func (l *ListCustomerBalancesLedgerContracts1) UnmarshalJSON(data []byte) error {
+func (l *ListCustomerBalancesLedgerCustomerBalances1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &l, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ListCustomerBalancesLedgerContracts1) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type {
+func (o *ListCustomerBalancesLedgerCustomerBalances1) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData2Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData2Type("")
 	}
 	return o.Type
 }
 
-func (o *ListCustomerBalancesLedgerContracts1) GetTimestamp() time.Time {
+func (o *ListCustomerBalancesLedgerCustomerBalances1) GetTimestamp() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.Timestamp
 }
 
-func (o *ListCustomerBalancesLedgerContracts1) GetAmount() float64 {
+func (o *ListCustomerBalancesLedgerCustomerBalances1) GetAmount() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Amount
 }
 
-func (o *ListCustomerBalancesLedgerContracts1) GetSegmentID() string {
+func (o *ListCustomerBalancesLedgerCustomerBalances1) GetSegmentID() string {
 	if o == nil {
 		return ""
 	}
@@ -684,120 +684,120 @@ func (o *ListCustomerBalancesLedgerContracts1) GetSegmentID() string {
 type ListCustomerBalancesDataLedgerType string
 
 const (
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts1 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_1"
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts2 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_2"
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts3 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_3"
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts4 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_4"
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts5 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_5"
-	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts6 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_Contracts_6"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances1 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_1"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances2 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_2"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances3 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_3"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances4 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_4"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances5 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_5"
+	ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances6 ListCustomerBalancesDataLedgerType = "listCustomerBalances_ledger_customerBalances_6"
 )
 
 type ListCustomerBalancesDataLedger struct {
-	ListCustomerBalancesLedgerContracts1 *ListCustomerBalancesLedgerContracts1
-	ListCustomerBalancesLedgerContracts2 *ListCustomerBalancesLedgerContracts2
-	ListCustomerBalancesLedgerContracts3 *ListCustomerBalancesLedgerContracts3
-	ListCustomerBalancesLedgerContracts4 *ListCustomerBalancesLedgerContracts4
-	ListCustomerBalancesLedgerContracts5 *ListCustomerBalancesLedgerContracts5
-	ListCustomerBalancesLedgerContracts6 *ListCustomerBalancesLedgerContracts6
+	ListCustomerBalancesLedgerCustomerBalances1 *ListCustomerBalancesLedgerCustomerBalances1
+	ListCustomerBalancesLedgerCustomerBalances2 *ListCustomerBalancesLedgerCustomerBalances2
+	ListCustomerBalancesLedgerCustomerBalances3 *ListCustomerBalancesLedgerCustomerBalances3
+	ListCustomerBalancesLedgerCustomerBalances4 *ListCustomerBalancesLedgerCustomerBalances4
+	ListCustomerBalancesLedgerCustomerBalances5 *ListCustomerBalancesLedgerCustomerBalances5
+	ListCustomerBalancesLedgerCustomerBalances6 *ListCustomerBalancesLedgerCustomerBalances6
 
 	Type ListCustomerBalancesDataLedgerType
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts1(listCustomerBalancesLedgerContracts1 ListCustomerBalancesLedgerContracts1) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts1
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances1(listCustomerBalancesLedgerCustomerBalances1 ListCustomerBalancesLedgerCustomerBalances1) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances1
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts1: &listCustomerBalancesLedgerContracts1,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances1: &listCustomerBalancesLedgerCustomerBalances1,
+		Type: typ,
 	}
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts2(listCustomerBalancesLedgerContracts2 ListCustomerBalancesLedgerContracts2) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts2
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances2(listCustomerBalancesLedgerCustomerBalances2 ListCustomerBalancesLedgerCustomerBalances2) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances2
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts2: &listCustomerBalancesLedgerContracts2,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances2: &listCustomerBalancesLedgerCustomerBalances2,
+		Type: typ,
 	}
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts3(listCustomerBalancesLedgerContracts3 ListCustomerBalancesLedgerContracts3) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts3
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances3(listCustomerBalancesLedgerCustomerBalances3 ListCustomerBalancesLedgerCustomerBalances3) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances3
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts3: &listCustomerBalancesLedgerContracts3,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances3: &listCustomerBalancesLedgerCustomerBalances3,
+		Type: typ,
 	}
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts4(listCustomerBalancesLedgerContracts4 ListCustomerBalancesLedgerContracts4) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts4
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances4(listCustomerBalancesLedgerCustomerBalances4 ListCustomerBalancesLedgerCustomerBalances4) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances4
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts4: &listCustomerBalancesLedgerContracts4,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances4: &listCustomerBalancesLedgerCustomerBalances4,
+		Type: typ,
 	}
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts5(listCustomerBalancesLedgerContracts5 ListCustomerBalancesLedgerContracts5) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts5
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances5(listCustomerBalancesLedgerCustomerBalances5 ListCustomerBalancesLedgerCustomerBalances5) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances5
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts5: &listCustomerBalancesLedgerContracts5,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances5: &listCustomerBalancesLedgerCustomerBalances5,
+		Type: typ,
 	}
 }
 
-func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts6(listCustomerBalancesLedgerContracts6 ListCustomerBalancesLedgerContracts6) ListCustomerBalancesDataLedger {
-	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts6
+func CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances6(listCustomerBalancesLedgerCustomerBalances6 ListCustomerBalancesLedgerCustomerBalances6) ListCustomerBalancesDataLedger {
+	typ := ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances6
 
 	return ListCustomerBalancesDataLedger{
-		ListCustomerBalancesLedgerContracts6: &listCustomerBalancesLedgerContracts6,
-		Type:                                 typ,
+		ListCustomerBalancesLedgerCustomerBalances6: &listCustomerBalancesLedgerCustomerBalances6,
+		Type: typ,
 	}
 }
 
 func (u *ListCustomerBalancesDataLedger) UnmarshalJSON(data []byte) error {
 
-	var listCustomerBalancesLedgerContracts1 ListCustomerBalancesLedgerContracts1 = ListCustomerBalancesLedgerContracts1{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts1, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts1 = &listCustomerBalancesLedgerContracts1
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts1
+	var listCustomerBalancesLedgerCustomerBalances1 ListCustomerBalancesLedgerCustomerBalances1 = ListCustomerBalancesLedgerCustomerBalances1{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances1, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances1 = &listCustomerBalancesLedgerCustomerBalances1
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances1
 		return nil
 	}
 
-	var listCustomerBalancesLedgerContracts3 ListCustomerBalancesLedgerContracts3 = ListCustomerBalancesLedgerContracts3{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts3, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts3 = &listCustomerBalancesLedgerContracts3
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts3
+	var listCustomerBalancesLedgerCustomerBalances3 ListCustomerBalancesLedgerCustomerBalances3 = ListCustomerBalancesLedgerCustomerBalances3{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances3, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances3 = &listCustomerBalancesLedgerCustomerBalances3
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances3
 		return nil
 	}
 
-	var listCustomerBalancesLedgerContracts6 ListCustomerBalancesLedgerContracts6 = ListCustomerBalancesLedgerContracts6{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts6, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts6 = &listCustomerBalancesLedgerContracts6
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts6
+	var listCustomerBalancesLedgerCustomerBalances6 ListCustomerBalancesLedgerCustomerBalances6 = ListCustomerBalancesLedgerCustomerBalances6{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances6, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances6 = &listCustomerBalancesLedgerCustomerBalances6
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances6
 		return nil
 	}
 
-	var listCustomerBalancesLedgerContracts2 ListCustomerBalancesLedgerContracts2 = ListCustomerBalancesLedgerContracts2{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts2, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts2 = &listCustomerBalancesLedgerContracts2
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts2
+	var listCustomerBalancesLedgerCustomerBalances2 ListCustomerBalancesLedgerCustomerBalances2 = ListCustomerBalancesLedgerCustomerBalances2{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances2, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances2 = &listCustomerBalancesLedgerCustomerBalances2
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances2
 		return nil
 	}
 
-	var listCustomerBalancesLedgerContracts4 ListCustomerBalancesLedgerContracts4 = ListCustomerBalancesLedgerContracts4{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts4, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts4 = &listCustomerBalancesLedgerContracts4
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts4
+	var listCustomerBalancesLedgerCustomerBalances4 ListCustomerBalancesLedgerCustomerBalances4 = ListCustomerBalancesLedgerCustomerBalances4{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances4, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances4 = &listCustomerBalancesLedgerCustomerBalances4
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances4
 		return nil
 	}
 
-	var listCustomerBalancesLedgerContracts5 ListCustomerBalancesLedgerContracts5 = ListCustomerBalancesLedgerContracts5{}
-	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerContracts5, "", true, true); err == nil {
-		u.ListCustomerBalancesLedgerContracts5 = &listCustomerBalancesLedgerContracts5
-		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerContracts5
+	var listCustomerBalancesLedgerCustomerBalances5 ListCustomerBalancesLedgerCustomerBalances5 = ListCustomerBalancesLedgerCustomerBalances5{}
+	if err := utils.UnmarshalJSON(data, &listCustomerBalancesLedgerCustomerBalances5, "", true, true); err == nil {
+		u.ListCustomerBalancesLedgerCustomerBalances5 = &listCustomerBalancesLedgerCustomerBalances5
+		u.Type = ListCustomerBalancesDataLedgerTypeListCustomerBalancesLedgerCustomerBalances5
 		return nil
 	}
 
@@ -805,28 +805,28 @@ func (u *ListCustomerBalancesDataLedger) UnmarshalJSON(data []byte) error {
 }
 
 func (u ListCustomerBalancesDataLedger) MarshalJSON() ([]byte, error) {
-	if u.ListCustomerBalancesLedgerContracts1 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts1, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances1 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances1, "", true)
 	}
 
-	if u.ListCustomerBalancesLedgerContracts2 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts2, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances2 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances2, "", true)
 	}
 
-	if u.ListCustomerBalancesLedgerContracts3 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts3, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances3 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances3, "", true)
 	}
 
-	if u.ListCustomerBalancesLedgerContracts4 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts4, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances4 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances4, "", true)
 	}
 
-	if u.ListCustomerBalancesLedgerContracts5 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts5, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances5 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances5, "", true)
 	}
 
-	if u.ListCustomerBalancesLedgerContracts6 != nil {
-		return utils.MarshalJSON(u.ListCustomerBalancesLedgerContracts6, "", true)
+	if u.ListCustomerBalancesLedgerCustomerBalances6 != nil {
+		return utils.MarshalJSON(u.ListCustomerBalancesLedgerCustomerBalances6, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type ListCustomerBalancesDataLedger: all fields are null")
@@ -1233,33 +1233,33 @@ func (o *DataRolledOverFrom) GetContractID() string {
 	return o.ContractID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113TypePostpaidCommitExpiration ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type = "POSTPAID_COMMIT_EXPIRATION"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113TypePostpaidCommitExpiration ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type = "POSTPAID_COMMIT_EXPIRATION"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_EXPIRATION":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type: %v", v)
 	}
 }
 
 type Ledger13 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type `json:"type"`
-	Timestamp time.Time                                                                            `json:"timestamp"`
-	Amount    float64                                                                              `json:"amount"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type `json:"type"`
+	Timestamp time.Time                                                                                   `json:"timestamp"`
+	Amount    float64                                                                                     `json:"amount"`
 }
 
 func (l Ledger13) MarshalJSON() ([]byte, error) {
@@ -1273,9 +1273,9 @@ func (l *Ledger13) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger13) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type {
+func (o *Ledger13) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData113Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData113Type("")
 	}
 	return o.Type
 }
@@ -1294,34 +1294,34 @@ func (o *Ledger13) GetAmount() float64 {
 	return o.Amount
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112TypePostpaidCommitManual ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type = "POSTPAID_COMMIT_MANUAL"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112TypePostpaidCommitManual ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type = "POSTPAID_COMMIT_MANUAL"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_MANUAL":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type: %v", v)
 	}
 }
 
 type Ledger12 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type `json:"type"`
-	Timestamp time.Time                                                                            `json:"timestamp"`
-	Amount    float64                                                                              `json:"amount"`
-	Reason    string                                                                               `json:"reason"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type `json:"type"`
+	Timestamp time.Time                                                                                   `json:"timestamp"`
+	Amount    float64                                                                                     `json:"amount"`
+	Reason    string                                                                                      `json:"reason"`
 }
 
 func (l Ledger12) MarshalJSON() ([]byte, error) {
@@ -1335,9 +1335,9 @@ func (l *Ledger12) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger12) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type {
+func (o *Ledger12) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData112Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData112Type("")
 	}
 	return o.Type
 }
@@ -1363,34 +1363,34 @@ func (o *Ledger12) GetReason() string {
 	return o.Reason
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111TypePrepaidCommitManual ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type = "PREPAID_COMMIT_MANUAL"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111TypePrepaidCommitManual ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type = "PREPAID_COMMIT_MANUAL"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_MANUAL":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type: %v", v)
 	}
 }
 
 type Ledger11 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type `json:"type"`
-	Timestamp time.Time                                                                            `json:"timestamp"`
-	Amount    float64                                                                              `json:"amount"`
-	Reason    string                                                                               `json:"reason"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type `json:"type"`
+	Timestamp time.Time                                                                                   `json:"timestamp"`
+	Amount    float64                                                                                     `json:"amount"`
+	Reason    string                                                                                      `json:"reason"`
 }
 
 func (l Ledger11) MarshalJSON() ([]byte, error) {
@@ -1404,9 +1404,9 @@ func (l *Ledger11) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger11) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type {
+func (o *Ledger11) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData111Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData111Type("")
 	}
 	return o.Type
 }
@@ -1432,34 +1432,34 @@ func (o *Ledger11) GetReason() string {
 	return o.Reason
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110TypePostpaidCommitTrueup ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type = "POSTPAID_COMMIT_TRUEUP"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110TypePostpaidCommitTrueup ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type = "POSTPAID_COMMIT_TRUEUP"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_TRUEUP":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type: %v", v)
 	}
 }
 
 type Ledger10 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type `json:"type"`
-	Timestamp time.Time                                                                            `json:"timestamp"`
-	Amount    float64                                                                              `json:"amount"`
-	InvoiceID string                                                                               `json:"invoice_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type `json:"type"`
+	Timestamp time.Time                                                                                   `json:"timestamp"`
+	Amount    float64                                                                                     `json:"amount"`
+	InvoiceID string                                                                                      `json:"invoice_id"`
 }
 
 func (l Ledger10) MarshalJSON() ([]byte, error) {
@@ -1473,9 +1473,9 @@ func (l *Ledger10) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger10) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type {
+func (o *Ledger10) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData110Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110Type("")
 	}
 	return o.Type
 }
@@ -1501,35 +1501,35 @@ func (o *Ledger10) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19TypePostpaidCommitRollover ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type = "POSTPAID_COMMIT_ROLLOVER"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19TypePostpaidCommitRollover ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type = "POSTPAID_COMMIT_ROLLOVER"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_ROLLOVER":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type: %v", v)
 	}
 }
 
 type Ledger9 struct {
-	Type          ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type `json:"type"`
-	Timestamp     time.Time                                                                           `json:"timestamp"`
-	Amount        float64                                                                             `json:"amount"`
-	SegmentID     string                                                                              `json:"segment_id"`
-	NewContractID string                                                                              `json:"new_contract_id"`
+	Type          ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type `json:"type"`
+	Timestamp     time.Time                                                                                  `json:"timestamp"`
+	Amount        float64                                                                                    `json:"amount"`
+	SegmentID     string                                                                                     `json:"segment_id"`
+	NewContractID string                                                                                     `json:"new_contract_id"`
 }
 
 func (l Ledger9) MarshalJSON() ([]byte, error) {
@@ -1543,9 +1543,9 @@ func (l *Ledger9) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger9) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type {
+func (o *Ledger9) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData19Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData19Type("")
 	}
 	return o.Type
 }
@@ -1578,35 +1578,35 @@ func (o *Ledger9) GetNewContractID() string {
 	return o.NewContractID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1TypePostpaidCommitAutomatedInvoiceDeduction ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type = "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1TypePostpaidCommitAutomatedInvoiceDeduction ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type = "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type: %v", v)
 	}
 }
 
 type Ledger8 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type `json:"type"`
-	Timestamp time.Time                                                                          `json:"timestamp"`
-	Amount    float64                                                                            `json:"amount"`
-	SegmentID string                                                                             `json:"segment_id"`
-	InvoiceID string                                                                             `json:"invoice_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type `json:"type"`
+	Timestamp time.Time                                                                                 `json:"timestamp"`
+	Amount    float64                                                                                   `json:"amount"`
+	SegmentID string                                                                                    `json:"segment_id"`
+	InvoiceID string                                                                                    `json:"invoice_id"`
 }
 
 func (l Ledger8) MarshalJSON() ([]byte, error) {
@@ -1620,9 +1620,9 @@ func (l *Ledger8) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger8) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type {
+func (o *Ledger8) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyData1Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData1Type("")
 	}
 	return o.Type
 }
@@ -1655,33 +1655,33 @@ func (o *Ledger8) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataTypePostpaidCommitInitialBalance ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType = "POSTPAID_COMMIT_INITIAL_BALANCE"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataTypePostpaidCommitInitialBalance ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType = "POSTPAID_COMMIT_INITIAL_BALANCE"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "POSTPAID_COMMIT_INITIAL_BALANCE":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType: %v", v)
 	}
 }
 
 type Ledger7 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType `json:"type"`
-	Timestamp time.Time                                                                         `json:"timestamp"`
-	Amount    float64                                                                           `json:"amount"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType `json:"type"`
+	Timestamp time.Time                                                                                `json:"timestamp"`
+	Amount    float64                                                                                  `json:"amount"`
 }
 
 func (l Ledger7) MarshalJSON() ([]byte, error) {
@@ -1695,9 +1695,9 @@ func (l *Ledger7) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger7) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType {
+func (o *Ledger7) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyDataType("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyDataType("")
 	}
 	return o.Type
 }
@@ -1716,35 +1716,35 @@ func (o *Ledger7) GetAmount() float64 {
 	return o.Amount
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyTypePrepaidCommitCredited ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType = "PREPAID_COMMIT_CREDITED"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyTypePrepaidCommitCredited ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType = "PREPAID_COMMIT_CREDITED"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_CREDITED":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType: %v", v)
 	}
 }
 
 type ListCustomerBalancesLedger6 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Timestamp time.Time                                                                     `json:"timestamp"`
-	Amount    float64                                                                       `json:"amount"`
-	SegmentID string                                                                        `json:"segment_id"`
-	InvoiceID string                                                                        `json:"invoice_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Timestamp time.Time                                                                            `json:"timestamp"`
+	Amount    float64                                                                              `json:"amount"`
+	SegmentID string                                                                               `json:"segment_id"`
+	InvoiceID string                                                                               `json:"invoice_id"`
 }
 
 func (l ListCustomerBalancesLedger6) MarshalJSON() ([]byte, error) {
@@ -1758,9 +1758,9 @@ func (l *ListCustomerBalancesLedger6) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomerBalancesLedger6) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (o *ListCustomerBalancesLedger6) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONResponseBodyType("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyType("")
 	}
 	return o.Type
 }
@@ -1793,35 +1793,35 @@ func (o *ListCustomerBalancesLedger6) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200ApplicationJSONTypePrepaidCommitCanceled ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType = "PREPAID_COMMIT_CANCELED"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONTypePrepaidCommitCanceled ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType = "PREPAID_COMMIT_CANCELED"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType) ToPointer() *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_CANCELED":
-		*e = ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType: %v", v)
 	}
 }
 
 type ListCustomerBalancesLedger5 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType `json:"type"`
-	Timestamp time.Time                                                         `json:"timestamp"`
-	Amount    float64                                                           `json:"amount"`
-	SegmentID string                                                            `json:"segment_id"`
-	InvoiceID string                                                            `json:"invoice_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType `json:"type"`
+	Timestamp time.Time                                                                `json:"timestamp"`
+	Amount    float64                                                                  `json:"amount"`
+	SegmentID string                                                                   `json:"segment_id"`
+	InvoiceID string                                                                   `json:"invoice_id"`
 }
 
 func (l ListCustomerBalancesLedger5) MarshalJSON() ([]byte, error) {
@@ -1835,9 +1835,9 @@ func (l *ListCustomerBalancesLedger5) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomerBalancesLedger5) GetType() ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType {
+func (o *ListCustomerBalancesLedger5) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200ApplicationJSONType("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONType("")
 	}
 	return o.Type
 }
@@ -1870,34 +1870,34 @@ func (o *ListCustomerBalancesLedger5) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerBalancesLedgerContractsResponse200Type string
+type ListCustomerBalancesLedgerCustomerBalancesResponse200Type string
 
 const (
-	ListCustomerBalancesLedgerContractsResponse200TypePrepaidCommitExpiration ListCustomerBalancesLedgerContractsResponse200Type = "PREPAID_COMMIT_EXPIRATION"
+	ListCustomerBalancesLedgerCustomerBalancesResponse200TypePrepaidCommitExpiration ListCustomerBalancesLedgerCustomerBalancesResponse200Type = "PREPAID_COMMIT_EXPIRATION"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponse200Type) ToPointer() *ListCustomerBalancesLedgerContractsResponse200Type {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponse200Type) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponse200Type {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponse200Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_EXPIRATION":
-		*e = ListCustomerBalancesLedgerContractsResponse200Type(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponse200Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponse200Type: %v", v)
 	}
 }
 
 type ListCustomerBalancesLedger4 struct {
-	Type      ListCustomerBalancesLedgerContractsResponse200Type `json:"type"`
-	Timestamp time.Time                                          `json:"timestamp"`
-	Amount    float64                                            `json:"amount"`
-	SegmentID string                                             `json:"segment_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesResponse200Type `json:"type"`
+	Timestamp time.Time                                                 `json:"timestamp"`
+	Amount    float64                                                   `json:"amount"`
+	SegmentID string                                                    `json:"segment_id"`
 }
 
 func (l ListCustomerBalancesLedger4) MarshalJSON() ([]byte, error) {
@@ -1911,9 +1911,9 @@ func (l *ListCustomerBalancesLedger4) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomerBalancesLedger4) GetType() ListCustomerBalancesLedgerContractsResponse200Type {
+func (o *ListCustomerBalancesLedger4) GetType() ListCustomerBalancesLedgerCustomerBalancesResponse200Type {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponse200Type("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponse200Type("")
 	}
 	return o.Type
 }
@@ -1939,35 +1939,35 @@ func (o *ListCustomerBalancesLedger4) GetSegmentID() string {
 	return o.SegmentID
 }
 
-type ListCustomerBalancesLedgerContractsResponseType string
+type ListCustomerBalancesLedgerCustomerBalancesResponseType string
 
 const (
-	ListCustomerBalancesLedgerContractsResponseTypePrepaidCommitRollover ListCustomerBalancesLedgerContractsResponseType = "PREPAID_COMMIT_ROLLOVER"
+	ListCustomerBalancesLedgerCustomerBalancesResponseTypePrepaidCommitRollover ListCustomerBalancesLedgerCustomerBalancesResponseType = "PREPAID_COMMIT_ROLLOVER"
 )
 
-func (e ListCustomerBalancesLedgerContractsResponseType) ToPointer() *ListCustomerBalancesLedgerContractsResponseType {
+func (e ListCustomerBalancesLedgerCustomerBalancesResponseType) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesResponseType {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsResponseType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesResponseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_ROLLOVER":
-		*e = ListCustomerBalancesLedgerContractsResponseType(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesResponseType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsResponseType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesResponseType: %v", v)
 	}
 }
 
 type ListCustomerBalancesLedger3 struct {
-	Type          ListCustomerBalancesLedgerContractsResponseType `json:"type"`
-	Timestamp     time.Time                                       `json:"timestamp"`
-	Amount        float64                                         `json:"amount"`
-	SegmentID     string                                          `json:"segment_id"`
-	NewContractID string                                          `json:"new_contract_id"`
+	Type          ListCustomerBalancesLedgerCustomerBalancesResponseType `json:"type"`
+	Timestamp     time.Time                                              `json:"timestamp"`
+	Amount        float64                                                `json:"amount"`
+	SegmentID     string                                                 `json:"segment_id"`
+	NewContractID string                                                 `json:"new_contract_id"`
 }
 
 func (l ListCustomerBalancesLedger3) MarshalJSON() ([]byte, error) {
@@ -1981,9 +1981,9 @@ func (l *ListCustomerBalancesLedger3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomerBalancesLedger3) GetType() ListCustomerBalancesLedgerContractsResponseType {
+func (o *ListCustomerBalancesLedger3) GetType() ListCustomerBalancesLedgerCustomerBalancesResponseType {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsResponseType("")
+		return ListCustomerBalancesLedgerCustomerBalancesResponseType("")
 	}
 	return o.Type
 }
@@ -2016,35 +2016,35 @@ func (o *ListCustomerBalancesLedger3) GetNewContractID() string {
 	return o.NewContractID
 }
 
-type ListCustomerBalancesLedgerContractsType string
+type ListCustomerBalancesLedgerCustomerBalancesType string
 
 const (
-	ListCustomerBalancesLedgerContractsTypePrepaidCommitAutomatedInvoiceDeduction ListCustomerBalancesLedgerContractsType = "PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
+	ListCustomerBalancesLedgerCustomerBalancesTypePrepaidCommitAutomatedInvoiceDeduction ListCustomerBalancesLedgerCustomerBalancesType = "PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION"
 )
 
-func (e ListCustomerBalancesLedgerContractsType) ToPointer() *ListCustomerBalancesLedgerContractsType {
+func (e ListCustomerBalancesLedgerCustomerBalancesType) ToPointer() *ListCustomerBalancesLedgerCustomerBalancesType {
 	return &e
 }
-func (e *ListCustomerBalancesLedgerContractsType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerBalancesLedgerCustomerBalancesType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "PREPAID_COMMIT_AUTOMATED_INVOICE_DEDUCTION":
-		*e = ListCustomerBalancesLedgerContractsType(v)
+		*e = ListCustomerBalancesLedgerCustomerBalancesType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerContractsType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerBalancesLedgerCustomerBalancesType: %v", v)
 	}
 }
 
 type ListCustomerBalancesLedger2 struct {
-	Type      ListCustomerBalancesLedgerContractsType `json:"type"`
-	Timestamp time.Time                               `json:"timestamp"`
-	Amount    float64                                 `json:"amount"`
-	SegmentID string                                  `json:"segment_id"`
-	InvoiceID string                                  `json:"invoice_id"`
+	Type      ListCustomerBalancesLedgerCustomerBalancesType `json:"type"`
+	Timestamp time.Time                                      `json:"timestamp"`
+	Amount    float64                                        `json:"amount"`
+	SegmentID string                                         `json:"segment_id"`
+	InvoiceID string                                         `json:"invoice_id"`
 }
 
 func (l ListCustomerBalancesLedger2) MarshalJSON() ([]byte, error) {
@@ -2058,9 +2058,9 @@ func (l *ListCustomerBalancesLedger2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomerBalancesLedger2) GetType() ListCustomerBalancesLedgerContractsType {
+func (o *ListCustomerBalancesLedger2) GetType() ListCustomerBalancesLedgerCustomerBalancesType {
 	if o == nil {
-		return ListCustomerBalancesLedgerContractsType("")
+		return ListCustomerBalancesLedgerCustomerBalancesType("")
 	}
 	return o.Type
 }

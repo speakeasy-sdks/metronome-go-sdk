@@ -18,7 +18,6 @@ import (
 	"net/url"
 )
 
-// Invoices - [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer spent during a period, which is the basis for billing. Metronome automatically generates invoices based upon your pricing, packaging, and usage events. Use these endpoints to retrieve invoices.
 type Invoices struct {
 	sdkConfiguration sdkConfiguration
 }
@@ -29,9 +28,9 @@ func newInvoices(sdkConfig sdkConfiguration) *Invoices {
 	}
 }
 
-// RegenerateInvoice - Regenerate an invoice
+// Regenerate an invoice
 // Regenerate a voided contract invoice
-func (s *Invoices) RegenerateInvoice(ctx context.Context, request *operations.RegenerateInvoiceRequestBody, opts ...operations.Option) (*operations.RegenerateInvoiceResponse, error) {
+func (s *Invoices) Regenerate(ctx context.Context, request *operations.RegenerateInvoiceRequestBody, opts ...operations.Option) (*operations.RegenerateInvoiceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "regenerateInvoice",

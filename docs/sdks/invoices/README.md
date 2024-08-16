@@ -1,15 +1,11 @@
 # Invoices
 (*Invoices*)
 
-## Overview
-
-[Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer spent during a period, which is the basis for billing. Metronome automatically generates invoices based upon your pricing, packaging, and usage events. Use these endpoints to retrieve invoices.
-
 ### Available Operations
 
-* [RegenerateInvoice](#regenerateinvoice) - Regenerate an invoice
+* [Regenerate](#regenerate) - Regenerate an invoice
 
-## RegenerateInvoice
+## Regenerate
 
 Regenerate a voided contract invoice
 
@@ -33,7 +29,7 @@ func main() {
         ID: "6a37bb88-8538-48c5-b37b-a41c836328bd",
     }
     ctx := context.Background()
-    res, err := s.Invoices.RegenerateInvoice(ctx, request)
+    res, err := s.Invoices.Regenerate(ctx, request)
     if err != nil {
         log.Fatal(err)
     }

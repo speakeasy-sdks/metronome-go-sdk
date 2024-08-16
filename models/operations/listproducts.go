@@ -389,20 +389,20 @@ func (o *ListProductsInitial) GetPresentationGroupKey() []string {
 	return o.PresentationGroupKey
 }
 
-// ListProductsContractsOperation - The operation to perform on the quantity
-type ListProductsContractsOperation string
+// ListProductsProductsOperation - The operation to perform on the quantity
+type ListProductsProductsOperation string
 
 const (
-	ListProductsContractsOperationMultiplyLower ListProductsContractsOperation = "multiply"
-	ListProductsContractsOperationDivideLower   ListProductsContractsOperation = "divide"
-	ListProductsContractsOperationMultiplyUpper ListProductsContractsOperation = "MULTIPLY"
-	ListProductsContractsOperationDivideUpper   ListProductsContractsOperation = "DIVIDE"
+	ListProductsProductsOperationMultiplyLower ListProductsProductsOperation = "multiply"
+	ListProductsProductsOperationDivideLower   ListProductsProductsOperation = "divide"
+	ListProductsProductsOperationMultiplyUpper ListProductsProductsOperation = "MULTIPLY"
+	ListProductsProductsOperationDivideUpper   ListProductsProductsOperation = "DIVIDE"
 )
 
-func (e ListProductsContractsOperation) ToPointer() *ListProductsContractsOperation {
+func (e ListProductsProductsOperation) ToPointer() *ListProductsProductsOperation {
 	return &e
 }
-func (e *ListProductsContractsOperation) UnmarshalJSON(data []byte) error {
+func (e *ListProductsProductsOperation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -415,59 +415,59 @@ func (e *ListProductsContractsOperation) UnmarshalJSON(data []byte) error {
 	case "MULTIPLY":
 		fallthrough
 	case "DIVIDE":
-		*e = ListProductsContractsOperation(v)
+		*e = ListProductsProductsOperation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListProductsContractsOperation: %v", v)
+		return fmt.Errorf("invalid value for ListProductsProductsOperation: %v", v)
 	}
 }
 
-// ListProductsContractsQuantityConversion - Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
-type ListProductsContractsQuantityConversion struct {
+// ListProductsProductsQuantityConversion - Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
+type ListProductsProductsQuantityConversion struct {
 	// Optional name for this conversion.
 	Name *string `json:"name,omitempty"`
 	// The factor to multiply or divide the quantity by.
 	ConversionFactor float64 `json:"conversion_factor"`
 	// The operation to perform on the quantity
-	Operation ListProductsContractsOperation `json:"operation"`
+	Operation ListProductsProductsOperation `json:"operation"`
 }
 
-func (o *ListProductsContractsQuantityConversion) GetName() *string {
+func (o *ListProductsProductsQuantityConversion) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *ListProductsContractsQuantityConversion) GetConversionFactor() float64 {
+func (o *ListProductsProductsQuantityConversion) GetConversionFactor() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConversionFactor
 }
 
-func (o *ListProductsContractsQuantityConversion) GetOperation() ListProductsContractsOperation {
+func (o *ListProductsProductsQuantityConversion) GetOperation() ListProductsProductsOperation {
 	if o == nil {
-		return ListProductsContractsOperation("")
+		return ListProductsProductsOperation("")
 	}
 	return o.Operation
 }
 
-type ListProductsContractsRoundingMethod string
+type ListProductsProductsRoundingMethod string
 
 const (
-	ListProductsContractsRoundingMethodRoundUpLower     ListProductsContractsRoundingMethod = "round_up"
-	ListProductsContractsRoundingMethodRoundDownLower   ListProductsContractsRoundingMethod = "round_down"
-	ListProductsContractsRoundingMethodRoundHalfUpLower ListProductsContractsRoundingMethod = "round_half_up"
-	ListProductsContractsRoundingMethodRoundUpUpper     ListProductsContractsRoundingMethod = "ROUND_UP"
-	ListProductsContractsRoundingMethodRoundDownUpper   ListProductsContractsRoundingMethod = "ROUND_DOWN"
-	ListProductsContractsRoundingMethodRoundHalfUpUpper ListProductsContractsRoundingMethod = "ROUND_HALF_UP"
+	ListProductsProductsRoundingMethodRoundUpLower     ListProductsProductsRoundingMethod = "round_up"
+	ListProductsProductsRoundingMethodRoundDownLower   ListProductsProductsRoundingMethod = "round_down"
+	ListProductsProductsRoundingMethodRoundHalfUpLower ListProductsProductsRoundingMethod = "round_half_up"
+	ListProductsProductsRoundingMethodRoundUpUpper     ListProductsProductsRoundingMethod = "ROUND_UP"
+	ListProductsProductsRoundingMethodRoundDownUpper   ListProductsProductsRoundingMethod = "ROUND_DOWN"
+	ListProductsProductsRoundingMethodRoundHalfUpUpper ListProductsProductsRoundingMethod = "ROUND_HALF_UP"
 )
 
-func (e ListProductsContractsRoundingMethod) ToPointer() *ListProductsContractsRoundingMethod {
+func (e ListProductsProductsRoundingMethod) ToPointer() *ListProductsProductsRoundingMethod {
 	return &e
 }
-func (e *ListProductsContractsRoundingMethod) UnmarshalJSON(data []byte) error {
+func (e *ListProductsProductsRoundingMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -484,27 +484,27 @@ func (e *ListProductsContractsRoundingMethod) UnmarshalJSON(data []byte) error {
 	case "ROUND_DOWN":
 		fallthrough
 	case "ROUND_HALF_UP":
-		*e = ListProductsContractsRoundingMethod(v)
+		*e = ListProductsProductsRoundingMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListProductsContractsRoundingMethod: %v", v)
+		return fmt.Errorf("invalid value for ListProductsProductsRoundingMethod: %v", v)
 	}
 }
 
-// ListProductsContractsQuantityRounding - Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
-type ListProductsContractsQuantityRounding struct {
-	RoundingMethod ListProductsContractsRoundingMethod `json:"rounding_method"`
-	DecimalPlaces  float64                             `json:"decimal_places"`
+// ListProductsProductsQuantityRounding - Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
+type ListProductsProductsQuantityRounding struct {
+	RoundingMethod ListProductsProductsRoundingMethod `json:"rounding_method"`
+	DecimalPlaces  float64                            `json:"decimal_places"`
 }
 
-func (o *ListProductsContractsQuantityRounding) GetRoundingMethod() ListProductsContractsRoundingMethod {
+func (o *ListProductsProductsQuantityRounding) GetRoundingMethod() ListProductsProductsRoundingMethod {
 	if o == nil {
-		return ListProductsContractsRoundingMethod("")
+		return ListProductsProductsRoundingMethod("")
 	}
 	return o.RoundingMethod
 }
 
-func (o *ListProductsContractsQuantityRounding) GetDecimalPlaces() float64 {
+func (o *ListProductsProductsQuantityRounding) GetDecimalPlaces() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -523,10 +523,10 @@ type ListProductsCurrent struct {
 	BillableMetricID      *string  `json:"billable_metric_id,omitempty"`
 	CompositeProductIds   []string `json:"composite_product_ids,omitempty"`
 	// Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
-	QuantityConversion *ListProductsContractsQuantityConversion `json:"quantity_conversion,omitempty"`
+	QuantityConversion *ListProductsProductsQuantityConversion `json:"quantity_conversion,omitempty"`
 	// Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
-	QuantityRounding *ListProductsContractsQuantityRounding `json:"quantity_rounding,omitempty"`
-	CompositeTags    []string                               `json:"composite_tags,omitempty"`
+	QuantityRounding *ListProductsProductsQuantityRounding `json:"quantity_rounding,omitempty"`
+	CompositeTags    []string                              `json:"composite_tags,omitempty"`
 	// This field's availability is dependent on your client's configuration.
 	IsRefundable     *bool    `json:"is_refundable,omitempty"`
 	Tags             []string `json:"tags,omitempty"`
@@ -604,14 +604,14 @@ func (o *ListProductsCurrent) GetCompositeProductIds() []string {
 	return o.CompositeProductIds
 }
 
-func (o *ListProductsCurrent) GetQuantityConversion() *ListProductsContractsQuantityConversion {
+func (o *ListProductsCurrent) GetQuantityConversion() *ListProductsProductsQuantityConversion {
 	if o == nil {
 		return nil
 	}
 	return o.QuantityConversion
 }
 
-func (o *ListProductsCurrent) GetQuantityRounding() *ListProductsContractsQuantityRounding {
+func (o *ListProductsCurrent) GetQuantityRounding() *ListProductsProductsQuantityRounding {
 	if o == nil {
 		return nil
 	}
@@ -660,20 +660,20 @@ func (o *ListProductsCurrent) GetPresentationGroupKey() []string {
 	return o.PresentationGroupKey
 }
 
-// ListProductsContractsResponseOperation - The operation to perform on the quantity
-type ListProductsContractsResponseOperation string
+// ListProductsProductsResponseOperation - The operation to perform on the quantity
+type ListProductsProductsResponseOperation string
 
 const (
-	ListProductsContractsResponseOperationMultiplyLower ListProductsContractsResponseOperation = "multiply"
-	ListProductsContractsResponseOperationDivideLower   ListProductsContractsResponseOperation = "divide"
-	ListProductsContractsResponseOperationMultiplyUpper ListProductsContractsResponseOperation = "MULTIPLY"
-	ListProductsContractsResponseOperationDivideUpper   ListProductsContractsResponseOperation = "DIVIDE"
+	ListProductsProductsResponseOperationMultiplyLower ListProductsProductsResponseOperation = "multiply"
+	ListProductsProductsResponseOperationDivideLower   ListProductsProductsResponseOperation = "divide"
+	ListProductsProductsResponseOperationMultiplyUpper ListProductsProductsResponseOperation = "MULTIPLY"
+	ListProductsProductsResponseOperationDivideUpper   ListProductsProductsResponseOperation = "DIVIDE"
 )
 
-func (e ListProductsContractsResponseOperation) ToPointer() *ListProductsContractsResponseOperation {
+func (e ListProductsProductsResponseOperation) ToPointer() *ListProductsProductsResponseOperation {
 	return &e
 }
-func (e *ListProductsContractsResponseOperation) UnmarshalJSON(data []byte) error {
+func (e *ListProductsProductsResponseOperation) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -686,59 +686,59 @@ func (e *ListProductsContractsResponseOperation) UnmarshalJSON(data []byte) erro
 	case "MULTIPLY":
 		fallthrough
 	case "DIVIDE":
-		*e = ListProductsContractsResponseOperation(v)
+		*e = ListProductsProductsResponseOperation(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListProductsContractsResponseOperation: %v", v)
+		return fmt.Errorf("invalid value for ListProductsProductsResponseOperation: %v", v)
 	}
 }
 
-// ListProductsContractsResponseQuantityConversion - Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
-type ListProductsContractsResponseQuantityConversion struct {
+// ListProductsProductsResponseQuantityConversion - Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
+type ListProductsProductsResponseQuantityConversion struct {
 	// Optional name for this conversion.
 	Name *string `json:"name,omitempty"`
 	// The factor to multiply or divide the quantity by.
 	ConversionFactor float64 `json:"conversion_factor"`
 	// The operation to perform on the quantity
-	Operation ListProductsContractsResponseOperation `json:"operation"`
+	Operation ListProductsProductsResponseOperation `json:"operation"`
 }
 
-func (o *ListProductsContractsResponseQuantityConversion) GetName() *string {
+func (o *ListProductsProductsResponseQuantityConversion) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *ListProductsContractsResponseQuantityConversion) GetConversionFactor() float64 {
+func (o *ListProductsProductsResponseQuantityConversion) GetConversionFactor() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ConversionFactor
 }
 
-func (o *ListProductsContractsResponseQuantityConversion) GetOperation() ListProductsContractsResponseOperation {
+func (o *ListProductsProductsResponseQuantityConversion) GetOperation() ListProductsProductsResponseOperation {
 	if o == nil {
-		return ListProductsContractsResponseOperation("")
+		return ListProductsProductsResponseOperation("")
 	}
 	return o.Operation
 }
 
-type ListProductsContractsResponseRoundingMethod string
+type ListProductsProductsResponseRoundingMethod string
 
 const (
-	ListProductsContractsResponseRoundingMethodRoundUpLower     ListProductsContractsResponseRoundingMethod = "round_up"
-	ListProductsContractsResponseRoundingMethodRoundDownLower   ListProductsContractsResponseRoundingMethod = "round_down"
-	ListProductsContractsResponseRoundingMethodRoundHalfUpLower ListProductsContractsResponseRoundingMethod = "round_half_up"
-	ListProductsContractsResponseRoundingMethodRoundUpUpper     ListProductsContractsResponseRoundingMethod = "ROUND_UP"
-	ListProductsContractsResponseRoundingMethodRoundDownUpper   ListProductsContractsResponseRoundingMethod = "ROUND_DOWN"
-	ListProductsContractsResponseRoundingMethodRoundHalfUpUpper ListProductsContractsResponseRoundingMethod = "ROUND_HALF_UP"
+	ListProductsProductsResponseRoundingMethodRoundUpLower     ListProductsProductsResponseRoundingMethod = "round_up"
+	ListProductsProductsResponseRoundingMethodRoundDownLower   ListProductsProductsResponseRoundingMethod = "round_down"
+	ListProductsProductsResponseRoundingMethodRoundHalfUpLower ListProductsProductsResponseRoundingMethod = "round_half_up"
+	ListProductsProductsResponseRoundingMethodRoundUpUpper     ListProductsProductsResponseRoundingMethod = "ROUND_UP"
+	ListProductsProductsResponseRoundingMethodRoundDownUpper   ListProductsProductsResponseRoundingMethod = "ROUND_DOWN"
+	ListProductsProductsResponseRoundingMethodRoundHalfUpUpper ListProductsProductsResponseRoundingMethod = "ROUND_HALF_UP"
 )
 
-func (e ListProductsContractsResponseRoundingMethod) ToPointer() *ListProductsContractsResponseRoundingMethod {
+func (e ListProductsProductsResponseRoundingMethod) ToPointer() *ListProductsProductsResponseRoundingMethod {
 	return &e
 }
-func (e *ListProductsContractsResponseRoundingMethod) UnmarshalJSON(data []byte) error {
+func (e *ListProductsProductsResponseRoundingMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -755,27 +755,27 @@ func (e *ListProductsContractsResponseRoundingMethod) UnmarshalJSON(data []byte)
 	case "ROUND_DOWN":
 		fallthrough
 	case "ROUND_HALF_UP":
-		*e = ListProductsContractsResponseRoundingMethod(v)
+		*e = ListProductsProductsResponseRoundingMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListProductsContractsResponseRoundingMethod: %v", v)
+		return fmt.Errorf("invalid value for ListProductsProductsResponseRoundingMethod: %v", v)
 	}
 }
 
-// ListProductsContractsResponseQuantityRounding - Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
-type ListProductsContractsResponseQuantityRounding struct {
-	RoundingMethod ListProductsContractsResponseRoundingMethod `json:"rounding_method"`
-	DecimalPlaces  float64                                     `json:"decimal_places"`
+// ListProductsProductsResponseQuantityRounding - Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
+type ListProductsProductsResponseQuantityRounding struct {
+	RoundingMethod ListProductsProductsResponseRoundingMethod `json:"rounding_method"`
+	DecimalPlaces  float64                                    `json:"decimal_places"`
 }
 
-func (o *ListProductsContractsResponseQuantityRounding) GetRoundingMethod() ListProductsContractsResponseRoundingMethod {
+func (o *ListProductsProductsResponseQuantityRounding) GetRoundingMethod() ListProductsProductsResponseRoundingMethod {
 	if o == nil {
-		return ListProductsContractsResponseRoundingMethod("")
+		return ListProductsProductsResponseRoundingMethod("")
 	}
 	return o.RoundingMethod
 }
 
-func (o *ListProductsContractsResponseQuantityRounding) GetDecimalPlaces() float64 {
+func (o *ListProductsProductsResponseQuantityRounding) GetDecimalPlaces() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -790,9 +790,9 @@ type ListProductsUpdates struct {
 	CreatedBy        string     `json:"created_by"`
 	BillableMetricID *string    `json:"billable_metric_id,omitempty"`
 	// Optional. Only valid for USAGE products. If provided, the quantity will be converted using the provided conversion factor and operation. For example, if the operation is "multiply" and the conversion factor is 100, then the quantity will be multiplied by 100. This can be used in cases where data is sent in one unit and priced in another.  For example, data could be sent in MB and priced in GB. In this case, the conversion factor would be 1024 and the operation would be "divide".
-	QuantityConversion *ListProductsContractsResponseQuantityConversion `json:"quantity_conversion,omitempty"`
+	QuantityConversion *ListProductsProductsResponseQuantityConversion `json:"quantity_conversion,omitempty"`
 	// Optional. Only valid for USAGE products. If provided, the quantity will be rounded using the provided rounding method and decimal places. For example, if the method is "round up" and the decimal places is 0, then the quantity will be rounded up to the nearest integer.
-	QuantityRounding *ListProductsContractsResponseQuantityRounding `json:"quantity_rounding,omitempty"`
+	QuantityRounding *ListProductsProductsResponseQuantityRounding `json:"quantity_rounding,omitempty"`
 	// This field's availability is dependent on your client's configuration.
 	NetsuiteInternalItemID *string `json:"netsuite_internal_item_id,omitempty"`
 	// This field's availability is dependent on your client's configuration.
@@ -860,14 +860,14 @@ func (o *ListProductsUpdates) GetBillableMetricID() *string {
 	return o.BillableMetricID
 }
 
-func (o *ListProductsUpdates) GetQuantityConversion() *ListProductsContractsResponseQuantityConversion {
+func (o *ListProductsUpdates) GetQuantityConversion() *ListProductsProductsResponseQuantityConversion {
 	if o == nil {
 		return nil
 	}
 	return o.QuantityConversion
 }
 
-func (o *ListProductsUpdates) GetQuantityRounding() *ListProductsContractsResponseQuantityRounding {
+func (o *ListProductsUpdates) GetQuantityRounding() *ListProductsProductsResponseQuantityRounding {
 	if o == nil {
 		return nil
 	}

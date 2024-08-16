@@ -33,6 +33,18 @@ actions:
     remove: true
   - target: $["paths"]["/customers/setBillableStatus"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]
+    update:
+      x-speakeasy-group: customers
+  - target: $["paths"]["/customers/setBillableStatus"]["post"]
+    update:
+      x-speakeasy-name-override: setBillableStatus
+  - target: $["paths"]["/invoices/regenerate"]["post"]
+    update:
+      x-speakeasy-group: invoices
+  - target: $["paths"]["/invoices/regenerate"]["post"]
+    update:
+      x-speakeasy-name-override: regenerate
   - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"
@@ -42,6 +54,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/products/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]
+    update:
+      x-speakeasy-group: products
+  - target: $["paths"]["/contract-pricing/products/get"]["post"]
+    update:
+      x-speakeasy-name-override: get
   - target: $["paths"]["/contract-pricing/products/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -55,6 +73,12 @@ actions:
             type: limit
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contract-pricing/products/list"]["post"]
+    update:
+      x-speakeasy-group: products
+  - target: $["paths"]["/contract-pricing/products/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -64,6 +88,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/products/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]
+    update:
+      x-speakeasy-group: products
+  - target: $["paths"]["/contract-pricing/products/create"]["post"]
+    update:
+      x-speakeasy-name-override: create
   - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -82,6 +112,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/products/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]
+    update:
+      x-speakeasy-group: products
+  - target: $["paths"]["/contract-pricing/products/update"]["post"]
+    update:
+      x-speakeasy-name-override: update
   - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -100,9 +136,21 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/products/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]
+    update:
+      x-speakeasy-group: products
+  - target: $["paths"]["/contract-pricing/products/archive"]["post"]
+    update:
+      x-speakeasy-name-override: archive
+  - target: $["paths"]["/contract-pricing/rate-cards/getRateSchedule"]["post"]
+    update:
+      x-speakeasy-group: rateCards
   - target: $["paths"]["/contract-pricing/rate-cards/getRates"]["post"]["parameters"][0]["schema"]
     update:
       example: 10
+  - target: $["paths"]["/contract-pricing/rate-cards/getRates"]["post"]
+    update:
+      x-speakeasy-group: rateCards
   - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"
@@ -112,6 +160,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/get"]["post"]
+    update:
+      x-speakeasy-name-override: get
   - target: $["paths"]["/contract-pricing/rate-cards/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -125,6 +179,12 @@ actions:
             type: limit
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contract-pricing/rate-cards/list"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -134,6 +194,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/create"]["post"]
+    update:
+      x-speakeasy-name-override: create
   - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -152,6 +218,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/update"]["post"]
+    update:
+      x-speakeasy-name-override: update
   - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -170,6 +242,9 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRate"]["post"]
+    update:
+      x-speakeasy-group: rateCards
   - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -188,6 +263,9 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/addRates"]["post"]
+    update:
+      x-speakeasy-group: rateCards
   - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -206,6 +284,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/setRateCardProductsOrder"]["post"]
+    update:
+      x-speakeasy-name-override: setProductsOrder
   - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -224,6 +308,12 @@ actions:
     remove: true
   - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]
+    update:
+      x-speakeasy-group: rateCards
+  - target: $["paths"]["/contract-pricing/rate-cards/moveRateCardProducts"]["post"]
+    update:
+      x-speakeasy-name-override: moveProducts
   - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"
@@ -233,6 +323,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/get"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/get"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/get"]["post"]
+    update:
+      x-speakeasy-name-override: get
   - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"
@@ -242,6 +338,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/list"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/list"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["scheduled_charges"]["items"]["properties"]["schedule"]["properties"]["recurring_schedule"]["properties"]["amount_distribution"]["enum"][*]
     remove: true
   - target: $["paths"]["/contracts/create"]["post"]["requestBody"]["content"]["application/json"]["schema"]["properties"]["scheduled_charges"]["items"]["properties"]["schedule"]["properties"]["recurring_schedule"]["properties"]["amount_distribution"]["enum"]
@@ -280,6 +382,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/create"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/create"]["post"]
+    update:
+      x-speakeasy-name-override: create
   - target: $["paths"]["/contracts/amend"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -298,6 +406,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/amend"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/amend"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/amend"]["post"]
+    update:
+      x-speakeasy-name-override: amend
   - target: $["paths"]["/contracts/archive"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -316,6 +430,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/archive"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/archive"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/archive"]["post"]
+    update:
+      x-speakeasy-name-override: archive
   - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -334,6 +454,9 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/setUsageFilter"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/setUsageFilter"]["post"]
+    update:
+      x-speakeasy-group: contracts
   - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -352,6 +475,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/addManualBalanceLedgerEntry"]["post"]
+    update:
+      x-speakeasy-name-override: addManualBalanceEntry
   - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -370,6 +499,18 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/updateEndDate"]["post"]
+    update:
+      x-speakeasy-name-override: updateEndDate
+  - target: $["paths"]["/contracts/getContractRateSchedule"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/contracts/getContractRateSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: getRateSchedule
   - target: $["paths"]["/contracts/customerCommits/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -380,6 +521,12 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/customerCommits/list"]["post"]
+    update:
+      x-speakeasy-group: customerCommits
+  - target: $["paths"]["/contracts/customerCommits/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -398,6 +545,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/customerCommits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]
+    update:
+      x-speakeasy-group: customerCommits
+  - target: $["paths"]["/contracts/customerCommits/create"]["post"]
+    update:
+      x-speakeasy-name-override: create
   - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -416,6 +569,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]
+    update:
+      x-speakeasy-group: customerCommits
+  - target: $["paths"]["/contracts/customerCommits/updateEndDate"]["post"]
+    update:
+      x-speakeasy-name-override: updateEndDate
   - target: $["paths"]["/contracts/customerCredits/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -426,6 +585,12 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/customerCredits/list"]["post"]
+    update:
+      x-speakeasy-group: customerCredits
+  - target: $["paths"]["/contracts/customerCredits/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -444,6 +609,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/customerCredits/create"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]
+    update:
+      x-speakeasy-group: customerCredits
+  - target: $["paths"]["/contracts/customerCredits/create"]["post"]
+    update:
+      x-speakeasy-name-override: create
   - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["400"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/BadRequest"
@@ -462,6 +633,12 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]
+    update:
+      x-speakeasy-group: customerCredits
+  - target: $["paths"]["/contracts/customerCredits/updateEndDate"]["post"]
+    update:
+      x-speakeasy-name-override: updateEndDate
   - target: $["paths"]["/contracts/customerBalances/list"]["post"]
     update:
       x-speakeasy-pagination:
@@ -472,6 +649,12 @@ actions:
             type: cursor
         outputs:
           nextCursor: $.next_page
+  - target: $["paths"]["/contracts/customerBalances/list"]["post"]
+    update:
+      x-speakeasy-group: customerBalances
+  - target: $["paths"]["/contracts/customerBalances/list"]["post"]
+    update:
+      x-speakeasy-name-override: list
   - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"
@@ -481,6 +664,45 @@ actions:
     remove: true
   - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]["responses"]["404"]["content"]["application/json"]["schema"]["properties"]
     remove: true
+  - target: $["paths"]["/contracts/scheduleProServicesInvoice"]["post"]
+    update:
+      x-speakeasy-group: contracts
+  - target: $["paths"]["/customers/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: customers.namedSchedules
+  - target: $["paths"]["/customers/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: get
+  - target: $["paths"]["/customers/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: customers.namedSchedules
+  - target: $["paths"]["/customers/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: update
+  - target: $["paths"]["/contracts/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: contracts.namedSchedules
+  - target: $["paths"]["/contracts/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: get
+  - target: $["paths"]["/contracts/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: contracts.namedSchedules
+  - target: $["paths"]["/contracts/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: update
+  - target: $["paths"]["/contract-pricing/rate-cards/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: rateCards.namedSchedules
+  - target: $["paths"]["/contract-pricing/rate-cards/getNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: get
+  - target: $["paths"]["/contract-pricing/rate-cards/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-group: rateCards.namedSchedules
+  - target: $["paths"]["/contract-pricing/rate-cards/updateNamedSchedule"]["post"]
+    update:
+      x-speakeasy-name-override: update
   - target: $["components"]["responses"]["NotFound"]["content"]["application/json"]["schema"]
     update:
       $ref: "#/components/schemas/NotFound"

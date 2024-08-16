@@ -36,7 +36,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -51,54 +51,78 @@ func main() {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [Contracts](docs/sdks/contracts/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
-* [SetCustomerBillableStatus](docs/sdks/contracts/README.md#setcustomerbillablestatus) - Set customer billable status
-* [GetProduct](docs/sdks/contracts/README.md#getproduct) - Get a product
-* [ListProducts](docs/sdks/contracts/README.md#listproducts) - List products
-* [CreateProduct](docs/sdks/contracts/README.md#createproduct) - Create a product
-* [UpdateProduct](docs/sdks/contracts/README.md#updateproduct) - Update a product
-* [ArchiveProductListItem](docs/sdks/contracts/README.md#archiveproductlistitem) - Archive a product
-* [GetRateSchedule](docs/sdks/contracts/README.md#getrateschedule) - Get a rate schedule
-* [GetRates](docs/sdks/contracts/README.md#getrates) - Get rates
-* [GetRateCard](docs/sdks/contracts/README.md#getratecard) - Get a rate card
-* [ListRateCards](docs/sdks/contracts/README.md#listratecards) - List rate cards
-* [CreateRateCard](docs/sdks/contracts/README.md#createratecard) - Create a rate card
-* [UpdateRateCard](docs/sdks/contracts/README.md#updateratecard) - Update a rate card
-* [AddRate](docs/sdks/contracts/README.md#addrate) - Add a rate
-* [AddRates](docs/sdks/contracts/README.md#addrates) - Add rates
-* [SetRateCardProductsOrder](docs/sdks/contracts/README.md#setratecardproductsorder) - Set the rate card products order
-* [MoveRateCardProducts](docs/sdks/contracts/README.md#moveratecardproducts) - Update the rate card products order
-* [GetContract](docs/sdks/contracts/README.md#getcontract) - Get a contract
-* [ListContracts](docs/sdks/contracts/README.md#listcontracts) - List customer contracts
-* [CreateContract](docs/sdks/contracts/README.md#createcontract) - Create a contract
-* [AmendContract](docs/sdks/contracts/README.md#amendcontract) - Amend a contract
-* [ArchiveContract](docs/sdks/contracts/README.md#archivecontract) - Archive a contract
-* [SetUsageFilter](docs/sdks/contracts/README.md#setusagefilter) - Set a contract usage filter
-* [AddManualBalanceLedgerEntry](docs/sdks/contracts/README.md#addmanualbalanceledgerentry) - Add a manual balance entry
-* [UpdateContractEndDate](docs/sdks/contracts/README.md#updatecontractenddate) - Update the contract end date
-* [GetContractRateSchedule](docs/sdks/contracts/README.md#getcontractrateschedule) - Get the rate schedule for a contract
-* [ListCustomerCommits](docs/sdks/contracts/README.md#listcustomercommits) - List commits
-* [CreateCustomerCommit](docs/sdks/contracts/README.md#createcustomercommit) - Create a commit
-* [UpdateCommitEndDate](docs/sdks/contracts/README.md#updatecommitenddate) - Update the commit end date
-* [ListCustomerCredits](docs/sdks/contracts/README.md#listcustomercredits) - List credits
-* [CreateCustomerCredit](docs/sdks/contracts/README.md#createcustomercredit) - Create a credit
-* [UpdateCreditEndDate](docs/sdks/contracts/README.md#updatecreditenddate) - Update the credit end date
-* [ListCustomerBalances](docs/sdks/contracts/README.md#listcustomerbalances) - List balances
-* [ScheduleProServicesInvoice](docs/sdks/contracts/README.md#scheduleproservicesinvoice) - Schedule ProService invoice
+* [SetBillableStatus](docs/sdks/customers/README.md#setbillablestatus) - Set customer billable status
+
+### [Customers.NamedSchedules](docs/sdks/namedschedules/README.md)
+
+* [Get](docs/sdks/namedschedules/README.md#get) - Get a customer's named schedule
+* [Update](docs/sdks/namedschedules/README.md#update) - Update a customer's named schedule
 
 ### [Invoices](docs/sdks/invoices/README.md)
 
-* [RegenerateInvoice](docs/sdks/invoices/README.md#regenerateinvoice) - Regenerate an invoice
+* [Regenerate](docs/sdks/invoices/README.md#regenerate) - Regenerate an invoice
 
-### [NamedSchedules](docs/sdks/namedschedules/README.md)
+### [Products](docs/sdks/products/README.md)
 
-* [GetCustomerNamedSchedule](docs/sdks/namedschedules/README.md#getcustomernamedschedule) - Get a customer's named schedule
-* [UpdateCustomerNamedSchedule](docs/sdks/namedschedules/README.md#updatecustomernamedschedule) - Update a customer's named schedule
-* [GetContractNamedSchedule](docs/sdks/namedschedules/README.md#getcontractnamedschedule) - Get a contract's named schedule
-* [UpdateContractNamedSchedule](docs/sdks/namedschedules/README.md#updatecontractnamedschedule) - Update a contract's named schedule
-* [GetRateCardNamedSchedule](docs/sdks/namedschedules/README.md#getratecardnamedschedule) - Get a rate card's named schedule
-* [UpdateRateCardNamedSchedule](docs/sdks/namedschedules/README.md#updateratecardnamedschedule) - Update a rate card's named schedule
+* [Get](docs/sdks/products/README.md#get) - Get a product
+* [List](docs/sdks/products/README.md#list) - List products
+* [Create](docs/sdks/products/README.md#create) - Create a product
+* [Update](docs/sdks/products/README.md#update) - Update a product
+* [Archive](docs/sdks/products/README.md#archive) - Archive a product
+
+### [RateCards](docs/sdks/ratecards/README.md)
+
+* [GetRateSchedule](docs/sdks/ratecards/README.md#getrateschedule) - Get a rate schedule
+* [GetRates](docs/sdks/ratecards/README.md#getrates) - Get rates
+* [Get](docs/sdks/ratecards/README.md#get) - Get a rate card
+* [List](docs/sdks/ratecards/README.md#list) - List rate cards
+* [Create](docs/sdks/ratecards/README.md#create) - Create a rate card
+* [Update](docs/sdks/ratecards/README.md#update) - Update a rate card
+* [AddRate](docs/sdks/ratecards/README.md#addrate) - Add a rate
+* [AddRates](docs/sdks/ratecards/README.md#addrates) - Add rates
+* [SetProductsOrder](docs/sdks/ratecards/README.md#setproductsorder) - Set the rate card products order
+* [MoveProducts](docs/sdks/ratecards/README.md#moveproducts) - Update the rate card products order
+
+### [RateCards.NamedSchedules](docs/sdks/metronomeratecardsnamedschedules/README.md)
+
+* [Get](docs/sdks/metronomeratecardsnamedschedules/README.md#get) - Get a rate card's named schedule
+* [Update](docs/sdks/metronomeratecardsnamedschedules/README.md#update) - Update a rate card's named schedule
+
+### [Contracts](docs/sdks/contracts/README.md)
+
+* [Get](docs/sdks/contracts/README.md#get) - Get a contract
+* [List](docs/sdks/contracts/README.md#list) - List customer contracts
+* [Create](docs/sdks/contracts/README.md#create) - Create a contract
+* [Amend](docs/sdks/contracts/README.md#amend) - Amend a contract
+* [Archive](docs/sdks/contracts/README.md#archive) - Archive a contract
+* [SetUsageFilter](docs/sdks/contracts/README.md#setusagefilter) - Set a contract usage filter
+* [AddManualBalanceEntry](docs/sdks/contracts/README.md#addmanualbalanceentry) - Add a manual balance entry
+* [UpdateEndDate](docs/sdks/contracts/README.md#updateenddate) - Update the contract end date
+* [GetRateSchedule](docs/sdks/contracts/README.md#getrateschedule) - Get the rate schedule for a contract
+* [ScheduleProServicesInvoice](docs/sdks/contracts/README.md#scheduleproservicesinvoice) - Schedule ProService invoice
+
+### [Contracts.NamedSchedules](docs/sdks/metronomenamedschedules/README.md)
+
+* [Get](docs/sdks/metronomenamedschedules/README.md#get) - Get a contract's named schedule
+* [Update](docs/sdks/metronomenamedschedules/README.md#update) - Update a contract's named schedule
+
+### [CustomerCommits](docs/sdks/customercommits/README.md)
+
+* [List](docs/sdks/customercommits/README.md#list) - List commits
+* [Create](docs/sdks/customercommits/README.md#create) - Create a commit
+* [UpdateEndDate](docs/sdks/customercommits/README.md#updateenddate) - Update the commit end date
+
+### [CustomerCredits](docs/sdks/customercredits/README.md)
+
+* [List](docs/sdks/customercredits/README.md#list) - List credits
+* [Create](docs/sdks/customercredits/README.md#create) - Create a credit
+* [UpdateEndDate](docs/sdks/customercredits/README.md#updateenddate) - Update the credit end date
+
+### [CustomerBalances](docs/sdks/customerbalances/README.md)
+
+* [List](docs/sdks/customerbalances/README.md#list) - List balances
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Retries [retries] -->
@@ -125,7 +149,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil, operations.WithRetries(
+	res, err := s.Customers.SetBillableStatus(ctx, nil, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -175,7 +199,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -218,7 +242,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 
 		var e *sdkerrors.BadRequest
@@ -274,7 +298,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -306,7 +330,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -375,7 +399,7 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.Contracts.SetCustomerBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -413,7 +437,7 @@ func main() {
 		ArchiveFilter: operations.ArchiveFilterNotArchived.ToPointer(),
 	}
 	ctx := context.Background()
-	res, err := s.Contracts.ListProducts(ctx, nil, nil, requestBody)
+	res, err := s.Products.List(ctx, nil, nil, requestBody)
 	if err != nil {
 		log.Fatal(err)
 	}

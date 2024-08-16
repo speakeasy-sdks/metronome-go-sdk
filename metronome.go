@@ -66,12 +66,14 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 }
 
 type Metronome struct {
-	// Contracts provide an alternative to plans for provisioning and invoicing customers. Use these endpoints to create and update contracts data.
-	Contracts *Contracts
-	// [Invoices](https://docs.metronome.com/invoicing/) reflect how much a customer spent during a period, which is the basis for billing. Metronome automatically generates invoices based upon your pricing, packaging, and usage events. Use these endpoints to retrieve invoices.
-	Invoices *Invoices
-	// Named schedules are used for storing custom data that can change over time. Named schedules are often used in custom pricing logic.
-	NamedSchedules *NamedSchedules
+	Customers        *Customers
+	Invoices         *Invoices
+	Products         *Products
+	RateCards        *RateCards
+	Contracts        *Contracts
+	CustomerCommits  *CustomerCommits
+	CustomerCredits  *CustomerCredits
+	CustomerBalances *CustomerBalances
 
 	sdkConfiguration sdkConfiguration
 }
@@ -150,9 +152,9 @@ func New(opts ...SDKOption) *Metronome {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.1.4",
+			SDKVersion:        "0.2.0",
 			GenVersion:        "2.399.0",
-			UserAgent:         "speakeasy-sdk/go 0.1.4 2.399.0 1.0.0 github.com/Metronome-Industries/metronome-go-sdk",
+			UserAgent:         "speakeasy-sdk/go 0.2.0 2.399.0 1.0.0 github.com/Metronome-Industries/metronome-go-sdk",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -172,11 +174,21 @@ func New(opts ...SDKOption) *Metronome {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.Contracts = newContracts(sdk.sdkConfiguration)
+	sdk.Customers = newCustomers(sdk.sdkConfiguration)
 
 	sdk.Invoices = newInvoices(sdk.sdkConfiguration)
 
-	sdk.NamedSchedules = newNamedSchedules(sdk.sdkConfiguration)
+	sdk.Products = newProducts(sdk.sdkConfiguration)
+
+	sdk.RateCards = newRateCards(sdk.sdkConfiguration)
+
+	sdk.Contracts = newContracts(sdk.sdkConfiguration)
+
+	sdk.CustomerCommits = newCustomerCommits(sdk.sdkConfiguration)
+
+	sdk.CustomerCredits = newCustomerCredits(sdk.sdkConfiguration)
+
+	sdk.CustomerBalances = newCustomerBalances(sdk.sdkConfiguration)
 
 	return sdk
 }

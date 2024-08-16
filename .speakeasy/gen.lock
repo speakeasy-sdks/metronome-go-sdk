@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a0e700a4-3263-4494-abca-a51edefef8d9
 management:
-  docChecksum: 8ab4d8f436057419ca945475504a742c
+  docChecksum: 26a9eda3a16fc17150481f974727607b
   docVersion: 1.0.0
   speakeasyVersion: 1.371.0
   generationVersion: 2.399.0
-  releaseVersion: 0.1.4
-  configChecksum: 71828600dab2fb96fbce7093ae2bc9a1
+  releaseVersion: 0.2.0
+  configChecksum: 4df0b870fc832d23cb0c1dfc89fdf2ab
 features:
   go:
     additionalDependencies: 0.1.0
@@ -19,7 +19,9 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.2
+    groups: 2.81.2
     intellisenseMarkdownSupport: 0.1.0
+    nameOverrides: 2.81.2
     nullables: 0.1.0
     pagination: 2.82.1
     responseFormat: 0.1.2
@@ -27,9 +29,17 @@ features:
     sdkHooks: 0.1.0
     unions: 2.85.9
 generatedFiles:
-  - contracts.go
-  - invoices.go
   - namedschedules.go
+  - customers.go
+  - invoices.go
+  - products.go
+  - metronomeratecardsnamedschedules.go
+  - ratecards.go
+  - metronomenamedschedules.go
+  - contracts.go
+  - customercommits.go
+  - customercredits.go
+  - customerbalances.go
   - metronome.go
   - go.mod
   - models/sdkerrors/sdkerror.go
@@ -50,6 +60,9 @@ generatedFiles:
   - internal/utils/security.go
   - internal/utils/utils.go
   - /models/operations/setcustomerbillablestatus.go
+  - /models/operations/getcustomernamedschedule.go
+  - /models/operations/updatecustomernamedschedule.go
+  - /models/operations/regenerateinvoice.go
   - /models/operations/getproduct.go
   - /models/operations/listproducts.go
   - /models/operations/createproduct.go
@@ -65,6 +78,8 @@ generatedFiles:
   - /models/operations/addrates.go
   - /models/operations/setratecardproductsorder.go
   - /models/operations/moveratecardproducts.go
+  - /models/operations/getratecardnamedschedule.go
+  - /models/operations/updateratecardnamedschedule.go
   - /models/operations/getcontract.go
   - /models/operations/listcontracts.go
   - /models/operations/createcontract.go
@@ -74,6 +89,9 @@ generatedFiles:
   - /models/operations/addmanualbalanceledgerentry.go
   - /models/operations/updatecontractenddate.go
   - /models/operations/getcontractrateschedule.go
+  - /models/operations/scheduleproservicesinvoice.go
+  - /models/operations/getcontractnamedschedule.go
+  - /models/operations/updatecontractnamedschedule.go
   - /models/operations/listcustomercommits.go
   - /models/operations/createcustomercommit.go
   - /models/operations/updatecommitenddate.go
@@ -81,14 +99,6 @@ generatedFiles:
   - /models/operations/createcustomercredit.go
   - /models/operations/updatecreditenddate.go
   - /models/operations/listcustomerbalances.go
-  - /models/operations/scheduleproservicesinvoice.go
-  - /models/operations/regenerateinvoice.go
-  - /models/operations/getcustomernamedschedule.go
-  - /models/operations/updatecustomernamedschedule.go
-  - /models/operations/getcontractnamedschedule.go
-  - /models/operations/updatecontractnamedschedule.go
-  - /models/operations/getratecardnamedschedule.go
-  - /models/operations/updateratecardnamedschedule.go
   - /models/components/httpmetadata.go
   - /models/components/security.go
   - /models/sdkerrors/badrequest.go
@@ -99,22 +109,32 @@ generatedFiles:
   - docs/models/operations/data.md
   - docs/models/operations/setcustomerbillablestatusresponsebody.md
   - docs/models/operations/setcustomerbillablestatusresponse.md
+  - docs/models/operations/getcustomernamedschedulerequestbody.md
+  - docs/models/operations/getcustomernamedscheduledata.md
+  - docs/models/operations/getcustomernamedscheduleresponsebody.md
+  - docs/models/operations/getcustomernamedscheduleresponse.md
+  - docs/models/operations/updatecustomernamedschedulerequestbody.md
+  - docs/models/operations/updatecustomernamedscheduleresponse.md
+  - docs/models/operations/regenerateinvoicerequestbody.md
+  - docs/models/operations/regenerateinvoicedata.md
+  - docs/models/operations/regenerateinvoiceresponsebody.md
+  - docs/models/operations/regenerateinvoiceresponse.md
   - docs/models/operations/getproductrequestbody.md
   - docs/models/operations/getproducttype.md
-  - docs/models/operations/getproductcontractsresponseoperation.md
-  - docs/models/operations/getproductcontractsresponsequantityconversion.md
-  - docs/models/operations/getproductcontractsresponseroundingmethod.md
-  - docs/models/operations/getproductcontractsresponsequantityrounding.md
+  - docs/models/operations/getproductproductsresponseoperation.md
+  - docs/models/operations/getproductproductsresponsequantityconversion.md
+  - docs/models/operations/getproductproductsresponseroundingmethod.md
+  - docs/models/operations/getproductproductsresponsequantityrounding.md
   - docs/models/operations/initial.md
   - docs/models/operations/getproductoperation.md
   - docs/models/operations/getproductquantityconversion.md
   - docs/models/operations/getproductroundingmethod.md
   - docs/models/operations/getproductquantityrounding.md
   - docs/models/operations/current.md
-  - docs/models/operations/getproductcontractsoperation.md
-  - docs/models/operations/getproductcontractsquantityconversion.md
-  - docs/models/operations/getproductcontractsroundingmethod.md
-  - docs/models/operations/getproductcontractsquantityrounding.md
+  - docs/models/operations/getproductproductsoperation.md
+  - docs/models/operations/getproductproductsquantityconversion.md
+  - docs/models/operations/getproductproductsroundingmethod.md
+  - docs/models/operations/getproductproductsquantityrounding.md
   - docs/models/operations/updates.md
   - docs/models/operations/getproductdata.md
   - docs/models/operations/getproductresponsebody.md
@@ -128,15 +148,15 @@ generatedFiles:
   - docs/models/operations/listproductsroundingmethod.md
   - docs/models/operations/listproductsquantityrounding.md
   - docs/models/operations/listproductsinitial.md
-  - docs/models/operations/listproductscontractsoperation.md
-  - docs/models/operations/listproductscontractsquantityconversion.md
-  - docs/models/operations/listproductscontractsroundingmethod.md
-  - docs/models/operations/listproductscontractsquantityrounding.md
+  - docs/models/operations/listproductsproductsoperation.md
+  - docs/models/operations/listproductsproductsquantityconversion.md
+  - docs/models/operations/listproductsproductsroundingmethod.md
+  - docs/models/operations/listproductsproductsquantityrounding.md
   - docs/models/operations/listproductscurrent.md
-  - docs/models/operations/listproductscontractsresponseoperation.md
-  - docs/models/operations/listproductscontractsresponsequantityconversion.md
-  - docs/models/operations/listproductscontractsresponseroundingmethod.md
-  - docs/models/operations/listproductscontractsresponsequantityrounding.md
+  - docs/models/operations/listproductsproductsresponseoperation.md
+  - docs/models/operations/listproductsproductsresponsequantityconversion.md
+  - docs/models/operations/listproductsproductsresponseroundingmethod.md
+  - docs/models/operations/listproductsproductsresponsequantityrounding.md
   - docs/models/operations/listproductsupdates.md
   - docs/models/operations/listproductsdata.md
   - docs/models/operations/listproductsresponsebody.md
@@ -187,9 +207,9 @@ generatedFiles:
   - docs/models/operations/getratecardcredittype.md
   - docs/models/operations/getratecardtiers.md
   - docs/models/operations/getratecardcurrent.md
-  - docs/models/operations/getratecardcontractsratetype.md
-  - docs/models/operations/getratecardcontractscredittype.md
-  - docs/models/operations/getratecardcontractstiers.md
+  - docs/models/operations/getratecardratecardsratetype.md
+  - docs/models/operations/getratecardratecardscredittype.md
+  - docs/models/operations/getratecardratecardstiers.md
   - docs/models/operations/getratecardupdates.md
   - docs/models/operations/ratecardentries.md
   - docs/models/operations/fiatcredittype.md
@@ -205,9 +225,9 @@ generatedFiles:
   - docs/models/operations/listratecardscredittype.md
   - docs/models/operations/listratecardstiers.md
   - docs/models/operations/listratecardscurrent.md
-  - docs/models/operations/listratecardscontractsratetype.md
-  - docs/models/operations/listratecardscontractscredittype.md
-  - docs/models/operations/listratecardscontractstiers.md
+  - docs/models/operations/listratecardsratecardsratetype.md
+  - docs/models/operations/listratecardsratecardscredittype.md
+  - docs/models/operations/listratecardsratecardstiers.md
   - docs/models/operations/listratecardsupdates.md
   - docs/models/operations/listratecardsratecardentries.md
   - docs/models/operations/listratecardsfiatcredittype.md
@@ -253,6 +273,12 @@ generatedFiles:
   - docs/models/operations/moveratecardproductsdata.md
   - docs/models/operations/moveratecardproductsresponsebody.md
   - docs/models/operations/moveratecardproductsresponse.md
+  - docs/models/operations/getratecardnamedschedulerequestbody.md
+  - docs/models/operations/getratecardnamedscheduledata.md
+  - docs/models/operations/getratecardnamedscheduleresponsebody.md
+  - docs/models/operations/getratecardnamedscheduleresponse.md
+  - docs/models/operations/updateratecardnamedschedulerequestbody.md
+  - docs/models/operations/updateratecardnamedscheduleresponse.md
   - docs/models/operations/getcontractrequestbody.md
   - docs/models/operations/getcontractcontractsresponse200applicationjsonresponsebodycontract.md
   - docs/models/operations/getcontracttype.md
@@ -927,160 +953,6 @@ generatedFiles:
   - docs/models/operations/getcontractratescheduledata.md
   - docs/models/operations/getcontractratescheduleresponsebody.md
   - docs/models/operations/getcontractratescheduleresponse.md
-  - docs/models/operations/listcustomercommitsrequestbody.md
-  - docs/models/operations/contract.md
-  - docs/models/operations/listcustomercommitstype.md
-  - docs/models/operations/product.md
-  - docs/models/operations/listcustomercommitscredittype.md
-  - docs/models/operations/listcustomercommitsscheduleitems.md
-  - docs/models/operations/listcustomercommitsaccessschedule.md
-  - docs/models/operations/listcustomercommitscontractscredittype.md
-  - docs/models/operations/listcustomercommitscontractsscheduleitems.md
-  - docs/models/operations/listcustomercommitsinvoiceschedule.md
-  - docs/models/operations/invoicecontract.md
-  - docs/models/operations/rolledoverfrom.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/thirteen.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/twelve.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/eleven.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/ten.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/nine.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/eight.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/seven.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200applicationjsontype.md
-  - docs/models/operations/six.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponse200type.md
-  - docs/models/operations/five.md
-  - docs/models/operations/listcustomercommitsledgercontractsresponsetype.md
-  - docs/models/operations/four.md
-  - docs/models/operations/listcustomercommitsledgercontractstype.md
-  - docs/models/operations/three.md
-  - docs/models/operations/listcustomercommitsledgertype.md
-  - docs/models/operations/listcustomercommitsledger2.md
-  - docs/models/operations/ledgertype.md
-  - docs/models/operations/listcustomercommitsledger1.md
-  - docs/models/operations/ledger.md
-  - docs/models/operations/listcustomercommitsdata.md
-  - docs/models/operations/listcustomercommitsresponsebody.md
-  - docs/models/operations/listcustomercommitsresponse.md
-  - docs/models/operations/createcustomercommittype.md
-  - docs/models/operations/createcustomercommitscheduleitems.md
-  - docs/models/operations/createcustomercommitaccessschedule.md
-  - docs/models/operations/createcustomercommitcontractsscheduleitems.md
-  - docs/models/operations/createcustomercommitfrequency.md
-  - docs/models/operations/createcustomercommitamountdistribution.md
-  - docs/models/operations/createcustomercommitrecurringschedule.md
-  - docs/models/operations/createcustomercommitinvoiceschedule.md
-  - docs/models/operations/createcustomercommitrequestbody.md
-  - docs/models/operations/createcustomercommitdata.md
-  - docs/models/operations/createcustomercommitresponsebody.md
-  - docs/models/operations/createcustomercommitresponse.md
-  - docs/models/operations/updatecommitenddaterequestbody.md
-  - docs/models/operations/updatecommitenddatedata.md
-  - docs/models/operations/updatecommitenddateresponsebody.md
-  - docs/models/operations/updatecommitenddateresponse.md
-  - docs/models/operations/listcustomercreditsrequestbody.md
-  - docs/models/operations/listcustomercreditscontract.md
-  - docs/models/operations/listcustomercreditstype.md
-  - docs/models/operations/listcustomercreditsproduct.md
-  - docs/models/operations/listcustomercreditscredittype.md
-  - docs/models/operations/listcustomercreditsscheduleitems.md
-  - docs/models/operations/listcustomercreditsaccessschedule.md
-  - docs/models/operations/listcustomercreditsledgercontractsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/ledger6.md
-  - docs/models/operations/listcustomercreditsledgercontractsresponse200applicationjsontype.md
-  - docs/models/operations/ledger5.md
-  - docs/models/operations/listcustomercreditsledgercontractsresponse200type.md
-  - docs/models/operations/ledger4.md
-  - docs/models/operations/listcustomercreditsledgercontractsresponsetype.md
-  - docs/models/operations/ledger3.md
-  - docs/models/operations/listcustomercreditsledgercontractstype.md
-  - docs/models/operations/ledger2.md
-  - docs/models/operations/listcustomercreditsledgertype.md
-  - docs/models/operations/ledger1.md
-  - docs/models/operations/listcustomercreditsledger.md
-  - docs/models/operations/listcustomercreditsdata.md
-  - docs/models/operations/listcustomercreditsresponsebody.md
-  - docs/models/operations/listcustomercreditsresponse.md
-  - docs/models/operations/createcustomercreditscheduleitems.md
-  - docs/models/operations/createcustomercreditaccessschedule.md
-  - docs/models/operations/createcustomercreditrequestbody.md
-  - docs/models/operations/createcustomercreditdata.md
-  - docs/models/operations/createcustomercreditresponsebody.md
-  - docs/models/operations/createcustomercreditresponse.md
-  - docs/models/operations/updatecreditenddaterequestbody.md
-  - docs/models/operations/updatecreditenddatedata.md
-  - docs/models/operations/updatecreditenddateresponsebody.md
-  - docs/models/operations/updatecreditenddateresponse.md
-  - docs/models/operations/listcustomerbalancesrequestbody.md
-  - docs/models/operations/listcustomerbalancesdatacontract.md
-  - docs/models/operations/listcustomerbalancesdatatype.md
-  - docs/models/operations/listcustomerbalancesdataproduct.md
-  - docs/models/operations/listcustomerbalancesdatacontractscredittype.md
-  - docs/models/operations/listcustomerbalancesdatacontractsscheduleitems.md
-  - docs/models/operations/listcustomerbalancesdataaccessschedule.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata26type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts6.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata25type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts5.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata24type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts4.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata23type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts3.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata22type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts2.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata2type.md
-  - docs/models/operations/listcustomerbalancesledgercontracts1.md
-  - docs/models/operations/listcustomerbalancesdataledger.md
-  - docs/models/operations/two.md
-  - docs/models/operations/datacontract.md
-  - docs/models/operations/datatype.md
-  - docs/models/operations/dataproduct.md
-  - docs/models/operations/datacredittype.md
-  - docs/models/operations/datascheduleitems.md
-  - docs/models/operations/dataaccessschedule.md
-  - docs/models/operations/listcustomerbalancesdatacredittype.md
-  - docs/models/operations/listcustomerbalancesdatascheduleitems.md
-  - docs/models/operations/datainvoiceschedule.md
-  - docs/models/operations/datainvoicecontract.md
-  - docs/models/operations/datarolledoverfrom.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata113type.md
-  - docs/models/operations/ledger13.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata112type.md
-  - docs/models/operations/ledger12.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata111type.md
-  - docs/models/operations/ledger11.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata110type.md
-  - docs/models/operations/ledger10.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata19type.md
-  - docs/models/operations/ledger9.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydata1type.md
-  - docs/models/operations/ledger8.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/ledger7.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/listcustomerbalancesledger6.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200applicationjsontype.md
-  - docs/models/operations/listcustomerbalancesledger5.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponse200type.md
-  - docs/models/operations/listcustomerbalancesledger4.md
-  - docs/models/operations/listcustomerbalancesledgercontractsresponsetype.md
-  - docs/models/operations/listcustomerbalancesledger3.md
-  - docs/models/operations/listcustomerbalancesledgercontractstype.md
-  - docs/models/operations/listcustomerbalancesledger2.md
-  - docs/models/operations/listcustomerbalancesledgertype.md
-  - docs/models/operations/listcustomerbalancesledger1.md
-  - docs/models/operations/dataledger.md
-  - docs/models/operations/one.md
-  - docs/models/operations/listcustomerbalancesdata.md
-  - docs/models/operations/listcustomerbalancesresponsebody.md
-  - docs/models/operations/listcustomerbalancesresponse.md
   - docs/models/operations/lineitems.md
   - docs/models/operations/scheduleproservicesinvoicerequestbody.md
   - docs/models/operations/scheduleproservicesinvoicecredittype.md
@@ -1108,37 +980,183 @@ generatedFiles:
   - docs/models/operations/scheduleproservicesinvoicedata.md
   - docs/models/operations/scheduleproservicesinvoiceresponsebody.md
   - docs/models/operations/scheduleproservicesinvoiceresponse.md
-  - docs/models/operations/regenerateinvoicerequestbody.md
-  - docs/models/operations/regenerateinvoicedata.md
-  - docs/models/operations/regenerateinvoiceresponsebody.md
-  - docs/models/operations/regenerateinvoiceresponse.md
-  - docs/models/operations/getcustomernamedschedulerequestbody.md
-  - docs/models/operations/getcustomernamedscheduledata.md
-  - docs/models/operations/getcustomernamedscheduleresponsebody.md
-  - docs/models/operations/getcustomernamedscheduleresponse.md
-  - docs/models/operations/updatecustomernamedschedulerequestbody.md
-  - docs/models/operations/updatecustomernamedscheduleresponse.md
   - docs/models/operations/getcontractnamedschedulerequestbody.md
   - docs/models/operations/getcontractnamedscheduledata.md
   - docs/models/operations/getcontractnamedscheduleresponsebody.md
   - docs/models/operations/getcontractnamedscheduleresponse.md
   - docs/models/operations/updatecontractnamedschedulerequestbody.md
   - docs/models/operations/updatecontractnamedscheduleresponse.md
-  - docs/models/operations/getratecardnamedschedulerequestbody.md
-  - docs/models/operations/getratecardnamedscheduledata.md
-  - docs/models/operations/getratecardnamedscheduleresponsebody.md
-  - docs/models/operations/getratecardnamedscheduleresponse.md
-  - docs/models/operations/updateratecardnamedschedulerequestbody.md
-  - docs/models/operations/updateratecardnamedscheduleresponse.md
+  - docs/models/operations/listcustomercommitsrequestbody.md
+  - docs/models/operations/contract.md
+  - docs/models/operations/listcustomercommitstype.md
+  - docs/models/operations/product.md
+  - docs/models/operations/listcustomercommitscredittype.md
+  - docs/models/operations/listcustomercommitsscheduleitems.md
+  - docs/models/operations/listcustomercommitsaccessschedule.md
+  - docs/models/operations/listcustomercommitscustomercommitscredittype.md
+  - docs/models/operations/listcustomercommitscustomercommitsscheduleitems.md
+  - docs/models/operations/listcustomercommitsinvoiceschedule.md
+  - docs/models/operations/invoicecontract.md
+  - docs/models/operations/rolledoverfrom.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydata13type.md
+  - docs/models/operations/thirteen.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydata12type.md
+  - docs/models/operations/twelve.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydata11type.md
+  - docs/models/operations/eleven.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydata10type.md
+  - docs/models/operations/ten.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydata9type.md
+  - docs/models/operations/nine.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodydatatype.md
+  - docs/models/operations/eight.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsonresponsebodytype.md
+  - docs/models/operations/seven.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200applicationjsontype.md
+  - docs/models/operations/six.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponse200type.md
+  - docs/models/operations/five.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitsresponsetype.md
+  - docs/models/operations/four.md
+  - docs/models/operations/listcustomercommitsledgercustomercommitstype.md
+  - docs/models/operations/three.md
+  - docs/models/operations/listcustomercommitsledgertype.md
+  - docs/models/operations/listcustomercommitsledger2.md
+  - docs/models/operations/ledgertype.md
+  - docs/models/operations/listcustomercommitsledger1.md
+  - docs/models/operations/ledger.md
+  - docs/models/operations/listcustomercommitsdata.md
+  - docs/models/operations/listcustomercommitsresponsebody.md
+  - docs/models/operations/listcustomercommitsresponse.md
+  - docs/models/operations/createcustomercommittype.md
+  - docs/models/operations/createcustomercommitscheduleitems.md
+  - docs/models/operations/createcustomercommitaccessschedule.md
+  - docs/models/operations/createcustomercommitcustomercommitsscheduleitems.md
+  - docs/models/operations/createcustomercommitfrequency.md
+  - docs/models/operations/createcustomercommitamountdistribution.md
+  - docs/models/operations/createcustomercommitrecurringschedule.md
+  - docs/models/operations/createcustomercommitinvoiceschedule.md
+  - docs/models/operations/createcustomercommitrequestbody.md
+  - docs/models/operations/createcustomercommitdata.md
+  - docs/models/operations/createcustomercommitresponsebody.md
+  - docs/models/operations/createcustomercommitresponse.md
+  - docs/models/operations/updatecommitenddaterequestbody.md
+  - docs/models/operations/updatecommitenddatedata.md
+  - docs/models/operations/updatecommitenddateresponsebody.md
+  - docs/models/operations/updatecommitenddateresponse.md
+  - docs/models/operations/listcustomercreditsrequestbody.md
+  - docs/models/operations/listcustomercreditscontract.md
+  - docs/models/operations/listcustomercreditstype.md
+  - docs/models/operations/listcustomercreditsproduct.md
+  - docs/models/operations/listcustomercreditscredittype.md
+  - docs/models/operations/listcustomercreditsscheduleitems.md
+  - docs/models/operations/listcustomercreditsaccessschedule.md
+  - docs/models/operations/listcustomercreditsledgercustomercreditsresponse200applicationjsonresponsebodytype.md
+  - docs/models/operations/ledger6.md
+  - docs/models/operations/listcustomercreditsledgercustomercreditsresponse200applicationjsontype.md
+  - docs/models/operations/ledger5.md
+  - docs/models/operations/listcustomercreditsledgercustomercreditsresponse200type.md
+  - docs/models/operations/ledger4.md
+  - docs/models/operations/listcustomercreditsledgercustomercreditsresponsetype.md
+  - docs/models/operations/ledger3.md
+  - docs/models/operations/listcustomercreditsledgercustomercreditstype.md
+  - docs/models/operations/ledger2.md
+  - docs/models/operations/listcustomercreditsledgertype.md
+  - docs/models/operations/ledger1.md
+  - docs/models/operations/listcustomercreditsledger.md
+  - docs/models/operations/listcustomercreditsdata.md
+  - docs/models/operations/listcustomercreditsresponsebody.md
+  - docs/models/operations/listcustomercreditsresponse.md
+  - docs/models/operations/createcustomercreditscheduleitems.md
+  - docs/models/operations/createcustomercreditaccessschedule.md
+  - docs/models/operations/createcustomercreditrequestbody.md
+  - docs/models/operations/createcustomercreditdata.md
+  - docs/models/operations/createcustomercreditresponsebody.md
+  - docs/models/operations/createcustomercreditresponse.md
+  - docs/models/operations/updatecreditenddaterequestbody.md
+  - docs/models/operations/updatecreditenddatedata.md
+  - docs/models/operations/updatecreditenddateresponsebody.md
+  - docs/models/operations/updatecreditenddateresponse.md
+  - docs/models/operations/listcustomerbalancesrequestbody.md
+  - docs/models/operations/listcustomerbalancesdatacontract.md
+  - docs/models/operations/listcustomerbalancesdatatype.md
+  - docs/models/operations/listcustomerbalancesdataproduct.md
+  - docs/models/operations/listcustomerbalancesdatacustomerbalancescredittype.md
+  - docs/models/operations/listcustomerbalancesdatacustomerbalancesscheduleitems.md
+  - docs/models/operations/listcustomerbalancesdataaccessschedule.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata26type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances6.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata25type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances5.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata24type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances4.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata23type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances3.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata22type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances2.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata2type.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalances1.md
+  - docs/models/operations/listcustomerbalancesdataledger.md
+  - docs/models/operations/two.md
+  - docs/models/operations/datacontract.md
+  - docs/models/operations/datatype.md
+  - docs/models/operations/dataproduct.md
+  - docs/models/operations/datacredittype.md
+  - docs/models/operations/datascheduleitems.md
+  - docs/models/operations/dataaccessschedule.md
+  - docs/models/operations/listcustomerbalancesdatacredittype.md
+  - docs/models/operations/listcustomerbalancesdatascheduleitems.md
+  - docs/models/operations/datainvoiceschedule.md
+  - docs/models/operations/datainvoicecontract.md
+  - docs/models/operations/datarolledoverfrom.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata113type.md
+  - docs/models/operations/ledger13.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata112type.md
+  - docs/models/operations/ledger12.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata111type.md
+  - docs/models/operations/ledger11.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata110type.md
+  - docs/models/operations/ledger10.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata19type.md
+  - docs/models/operations/ledger9.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydata1type.md
+  - docs/models/operations/ledger8.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodydatatype.md
+  - docs/models/operations/ledger7.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsonresponsebodytype.md
+  - docs/models/operations/listcustomerbalancesledger6.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200applicationjsontype.md
+  - docs/models/operations/listcustomerbalancesledger5.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponse200type.md
+  - docs/models/operations/listcustomerbalancesledger4.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancesresponsetype.md
+  - docs/models/operations/listcustomerbalancesledger3.md
+  - docs/models/operations/listcustomerbalancesledgercustomerbalancestype.md
+  - docs/models/operations/listcustomerbalancesledger2.md
+  - docs/models/operations/listcustomerbalancesledgertype.md
+  - docs/models/operations/listcustomerbalancesledger1.md
+  - docs/models/operations/dataledger.md
+  - docs/models/operations/one.md
+  - docs/models/operations/listcustomerbalancesdata.md
+  - docs/models/operations/listcustomerbalancesresponsebody.md
+  - docs/models/operations/listcustomerbalancesresponse.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/security.md
   - docs/models/sdkerrors/badrequest.md
   - docs/models/sdkerrors/notfound.md
   - docs/sdks/metronome/README.md
   - docs/models/operations/option.md
-  - docs/sdks/contracts/README.md
-  - docs/sdks/invoices/README.md
+  - docs/sdks/customers/README.md
   - docs/sdks/namedschedules/README.md
+  - docs/sdks/invoices/README.md
+  - docs/sdks/products/README.md
+  - docs/sdks/ratecards/README.md
+  - docs/sdks/metronomeratecardsnamedschedules/README.md
+  - docs/sdks/contracts/README.md
+  - docs/sdks/metronomenamedschedules/README.md
+  - docs/sdks/customercommits/README.md
+  - docs/sdks/customercredits/README.md
+  - docs/sdks/customerbalances/README.md
   - USAGE.md
   - models/operations/options.go
   - .gitattributes

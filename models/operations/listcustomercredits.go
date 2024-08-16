@@ -243,34 +243,34 @@ func (o *ListCustomerCreditsAccessSchedule) GetScheduleItems() []ListCustomerCre
 	return o.ScheduleItems
 }
 
-type ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType string
+type ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType string
 
 const (
-	ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyTypeCreditManual ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType = "CREDIT_MANUAL"
+	ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyTypeCreditManual ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType = "CREDIT_MANUAL"
 )
 
-func (e ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (e ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType) ToPointer() *ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType {
 	return &e
 }
-func (e *ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_MANUAL":
-		*e = ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType(v)
+		*e = ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType: %v", v)
 	}
 }
 
 type Ledger6 struct {
-	Type      ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	Timestamp time.Time                                                                    `json:"timestamp"`
-	Amount    float64                                                                      `json:"amount"`
-	Reason    string                                                                       `json:"reason"`
+	Type      ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType `json:"type"`
+	Timestamp time.Time                                                                          `json:"timestamp"`
+	Amount    float64                                                                            `json:"amount"`
+	Reason    string                                                                             `json:"reason"`
 }
 
 func (l Ledger6) MarshalJSON() ([]byte, error) {
@@ -284,9 +284,9 @@ func (l *Ledger6) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger6) GetType() ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType {
+func (o *Ledger6) GetType() ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType {
 	if o == nil {
-		return ListCustomerCreditsLedgerContractsResponse200ApplicationJSONResponseBodyType("")
+		return ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONResponseBodyType("")
 	}
 	return o.Type
 }
@@ -312,35 +312,35 @@ func (o *Ledger6) GetReason() string {
 	return o.Reason
 }
 
-type ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType string
+type ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType string
 
 const (
-	ListCustomerCreditsLedgerContractsResponse200ApplicationJSONTypeCreditCredited ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType = "CREDIT_CREDITED"
+	ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONTypeCreditCredited ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType = "CREDIT_CREDITED"
 )
 
-func (e ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType) ToPointer() *ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType {
+func (e ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType) ToPointer() *ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType {
 	return &e
 }
-func (e *ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_CREDITED":
-		*e = ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType(v)
+		*e = ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType: %v", v)
 	}
 }
 
 type Ledger5 struct {
-	Type      ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType `json:"type"`
-	Timestamp time.Time                                                        `json:"timestamp"`
-	Amount    float64                                                          `json:"amount"`
-	SegmentID string                                                           `json:"segment_id"`
-	InvoiceID string                                                           `json:"invoice_id"`
+	Type      ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType `json:"type"`
+	Timestamp time.Time                                                              `json:"timestamp"`
+	Amount    float64                                                                `json:"amount"`
+	SegmentID string                                                                 `json:"segment_id"`
+	InvoiceID string                                                                 `json:"invoice_id"`
 }
 
 func (l Ledger5) MarshalJSON() ([]byte, error) {
@@ -354,9 +354,9 @@ func (l *Ledger5) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger5) GetType() ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType {
+func (o *Ledger5) GetType() ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType {
 	if o == nil {
-		return ListCustomerCreditsLedgerContractsResponse200ApplicationJSONType("")
+		return ListCustomerCreditsLedgerCustomerCreditsResponse200ApplicationJSONType("")
 	}
 	return o.Type
 }
@@ -389,35 +389,35 @@ func (o *Ledger5) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCreditsLedgerContractsResponse200Type string
+type ListCustomerCreditsLedgerCustomerCreditsResponse200Type string
 
 const (
-	ListCustomerCreditsLedgerContractsResponse200TypeCreditCanceled ListCustomerCreditsLedgerContractsResponse200Type = "CREDIT_CANCELED"
+	ListCustomerCreditsLedgerCustomerCreditsResponse200TypeCreditCanceled ListCustomerCreditsLedgerCustomerCreditsResponse200Type = "CREDIT_CANCELED"
 )
 
-func (e ListCustomerCreditsLedgerContractsResponse200Type) ToPointer() *ListCustomerCreditsLedgerContractsResponse200Type {
+func (e ListCustomerCreditsLedgerCustomerCreditsResponse200Type) ToPointer() *ListCustomerCreditsLedgerCustomerCreditsResponse200Type {
 	return &e
 }
-func (e *ListCustomerCreditsLedgerContractsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCreditsLedgerCustomerCreditsResponse200Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_CANCELED":
-		*e = ListCustomerCreditsLedgerContractsResponse200Type(v)
+		*e = ListCustomerCreditsLedgerCustomerCreditsResponse200Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerContractsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerCustomerCreditsResponse200Type: %v", v)
 	}
 }
 
 type Ledger4 struct {
-	Type      ListCustomerCreditsLedgerContractsResponse200Type `json:"type"`
-	Timestamp time.Time                                         `json:"timestamp"`
-	Amount    float64                                           `json:"amount"`
-	SegmentID string                                            `json:"segment_id"`
-	InvoiceID string                                            `json:"invoice_id"`
+	Type      ListCustomerCreditsLedgerCustomerCreditsResponse200Type `json:"type"`
+	Timestamp time.Time                                               `json:"timestamp"`
+	Amount    float64                                                 `json:"amount"`
+	SegmentID string                                                  `json:"segment_id"`
+	InvoiceID string                                                  `json:"invoice_id"`
 }
 
 func (l Ledger4) MarshalJSON() ([]byte, error) {
@@ -431,9 +431,9 @@ func (l *Ledger4) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger4) GetType() ListCustomerCreditsLedgerContractsResponse200Type {
+func (o *Ledger4) GetType() ListCustomerCreditsLedgerCustomerCreditsResponse200Type {
 	if o == nil {
-		return ListCustomerCreditsLedgerContractsResponse200Type("")
+		return ListCustomerCreditsLedgerCustomerCreditsResponse200Type("")
 	}
 	return o.Type
 }
@@ -466,34 +466,34 @@ func (o *Ledger4) GetInvoiceID() string {
 	return o.InvoiceID
 }
 
-type ListCustomerCreditsLedgerContractsResponseType string
+type ListCustomerCreditsLedgerCustomerCreditsResponseType string
 
 const (
-	ListCustomerCreditsLedgerContractsResponseTypeCreditExpiration ListCustomerCreditsLedgerContractsResponseType = "CREDIT_EXPIRATION"
+	ListCustomerCreditsLedgerCustomerCreditsResponseTypeCreditExpiration ListCustomerCreditsLedgerCustomerCreditsResponseType = "CREDIT_EXPIRATION"
 )
 
-func (e ListCustomerCreditsLedgerContractsResponseType) ToPointer() *ListCustomerCreditsLedgerContractsResponseType {
+func (e ListCustomerCreditsLedgerCustomerCreditsResponseType) ToPointer() *ListCustomerCreditsLedgerCustomerCreditsResponseType {
 	return &e
 }
-func (e *ListCustomerCreditsLedgerContractsResponseType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCreditsLedgerCustomerCreditsResponseType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_EXPIRATION":
-		*e = ListCustomerCreditsLedgerContractsResponseType(v)
+		*e = ListCustomerCreditsLedgerCustomerCreditsResponseType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerContractsResponseType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerCustomerCreditsResponseType: %v", v)
 	}
 }
 
 type Ledger3 struct {
-	Type      ListCustomerCreditsLedgerContractsResponseType `json:"type"`
-	Timestamp time.Time                                      `json:"timestamp"`
-	Amount    float64                                        `json:"amount"`
-	SegmentID string                                         `json:"segment_id"`
+	Type      ListCustomerCreditsLedgerCustomerCreditsResponseType `json:"type"`
+	Timestamp time.Time                                            `json:"timestamp"`
+	Amount    float64                                              `json:"amount"`
+	SegmentID string                                               `json:"segment_id"`
 }
 
 func (l Ledger3) MarshalJSON() ([]byte, error) {
@@ -507,9 +507,9 @@ func (l *Ledger3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger3) GetType() ListCustomerCreditsLedgerContractsResponseType {
+func (o *Ledger3) GetType() ListCustomerCreditsLedgerCustomerCreditsResponseType {
 	if o == nil {
-		return ListCustomerCreditsLedgerContractsResponseType("")
+		return ListCustomerCreditsLedgerCustomerCreditsResponseType("")
 	}
 	return o.Type
 }
@@ -535,35 +535,35 @@ func (o *Ledger3) GetSegmentID() string {
 	return o.SegmentID
 }
 
-type ListCustomerCreditsLedgerContractsType string
+type ListCustomerCreditsLedgerCustomerCreditsType string
 
 const (
-	ListCustomerCreditsLedgerContractsTypeCreditAutomatedInvoiceDeduction ListCustomerCreditsLedgerContractsType = "CREDIT_AUTOMATED_INVOICE_DEDUCTION"
+	ListCustomerCreditsLedgerCustomerCreditsTypeCreditAutomatedInvoiceDeduction ListCustomerCreditsLedgerCustomerCreditsType = "CREDIT_AUTOMATED_INVOICE_DEDUCTION"
 )
 
-func (e ListCustomerCreditsLedgerContractsType) ToPointer() *ListCustomerCreditsLedgerContractsType {
+func (e ListCustomerCreditsLedgerCustomerCreditsType) ToPointer() *ListCustomerCreditsLedgerCustomerCreditsType {
 	return &e
 }
-func (e *ListCustomerCreditsLedgerContractsType) UnmarshalJSON(data []byte) error {
+func (e *ListCustomerCreditsLedgerCustomerCreditsType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CREDIT_AUTOMATED_INVOICE_DEDUCTION":
-		*e = ListCustomerCreditsLedgerContractsType(v)
+		*e = ListCustomerCreditsLedgerCustomerCreditsType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerContractsType: %v", v)
+		return fmt.Errorf("invalid value for ListCustomerCreditsLedgerCustomerCreditsType: %v", v)
 	}
 }
 
 type Ledger2 struct {
-	Type      ListCustomerCreditsLedgerContractsType `json:"type"`
-	Timestamp time.Time                              `json:"timestamp"`
-	Amount    float64                                `json:"amount"`
-	SegmentID string                                 `json:"segment_id"`
-	InvoiceID string                                 `json:"invoice_id"`
+	Type      ListCustomerCreditsLedgerCustomerCreditsType `json:"type"`
+	Timestamp time.Time                                    `json:"timestamp"`
+	Amount    float64                                      `json:"amount"`
+	SegmentID string                                       `json:"segment_id"`
+	InvoiceID string                                       `json:"invoice_id"`
 }
 
 func (l Ledger2) MarshalJSON() ([]byte, error) {
@@ -577,9 +577,9 @@ func (l *Ledger2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Ledger2) GetType() ListCustomerCreditsLedgerContractsType {
+func (o *Ledger2) GetType() ListCustomerCreditsLedgerCustomerCreditsType {
 	if o == nil {
-		return ListCustomerCreditsLedgerContractsType("")
+		return ListCustomerCreditsLedgerCustomerCreditsType("")
 	}
 	return o.Type
 }

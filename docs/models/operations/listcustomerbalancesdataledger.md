@@ -3,39 +3,39 @@
 
 ## Supported Types
 
-### ListCustomerBalancesLedgerContracts1
+### ListCustomerBalancesLedgerCustomerBalances1
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts1(operations.ListCustomerBalancesLedgerContracts1{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances1(operations.ListCustomerBalancesLedgerCustomerBalances1{/* values here */})
 ```
 
-### ListCustomerBalancesLedgerContracts2
+### ListCustomerBalancesLedgerCustomerBalances2
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts2(operations.ListCustomerBalancesLedgerContracts2{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances2(operations.ListCustomerBalancesLedgerCustomerBalances2{/* values here */})
 ```
 
-### ListCustomerBalancesLedgerContracts3
+### ListCustomerBalancesLedgerCustomerBalances3
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts3(operations.ListCustomerBalancesLedgerContracts3{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances3(operations.ListCustomerBalancesLedgerCustomerBalances3{/* values here */})
 ```
 
-### ListCustomerBalancesLedgerContracts4
+### ListCustomerBalancesLedgerCustomerBalances4
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts4(operations.ListCustomerBalancesLedgerContracts4{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances4(operations.ListCustomerBalancesLedgerCustomerBalances4{/* values here */})
 ```
 
-### ListCustomerBalancesLedgerContracts5
+### ListCustomerBalancesLedgerCustomerBalances5
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts5(operations.ListCustomerBalancesLedgerContracts5{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances5(operations.ListCustomerBalancesLedgerCustomerBalances5{/* values here */})
 ```
 
-### ListCustomerBalancesLedgerContracts6
+### ListCustomerBalancesLedgerCustomerBalances6
 
 ```go
-listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerContracts6(operations.ListCustomerBalancesLedgerContracts6{/* values here */})
+listCustomerBalancesDataLedger := operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances6(operations.ListCustomerBalancesLedgerCustomerBalances6{/* values here */})
 ```
 
