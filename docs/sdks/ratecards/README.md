@@ -25,9 +25,9 @@ Get a specific rate schedule including all rate card entries
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -91,9 +91,9 @@ Get rate card rates for a specific time.
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -159,8 +159,8 @@ Get a specific rate card
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -213,8 +213,8 @@ List rate cards
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -279,8 +279,8 @@ Create a new rate card
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -346,8 +346,8 @@ Update a rate card
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -403,9 +403,9 @@ Add a new rate
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -465,9 +465,9 @@ Add new rates
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -547,8 +547,8 @@ Sets the ordering of products within a rate card
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -606,8 +606,8 @@ Updates ordering of specified products
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )

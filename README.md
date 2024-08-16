@@ -25,8 +25,8 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"log"
 )
 
@@ -136,9 +136,9 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/retry"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
 	"log"
 	"models/operations"
 )
@@ -176,9 +176,9 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/retry"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
 	"log"
 )
 
@@ -230,9 +230,9 @@ package main
 import (
 	"context"
 	"errors"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/sdkerrors"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/sdkerrors"
 	"log"
 )
 
@@ -286,8 +286,8 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"log"
 )
 
@@ -318,8 +318,8 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"log"
 )
 
@@ -388,8 +388,8 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"log"
 )
 
@@ -424,8 +424,8 @@ package main
 
 import (
 	"context"
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"log"
 )
 

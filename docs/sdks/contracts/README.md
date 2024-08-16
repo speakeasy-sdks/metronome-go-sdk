@@ -25,8 +25,8 @@ Get a specific contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -79,8 +79,8 @@ List all contracts for a customer
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -133,9 +133,9 @@ Create a new contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -191,9 +191,9 @@ Amend a contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -248,8 +248,8 @@ Archive a contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -305,9 +305,9 @@ Set usage filter for a contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -368,8 +368,8 @@ Add a manual balance entry
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )
@@ -428,9 +428,9 @@ Update the end date of a contract
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -486,9 +486,9 @@ Get the rate schedule for the rate card on a given contract.
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"context"
 	"log"
 )
@@ -553,8 +553,8 @@ Create a new, scheduled invoice for Professional Services terms on a contract. T
 package main
 
 import(
-	metronomegosdk "github.com/Metronome-Industries/metronome-go-sdk"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/operations"
+	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"context"
 	"log"
 )

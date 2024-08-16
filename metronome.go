@@ -5,10 +5,10 @@ package metronomegosdk
 import (
 	"context"
 	"fmt"
-	"github.com/Metronome-Industries/metronome-go-sdk/internal/hooks"
-	"github.com/Metronome-Industries/metronome-go-sdk/internal/utils"
-	"github.com/Metronome-Industries/metronome-go-sdk/models/components"
-	"github.com/Metronome-Industries/metronome-go-sdk/retry"
+	"github.com/speakeasy-sdks/metronome-go-sdk/internal/hooks"
+	"github.com/speakeasy-sdks/metronome-go-sdk/internal/utils"
+	"github.com/speakeasy-sdks/metronome-go-sdk/models/components"
+	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
 	"net/http"
 	"time"
 )
@@ -152,9 +152,9 @@ func New(opts ...SDKOption) *Metronome {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.2.2",
+			SDKVersion:        "0.2.3",
 			GenVersion:        "2.401.2",
-			UserAgent:         "speakeasy-sdk/go 0.2.2 2.401.2 1.0.0 github.com/Metronome-Industries/metronome-go-sdk",
+			UserAgent:         "speakeasy-sdk/go 0.2.3 2.401.2 1.0.0 github.com/speakeasy-sdks/metronome-go-sdk",
 			Hooks:             hooks.New(),
 		},
 	}

@@ -13,7 +13,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 
 	"github.com/ericlagergren/decimal"
 )

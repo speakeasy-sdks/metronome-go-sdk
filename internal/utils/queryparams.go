@@ -14,7 +14,7 @@ import (
 
 	"github.com/ericlagergren/decimal"
 
-	"github.com/Metronome-Industries/metronome-go-sdk/types"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 )
 
 func PopulateQueryParams(_ context.Context, req *http.Request, queryParams interface{}, globals interface{}) error {
