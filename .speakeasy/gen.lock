@@ -3,10 +3,12 @@ id: a0e700a4-3263-4494-abca-a51edefef8d9
 management:
   docChecksum: 8ab4d8f436057419ca945475504a742c
   docVersion: 1.0.0
-  speakeasyVersion: 1.371.0
-  generationVersion: 2.399.0
-  releaseVersion: 0.1.4
-  configChecksum: 71828600dab2fb96fbce7093ae2bc9a1
+  speakeasyVersion: 1.374.0
+  generationVersion: 2.401.2
+  releaseVersion: 0.1.5
+  configChecksum: 6f90c2a80cf9fadfc2ec0349e069b623
+  repoURL: https://github.com/speakeasy-sdks/metronome-go-sdk.git
+  installationURL: https://github.com/speakeasy-sdks/metronome-go-sdk
 features:
   go:
     additionalDependencies: 0.1.0

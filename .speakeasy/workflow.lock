@@ -1,20 +1,22 @@
-speakeasyVersion: 1.371.0
+speakeasyVersion: 1.374.0
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
-        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
+        sourceRevisionDigest: sha256:8285dad1689d973eca44d9f28a26f3d9721839924aa314be43234e2f8ea822ee
+        sourceBlobDigest: sha256:3e0c5ed1e525c002304884c9d34d4d9eeb99f4e26541f592fd80b22a65387d2a
         tags:
             - latest
+            - main
 targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:063a3329bebd4287cfd1be2ae73d407004940dd94689a269ad5d6f143c5449c6
-        sourceBlobDigest: sha256:33b19632b2041e116287a7e45eed0054fbb1c2a6a24e9cdc2dde7a10db5b7fe7
-        outLocation: /home/luke/github/metronome-go-sdk
+        sourceRevisionDigest: sha256:8285dad1689d973eca44d9f28a26f3d9721839924aa314be43234e2f8ea822ee
+        sourceBlobDigest: sha256:3e0c5ed1e525c002304884c9d34d4d9eeb99f4e26541f592fd80b22a65387d2a
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
+    speakeasyVersion: latest
     sources:
         Metronome-OAS:
             inputs:
@@ -22,7 +24,7 @@ workflow:
             overlays:
                 - location: Speakeasy-Suggested-Overlay.yaml
             registry:
-                location: registry.speakeasyapi.dev/lukehagar/lukehagar/metronome-oas
+                location: registry.speakeasyapi.dev/metronome/metronome/metronome-oas
     targets:
         metronome:
             target: go
