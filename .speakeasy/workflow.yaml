@@ -4,7 +4,7 @@ sources:
         inputs:
             - location: https://api.metronome.com/v1/openapi/contracts.json
         overlays:
-          - location: Speakeasy-Suggested-Overlay.yaml
+            - location: Speakeasy-Suggested-Overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/metronome/metronome/metronome-oas
 targets:
