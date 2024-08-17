@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: a0e700a4-3263-4494-abca-a51edefef8d9
 management:
-  docChecksum: 26a9eda3a16fc17150481f974727607b
+  docChecksum: 2b5b12af7c38c72186aa6be97442e213
   docVersion: 1.0.0
-  speakeasyVersion: 1.374.1
+  speakeasyVersion: 1.374.2
   generationVersion: 2.401.2
-  releaseVersion: 0.2.3
-  configChecksum: c5235e1b42fce69fdec12c9203e4fa33
+  releaseVersion: 0.3.0
+  configChecksum: f6c2f5bc50ff8a8030bc649f8814cbca
   repoURL: https://github.com/speakeasy-sdks/metronome-go-sdk.git
   installationURL: https://github.com/speakeasy-sdks/metronome-go-sdk
 features:
@@ -29,6 +29,7 @@ features:
     responseFormat: 0.1.2
     retries: 2.83.0
     sdkHooks: 0.1.0
+    tests: 0.3.0
     unions: 2.85.9
 generatedFiles:
   - namedschedules.go
@@ -61,6 +62,17 @@ generatedFiles:
   - internal/utils/retries.go
   - internal/utils/security.go
   - internal/utils/utils.go
+  - tests/customers_test.go
+  - tests/namedschedules_test.go
+  - tests/invoices_test.go
+  - tests/products_test.go
+  - tests/ratecards_test.go
+  - tests/metronomeratecardsnamedschedules_test.go
+  - tests/contracts_test.go
+  - tests/metronomenamedschedules_test.go
+  - tests/customercommits_test.go
+  - tests/customercredits_test.go
+  - tests/customerbalances_test.go
   - /models/operations/setcustomerbillablestatus.go
   - /models/operations/getcustomernamedschedule.go
   - /models/operations/updatecustomernamedschedule.go

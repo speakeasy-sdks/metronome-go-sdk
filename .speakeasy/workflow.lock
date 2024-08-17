@@ -1,9 +1,9 @@
-speakeasyVersion: 1.374.1
+speakeasyVersion: 1.374.2
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:7756c2f7e60ae2cf4210df40816596e2447f1744b94767f26239aa042a7261ee
-        sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
+        sourceRevisionDigest: sha256:5670b25a831885bc14322c825dbecdc7a53afafec1db4858f889d1d0c366c74a
+        sourceBlobDigest: sha256:d17d45fe8bd8bb2b9686fe13fdf57394c96b78684a62e17d654ecf3815f065cc
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:7756c2f7e60ae2cf4210df40816596e2447f1744b94767f26239aa042a7261ee
-        sourceBlobDigest: sha256:2611b83d2b3c0c4f4282070c1d0c740ab76172d0b8324082bab847dd1756f1d3
+        sourceRevisionDigest: sha256:5670b25a831885bc14322c825dbecdc7a53afafec1db4858f889d1d0c366c74a
+        sourceBlobDigest: sha256:d17d45fe8bd8bb2b9686fe13fdf57394c96b78684a62e17d654ecf3815f065cc
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
