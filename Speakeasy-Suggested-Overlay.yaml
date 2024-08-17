@@ -5,6 +5,9 @@ info:
 actions:
   - target: $
     update:
+      x-speakeasy-test: true
+  - target: $
+    update:
       x-speakeasy-retries:
         strategy: backoff
         backoff:
