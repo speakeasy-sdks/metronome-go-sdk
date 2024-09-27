@@ -39,3 +39,13 @@ Based on:
 - [go v0.3.0] .
 ### Releases
 - [Go v0.3.0] https://github.com/speakeasy-sdks/metronome-go-sdk/releases/tag/v0.3.0 - .
+
+## 2024-09-27 00:05:33
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.403.3 (2.424.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.3.1] .
+### Releases
+- [Go v0.3.1] https://github.com/speakeasy-sdks/metronome-go-sdk/releases/tag/v0.3.1 - .

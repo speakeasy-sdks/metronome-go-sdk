@@ -150,7 +150,7 @@ func main() {
 
 ## Get
 
-Get a specific rate card
+Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 
 
 ### Example Usage
@@ -204,7 +204,7 @@ func main() {
 
 ## List
 
-List rate cards
+List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 
 
 ### Example Usage
