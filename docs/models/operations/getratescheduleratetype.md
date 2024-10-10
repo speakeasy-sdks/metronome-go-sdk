@@ -11,7 +11,7 @@
 | `GetRateScheduleRateTypePercentageLower`   | percentage                                 |
 | `GetRateScheduleRateTypeSubscriptionUpper` | SUBSCRIPTION                               |
 | `GetRateScheduleRateTypeSubscriptionLower` | subscription                               |
-| `GetRateScheduleRateTypeCustomUpper`       | CUSTOM                                     |
-| `GetRateScheduleRateTypeCustomLower`       | custom                                     |
 | `GetRateScheduleRateTypeTieredUpper`       | TIERED                                     |
 | `GetRateScheduleRateTypeTieredLower`       | tiered                                     |
+| `GetRateScheduleRateTypeCustomUpper`       | CUSTOM                                     |
+| `GetRateScheduleRateTypeCustomLower`       | custom                                     |

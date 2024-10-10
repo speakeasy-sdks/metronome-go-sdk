@@ -33,74 +33,12 @@ func TestRateCards_GetRateCard_(t *testing.T) {
 	assert.Equal(t, 200, res.HTTPMeta.Response.StatusCode)
 	assert.Equal(t, operations.GetRateCardResponseBody{
 		Data: operations.GetRateCardData{
-			ID:   "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-			Name: "Test rate card",
-			RateCardEntries: map[string]operations.RateCardEntries{
-				"d6300dbb-882e-4d2d-8dec-5125d16b65d0": operations.RateCardEntries{
-					Current: &operations.GetRateCardCurrent{
-						ID:        metronomegosdk.String("7ccf1421-dcf8-408e-9174-0c314113ad3b"),
-						ProductID: metronomegosdk.String("d6300dbb-882e-4d2d-8dec-5125d16b65d0"),
-						RateType:  operations.GetRateCardRateTypeFlat.ToPointer(),
-						Price:     metronomegosdk.Float64(1000),
-						CreditType: &operations.GetRateCardCreditType{
-							Name: "USD (cents)",
-							ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-						},
-						StartingAt: types.MustNewTimeFromString("2020-01-01T00:00:00Z"),
-						Entitled:   metronomegosdk.Bool(true),
-						CreatedAt:  types.MustNewTimeFromString("2019-12-30T04:25:55.123Z"),
-						CreatedBy:  metronomegosdk.String("Bob"),
-					},
-					Updates: []operations.GetRateCardUpdates{
-						operations.GetRateCardUpdates{
-							ID:        "7ccf1421-dcf8-408e-9174-0c314113ad3b",
-							ProductID: "d6300dbb-882e-4d2d-8dec-5125d16b65d0",
-							RateType:  operations.GetRateCardRateCardsRateTypeFlat,
-							Price:     metronomegosdk.Float64(1000),
-							CreditType: &operations.GetRateCardRateCardsCreditType{
-								Name: "USD (cents)",
-								ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-							},
-							StartingAt: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-							Entitled:   true,
-							CreatedAt:  types.MustTimeFromString("2019-12-30T04:25:55.123Z"),
-							CreatedBy:  "Bob",
-						},
-						operations.GetRateCardUpdates{
-							ID:        "43d12d0a-89c2-46d3-b019-ed3678a0e121",
-							ProductID: "d6300dbb-882e-4d2d-8dec-5125d16b65d0",
-							RateType:  operations.GetRateCardRateCardsRateTypeFlat,
-							Price:     metronomegosdk.Float64(2000),
-							CreditType: &operations.GetRateCardRateCardsCreditType{
-								Name: "USD (cents)",
-								ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-							},
-							StartingAt: types.MustTimeFromString("2020-05-01T00:00:00Z"),
-							Entitled:   true,
-							CreatedAt:  types.MustTimeFromString("2019-12-30T04:27:55.123Z"),
-							CreatedBy:  "Bob",
-						},
-					},
-				},
-				"ac46d3cc-ad44-45b1-8dfb-e19d97872b32": operations.RateCardEntries{
-					Current: nil,
-					Updates: []operations.GetRateCardUpdates{
-						operations.GetRateCardUpdates{
-							ID:         "1efdf770-4c8a-43e3-9f50-fc9c8059bf05",
-							ProductID:  "ac46d3cc-ad44-45b1-8dfb-e19d97872b32",
-							RateType:   operations.GetRateCardRateCardsRateTypePercentage,
-							Price:      metronomegosdk.Float64(0.1),
-							StartingAt: types.MustTimeFromString("2020-05-01T00:00:00Z"),
-							Entitled:   true,
-							CreatedAt:  types.MustTimeFromString("2019-12-30T04:26:55.123Z"),
-							CreatedBy:  "Alice",
-						},
-					},
-				},
-			},
-			CreatedAt:   types.MustTimeFromString("2019-12-30T04:24:55.123Z"),
-			CreatedBy:   "Bob",
-			Description: metronomegosdk.String("Test rate card description"),
+			ID:              "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+			Name:            "Test rate card",
+			RateCardEntries: map[string]operations.RateCardEntries{},
+			CreatedAt:       types.MustTimeFromString("2019-12-30T04:24:55.123Z"),
+			CreatedBy:       "Bob",
+			Description:     metronomegosdk.String("Test rate card description"),
 			FiatCreditType: &operations.FiatCreditType{
 				Name: "USD (cents)",
 				ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
@@ -129,74 +67,12 @@ func TestRateCards_ListRateCards_(t *testing.T) {
 	assert.Equal(t, operations.ListRateCardsResponseBody{
 		Data: []operations.ListRateCardsData{
 			operations.ListRateCardsData{
-				ID:   "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
-				Name: "Test rate card",
-				RateCardEntries: map[string]operations.ListRateCardsRateCardEntries{
-					"d6300dbb-882e-4d2d-8dec-5125d16b65d0": operations.ListRateCardsRateCardEntries{
-						Current: &operations.ListRateCardsCurrent{
-							ID:        metronomegosdk.String("7ccf1421-dcf8-408e-9174-0c314113ad3b"),
-							ProductID: metronomegosdk.String("d6300dbb-882e-4d2d-8dec-5125d16b65d0"),
-							RateType:  operations.ListRateCardsRateTypeFlat.ToPointer(),
-							Price:     metronomegosdk.Float64(1000),
-							CreditType: &operations.ListRateCardsCreditType{
-								Name: "USD (cents)",
-								ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-							},
-							StartingAt: types.MustNewTimeFromString("2020-01-01T00:00:00Z"),
-							Entitled:   metronomegosdk.Bool(true),
-							CreatedAt:  types.MustNewTimeFromString("2019-12-30T04:25:55.123Z"),
-							CreatedBy:  metronomegosdk.String("Bob"),
-						},
-						Updates: []operations.ListRateCardsUpdates{
-							operations.ListRateCardsUpdates{
-								ID:        "7ccf1421-dcf8-408e-9174-0c314113ad3b",
-								ProductID: "d6300dbb-882e-4d2d-8dec-5125d16b65d0",
-								RateType:  operations.ListRateCardsRateCardsRateTypeFlat,
-								Price:     metronomegosdk.Float64(1000),
-								CreditType: &operations.ListRateCardsRateCardsCreditType{
-									Name: "USD (cents)",
-									ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-								},
-								StartingAt: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-								Entitled:   true,
-								CreatedAt:  types.MustTimeFromString("2019-12-30T04:25:55.123Z"),
-								CreatedBy:  "Bob",
-							},
-							operations.ListRateCardsUpdates{
-								ID:        "43d12d0a-89c2-46d3-b019-ed3678a0e121",
-								ProductID: "d6300dbb-882e-4d2d-8dec-5125d16b65d0",
-								RateType:  operations.ListRateCardsRateCardsRateTypeFlat,
-								Price:     metronomegosdk.Float64(2000),
-								CreditType: &operations.ListRateCardsRateCardsCreditType{
-									Name: "USD (cents)",
-									ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
-								},
-								StartingAt: types.MustTimeFromString("2020-05-01T00:00:00Z"),
-								Entitled:   true,
-								CreatedAt:  types.MustTimeFromString("2019-12-30T04:27:55.123Z"),
-								CreatedBy:  "Bob",
-							},
-						},
-					},
-					"ac46d3cc-ad44-45b1-8dfb-e19d97872b32": operations.ListRateCardsRateCardEntries{
-						Current: nil,
-						Updates: []operations.ListRateCardsUpdates{
-							operations.ListRateCardsUpdates{
-								ID:         "1efdf770-4c8a-43e3-9f50-fc9c8059bf05",
-								ProductID:  "ac46d3cc-ad44-45b1-8dfb-e19d97872b32",
-								RateType:   operations.ListRateCardsRateCardsRateTypePercentage,
-								Price:      metronomegosdk.Float64(0.1),
-								StartingAt: types.MustTimeFromString("2020-05-01T00:00:00Z"),
-								Entitled:   true,
-								CreatedAt:  types.MustTimeFromString("2019-12-30T04:26:55.123Z"),
-								CreatedBy:  "Alice",
-							},
-						},
-					},
-				},
-				CreatedAt:   types.MustTimeFromString("2019-12-30T04:24:55.123Z"),
-				CreatedBy:   "Bob",
-				Description: metronomegosdk.String("Test rate card description"),
+				ID:              "d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
+				Name:            "Test rate card",
+				RateCardEntries: map[string]operations.ListRateCardsRateCardEntries{},
+				CreatedAt:       types.MustTimeFromString("2019-12-30T04:24:55.123Z"),
+				CreatedBy:       "Bob",
+				Description:     metronomegosdk.String("Test rate card description"),
 				FiatCreditType: &operations.ListRateCardsFiatCreditType{
 					Name: "USD (cents)",
 					ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
@@ -285,7 +161,7 @@ func TestRateCards_AddRate_(t *testing.T) {
 	assert.Equal(t, 200, res.HTTPMeta.Response.StatusCode)
 	assert.Equal(t, operations.AddRateResponseBody{
 		Data: operations.AddRateData{
-			RateType: operations.AddRateRateTypeFlatUpper,
+			RateType: operations.AddRateRateCardsRateTypeFlatUpper,
 			Price:    metronomegosdk.Float64(100),
 		},
 	}, *res.Object)
