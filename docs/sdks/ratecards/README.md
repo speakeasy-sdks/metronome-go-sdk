@@ -16,7 +16,7 @@
 
 ## GetRateSchedule
 
-Get a specific rate schedule including all rate card entries
+Get all rates for a rate card from starting_at (either in perpetuity or until ending_before, if provided)
 
 
 ### Example Usage
@@ -82,7 +82,7 @@ func main() {
 
 ## GetRates
 
-Get rate card rates for a specific time.
+Get all rates for a rate card at a point in time
 
 
 ### Example Usage
@@ -150,7 +150,7 @@ func main() {
 
 ## Get
 
-Get a specific rate card
+Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 
 
 ### Example Usage
@@ -204,7 +204,7 @@ func main() {
 
 ## List
 
-List rate cards
+List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 
 
 ### Example Usage

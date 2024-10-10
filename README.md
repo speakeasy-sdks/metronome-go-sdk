@@ -92,16 +92,8 @@ func main() {
 
 ### [Contracts](docs/sdks/contracts/README.md)
 
-* [Get](docs/sdks/contracts/README.md#get) - Get a contract
-* [List](docs/sdks/contracts/README.md#list) - List customer contracts
-* [Create](docs/sdks/contracts/README.md#create) - Create a contract
-* [Amend](docs/sdks/contracts/README.md#amend) - Amend a contract
-* [Archive](docs/sdks/contracts/README.md#archive) - Archive a contract
-* [SetUsageFilter](docs/sdks/contracts/README.md#setusagefilter) - Set a contract usage filter
-* [AddManualBalanceEntry](docs/sdks/contracts/README.md#addmanualbalanceentry) - Add a manual balance entry
-* [UpdateEndDate](docs/sdks/contracts/README.md#updateenddate) - Update the contract end date
-* [GetRateSchedule](docs/sdks/contracts/README.md#getrateschedule) - Get the rate schedule for a contract
-* [ScheduleProServicesInvoice](docs/sdks/contracts/README.md#scheduleproservicesinvoice) - Schedule ProService invoice
+* [DisableCommitTrueup](docs/sdks/contracts/README.md#disablecommittrueup) - Disable trueup for commit
+* [CreateHistoricalContractUsageInvoices](docs/sdks/contracts/README.md#createhistoricalcontractusageinvoices) - Create historical invoices
 
 ### [Contracts.NamedSchedules](docs/sdks/metronomenamedschedules/README.md)
 

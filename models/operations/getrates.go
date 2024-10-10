@@ -291,6 +291,159 @@ func (o *GetRatesRate) GetCreditType() *GetRatesCreditType {
 	return o.CreditType
 }
 
+type GetRatesRateCardsRateType string
+
+const (
+	GetRatesRateCardsRateTypeFlatUpper         GetRatesRateCardsRateType = "FLAT"
+	GetRatesRateCardsRateTypeFlatLower         GetRatesRateCardsRateType = "flat"
+	GetRatesRateCardsRateTypePercentageUpper   GetRatesRateCardsRateType = "PERCENTAGE"
+	GetRatesRateCardsRateTypePercentageLower   GetRatesRateCardsRateType = "percentage"
+	GetRatesRateCardsRateTypeSubscriptionUpper GetRatesRateCardsRateType = "SUBSCRIPTION"
+	GetRatesRateCardsRateTypeSubscriptionLower GetRatesRateCardsRateType = "subscription"
+	GetRatesRateCardsRateTypeTieredUpper       GetRatesRateCardsRateType = "TIERED"
+	GetRatesRateCardsRateTypeTieredLower       GetRatesRateCardsRateType = "tiered"
+	GetRatesRateCardsRateTypeCustomUpper       GetRatesRateCardsRateType = "CUSTOM"
+	GetRatesRateCardsRateTypeCustomLower       GetRatesRateCardsRateType = "custom"
+)
+
+func (e GetRatesRateCardsRateType) ToPointer() *GetRatesRateCardsRateType {
+	return &e
+}
+func (e *GetRatesRateCardsRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
+		*e = GetRatesRateCardsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRatesRateCardsRateType: %v", v)
+	}
+}
+
+type GetRatesRateCardsTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *GetRatesRateCardsTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *GetRatesRateCardsTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+type GetRatesRateCardsCreditType struct {
+	Name string `json:"name"`
+	ID   string `json:"id"`
+}
+
+func (o *GetRatesRateCardsCreditType) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetRatesRateCardsCreditType) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+// GetRatesCommitRate - The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+type GetRatesCommitRate struct {
+	RateType GetRatesRateCardsRateType `json:"rate_type"`
+	// Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+	Price *float64 `json:"price,omitempty"`
+	// Commit rate quantity. For SUBSCRIPTION rate_type, this must be >=0.
+	Quantity *float64 `json:"quantity,omitempty"`
+	// Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.
+	IsProrated *bool `json:"is_prorated,omitempty"`
+	// Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
+	UseListPrices *bool `json:"use_list_prices,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers      []GetRatesRateCardsTiers     `json:"tiers,omitempty"`
+	CreditType *GetRatesRateCardsCreditType `json:"credit_type,omitempty"`
+}
+
+func (o *GetRatesCommitRate) GetRateType() GetRatesRateCardsRateType {
+	if o == nil {
+		return GetRatesRateCardsRateType("")
+	}
+	return o.RateType
+}
+
+func (o *GetRatesCommitRate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *GetRatesCommitRate) GetQuantity() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *GetRatesCommitRate) GetIsProrated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsProrated
+}
+
+func (o *GetRatesCommitRate) GetUseListPrices() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UseListPrices
+}
+
+func (o *GetRatesCommitRate) GetTiers() []GetRatesRateCardsTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
+func (o *GetRatesCommitRate) GetCreditType() *GetRatesRateCardsCreditType {
+	if o == nil {
+		return nil
+	}
+	return o.CreditType
+}
+
 type GetRatesData struct {
 	ProductID          string            `json:"product_id"`
 	ProductName        string            `json:"product_name"`
@@ -300,6 +453,8 @@ type GetRatesData struct {
 	EndingBefore       *time.Time        `json:"ending_before,omitempty"`
 	Entitled           bool              `json:"entitled"`
 	Rate               GetRatesRate      `json:"rate"`
+	// The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+	CommitRate *GetRatesCommitRate `json:"commit_rate,omitempty"`
 }
 
 func (g GetRatesData) MarshalJSON() ([]byte, error) {
@@ -367,6 +522,13 @@ func (o *GetRatesData) GetRate() GetRatesRate {
 		return GetRatesRate{}
 	}
 	return o.Rate
+}
+
+func (o *GetRatesData) GetCommitRate() *GetRatesCommitRate {
+	if o == nil {
+		return nil
+	}
+	return o.CommitRate
 }
 
 // GetRatesResponseBody - Success

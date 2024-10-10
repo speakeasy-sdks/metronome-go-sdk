@@ -2,8 +2,8 @@ speakeasyVersion: 1.374.2
 sources:
     Metronome-OAS:
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:5670b25a831885bc14322c825dbecdc7a53afafec1db4858f889d1d0c366c74a
-        sourceBlobDigest: sha256:d17d45fe8bd8bb2b9686fe13fdf57394c96b78684a62e17d654ecf3815f065cc
+        sourceRevisionDigest: sha256:ccc688de5f444d8ff602d70926943810dba7f15aeb71d3d61b244c1381750835
+        sourceBlobDigest: sha256:48788aa15187d3fbed7822505ad8670f3cf1655bc8c9e86a1fe5e7805aef1184
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     metronome:
         source: Metronome-OAS
         sourceNamespace: metronome-oas
-        sourceRevisionDigest: sha256:5670b25a831885bc14322c825dbecdc7a53afafec1db4858f889d1d0c366c74a
-        sourceBlobDigest: sha256:d17d45fe8bd8bb2b9686fe13fdf57394c96b78684a62e17d654ecf3815f065cc
+        sourceRevisionDigest: sha256:ccc688de5f444d8ff602d70926943810dba7f15aeb71d3d61b244c1381750835
+        sourceBlobDigest: sha256:48788aa15187d3fbed7822505ad8670f3cf1655bc8c9e86a1fe5e7805aef1184
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

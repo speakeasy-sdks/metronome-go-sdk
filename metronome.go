@@ -66,10 +66,11 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 }
 
 type Metronome struct {
-	Customers        *Customers
-	Invoices         *Invoices
-	Products         *Products
-	RateCards        *RateCards
+	Customers *Customers
+	Invoices  *Invoices
+	Products  *Products
+	RateCards *RateCards
+	// Contracts provide an alternative to plans for provisioning and invoicing customers. Use these endpoints to create and update contracts data.
 	Contracts        *Contracts
 	CustomerCommits  *CustomerCommits
 	CustomerCredits  *CustomerCredits
@@ -152,9 +153,9 @@ func New(opts ...SDKOption) *Metronome {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "1.0.0",
-			SDKVersion:        "0.3.0",
+			SDKVersion:        "0.3.1",
 			GenVersion:        "2.401.2",
-			UserAgent:         "speakeasy-sdk/go 0.3.0 2.401.2 1.0.0 github.com/speakeasy-sdks/metronome-go-sdk",
+			UserAgent:         "speakeasy-sdk/go 0.3.1 2.401.2 1.0.0 github.com/speakeasy-sdks/metronome-go-sdk",
 			Hooks:             hooks.New(),
 		},
 	}

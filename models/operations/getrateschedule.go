@@ -121,25 +121,25 @@ func (o *GetRateScheduleRequest) GetRequestBody() *GetRateScheduleRequestBody {
 	return o.RequestBody
 }
 
-type GetRateScheduleRateType string
+type GetRateScheduleRateCardsRateType string
 
 const (
-	GetRateScheduleRateTypeFlatUpper         GetRateScheduleRateType = "FLAT"
-	GetRateScheduleRateTypeFlatLower         GetRateScheduleRateType = "flat"
-	GetRateScheduleRateTypePercentageUpper   GetRateScheduleRateType = "PERCENTAGE"
-	GetRateScheduleRateTypePercentageLower   GetRateScheduleRateType = "percentage"
-	GetRateScheduleRateTypeSubscriptionUpper GetRateScheduleRateType = "SUBSCRIPTION"
-	GetRateScheduleRateTypeSubscriptionLower GetRateScheduleRateType = "subscription"
-	GetRateScheduleRateTypeCustomUpper       GetRateScheduleRateType = "CUSTOM"
-	GetRateScheduleRateTypeCustomLower       GetRateScheduleRateType = "custom"
-	GetRateScheduleRateTypeTieredUpper       GetRateScheduleRateType = "TIERED"
-	GetRateScheduleRateTypeTieredLower       GetRateScheduleRateType = "tiered"
+	GetRateScheduleRateCardsRateTypeFlatUpper         GetRateScheduleRateCardsRateType = "FLAT"
+	GetRateScheduleRateCardsRateTypeFlatLower         GetRateScheduleRateCardsRateType = "flat"
+	GetRateScheduleRateCardsRateTypePercentageUpper   GetRateScheduleRateCardsRateType = "PERCENTAGE"
+	GetRateScheduleRateCardsRateTypePercentageLower   GetRateScheduleRateCardsRateType = "percentage"
+	GetRateScheduleRateCardsRateTypeSubscriptionUpper GetRateScheduleRateCardsRateType = "SUBSCRIPTION"
+	GetRateScheduleRateCardsRateTypeSubscriptionLower GetRateScheduleRateCardsRateType = "subscription"
+	GetRateScheduleRateCardsRateTypeCustomUpper       GetRateScheduleRateCardsRateType = "CUSTOM"
+	GetRateScheduleRateCardsRateTypeCustomLower       GetRateScheduleRateCardsRateType = "custom"
+	GetRateScheduleRateCardsRateTypeTieredUpper       GetRateScheduleRateCardsRateType = "TIERED"
+	GetRateScheduleRateCardsRateTypeTieredLower       GetRateScheduleRateCardsRateType = "tiered"
 )
 
-func (e GetRateScheduleRateType) ToPointer() *GetRateScheduleRateType {
+func (e GetRateScheduleRateCardsRateType) ToPointer() *GetRateScheduleRateCardsRateType {
 	return &e
 }
-func (e *GetRateScheduleRateType) UnmarshalJSON(data []byte) error {
+func (e *GetRateScheduleRateCardsRateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -164,6 +164,176 @@ func (e *GetRateScheduleRateType) UnmarshalJSON(data []byte) error {
 	case "TIERED":
 		fallthrough
 	case "tiered":
+		*e = GetRateScheduleRateCardsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRateScheduleRateCardsRateType: %v", v)
+	}
+}
+
+type GetRateScheduleRateCardsTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *GetRateScheduleRateCardsTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *GetRateScheduleRateCardsTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+type GetRateScheduleRateCardsCreditType struct {
+	Name string `json:"name"`
+	ID   string `json:"id"`
+}
+
+func (o *GetRateScheduleRateCardsCreditType) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *GetRateScheduleRateCardsCreditType) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+type Rate struct {
+	RateType GetRateScheduleRateCardsRateType `json:"rate_type"`
+	// Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+	Price *float64 `json:"price,omitempty"`
+	// Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
+	CustomRate map[string]any `json:"custom_rate,omitempty"`
+	// Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
+	UseListPrices *bool `json:"use_list_prices,omitempty"`
+	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
+	Quantity *float64 `json:"quantity,omitempty"`
+	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+	IsProrated *bool `json:"is_prorated,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers []GetRateScheduleRateCardsTiers `json:"tiers,omitempty"`
+	// if pricing groups are used, this will contain the values used to calculate the price
+	PricingGroupValues map[string]string                   `json:"pricing_group_values,omitempty"`
+	CreditType         *GetRateScheduleRateCardsCreditType `json:"credit_type,omitempty"`
+}
+
+func (o *Rate) GetRateType() GetRateScheduleRateCardsRateType {
+	if o == nil {
+		return GetRateScheduleRateCardsRateType("")
+	}
+	return o.RateType
+}
+
+func (o *Rate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *Rate) GetCustomRate() map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.CustomRate
+}
+
+func (o *Rate) GetUseListPrices() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UseListPrices
+}
+
+func (o *Rate) GetQuantity() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Quantity
+}
+
+func (o *Rate) GetIsProrated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsProrated
+}
+
+func (o *Rate) GetTiers() []GetRateScheduleRateCardsTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
+func (o *Rate) GetPricingGroupValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.PricingGroupValues
+}
+
+func (o *Rate) GetCreditType() *GetRateScheduleRateCardsCreditType {
+	if o == nil {
+		return nil
+	}
+	return o.CreditType
+}
+
+type GetRateScheduleRateType string
+
+const (
+	GetRateScheduleRateTypeFlatUpper         GetRateScheduleRateType = "FLAT"
+	GetRateScheduleRateTypeFlatLower         GetRateScheduleRateType = "flat"
+	GetRateScheduleRateTypePercentageUpper   GetRateScheduleRateType = "PERCENTAGE"
+	GetRateScheduleRateTypePercentageLower   GetRateScheduleRateType = "percentage"
+	GetRateScheduleRateTypeSubscriptionUpper GetRateScheduleRateType = "SUBSCRIPTION"
+	GetRateScheduleRateTypeSubscriptionLower GetRateScheduleRateType = "subscription"
+	GetRateScheduleRateTypeTieredUpper       GetRateScheduleRateType = "TIERED"
+	GetRateScheduleRateTypeTieredLower       GetRateScheduleRateType = "tiered"
+	GetRateScheduleRateTypeCustomUpper       GetRateScheduleRateType = "CUSTOM"
+	GetRateScheduleRateTypeCustomLower       GetRateScheduleRateType = "custom"
+)
+
+func (e GetRateScheduleRateType) ToPointer() *GetRateScheduleRateType {
+	return &e
+}
+func (e *GetRateScheduleRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
 		*e = GetRateScheduleRateType(v)
 		return nil
 	default:
@@ -209,82 +379,65 @@ func (o *GetRateScheduleCreditType) GetID() string {
 	return o.ID
 }
 
-type Rate struct {
+// GetRateScheduleCommitRate - The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+type GetRateScheduleCommitRate struct {
 	RateType GetRateScheduleRateType `json:"rate_type"`
-	// Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
+	// Commit rate price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
 	Price *float64 `json:"price,omitempty"`
-	// Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
-	CustomRate map[string]any `json:"custom_rate,omitempty"`
+	// Commit rate quantity. For SUBSCRIPTION rate_type, this must be >=0.
+	Quantity *float64 `json:"quantity,omitempty"`
+	// Commit rate proration configuration. Only valid for SUBSCRIPTION rate_type.
+	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
 	UseListPrices *bool `json:"use_list_prices,omitempty"`
-	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
-	Quantity *float64 `json:"quantity,omitempty"`
-	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
-	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for TIERED rate_type.
-	Tiers []GetRateScheduleTiers `json:"tiers,omitempty"`
-	// if pricing groups are used, this will contain the values used to calculate the price
-	PricingGroupValues map[string]string          `json:"pricing_group_values,omitempty"`
-	CreditType         *GetRateScheduleCreditType `json:"credit_type,omitempty"`
+	Tiers      []GetRateScheduleTiers     `json:"tiers,omitempty"`
+	CreditType *GetRateScheduleCreditType `json:"credit_type,omitempty"`
 }
 
-func (o *Rate) GetRateType() GetRateScheduleRateType {
+func (o *GetRateScheduleCommitRate) GetRateType() GetRateScheduleRateType {
 	if o == nil {
 		return GetRateScheduleRateType("")
 	}
 	return o.RateType
 }
 
-func (o *Rate) GetPrice() *float64 {
+func (o *GetRateScheduleCommitRate) GetPrice() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Price
 }
 
-func (o *Rate) GetCustomRate() map[string]any {
-	if o == nil {
-		return nil
-	}
-	return o.CustomRate
-}
-
-func (o *Rate) GetUseListPrices() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.UseListPrices
-}
-
-func (o *Rate) GetQuantity() *float64 {
+func (o *GetRateScheduleCommitRate) GetQuantity() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Quantity
 }
 
-func (o *Rate) GetIsProrated() *bool {
+func (o *GetRateScheduleCommitRate) GetIsProrated() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.IsProrated
 }
 
-func (o *Rate) GetTiers() []GetRateScheduleTiers {
+func (o *GetRateScheduleCommitRate) GetUseListPrices() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UseListPrices
+}
+
+func (o *GetRateScheduleCommitRate) GetTiers() []GetRateScheduleTiers {
 	if o == nil {
 		return nil
 	}
 	return o.Tiers
 }
 
-func (o *Rate) GetPricingGroupValues() map[string]string {
-	if o == nil {
-		return nil
-	}
-	return o.PricingGroupValues
-}
-
-func (o *Rate) GetCreditType() *GetRateScheduleCreditType {
+func (o *GetRateScheduleCommitRate) GetCreditType() *GetRateScheduleCreditType {
 	if o == nil {
 		return nil
 	}
@@ -300,6 +453,8 @@ type GetRateScheduleData struct {
 	EndingBefore       *time.Time        `json:"ending_before,omitempty"`
 	Entitled           bool              `json:"entitled"`
 	Rate               Rate              `json:"rate"`
+	// The rate that will be used to rate a product when it is paid for by a commit. This feature requires opt-in before it can be used. Please contact Metronome support to enable this feature.
+	CommitRate *GetRateScheduleCommitRate `json:"commit_rate,omitempty"`
 }
 
 func (g GetRateScheduleData) MarshalJSON() ([]byte, error) {
@@ -367,6 +522,13 @@ func (o *GetRateScheduleData) GetRate() Rate {
 		return Rate{}
 	}
 	return o.Rate
+}
+
+func (o *GetRateScheduleData) GetCommitRate() *GetRateScheduleCommitRate {
+	if o == nil {
+		return nil
+	}
+	return o.CommitRate
 }
 
 // GetRateScheduleResponseBody - Success
