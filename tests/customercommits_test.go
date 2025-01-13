@@ -30,6 +30,7 @@ func TestCustomerCommits_ListCustomerCommits_(t *testing.T) {
 			operations.ListCustomerCommitsData{
 				ID:       "62c0cb84-bf3f-48b9-9bcf-a8ddf8c1cf35",
 				Type:     operations.ListCustomerCommitsTypePrepaid,
+				RateType: operations.ListCustomerCommitsRateTypeListRate.ToPointer(),
 				Name:     metronomegosdk.String("My test commit"),
 				Priority: metronomegosdk.Float64(100),
 				Product: operations.Product{
@@ -88,6 +89,7 @@ func TestCustomerCommits_ListCustomerCommits_(t *testing.T) {
 						},
 					),
 				},
+				UniquenessKey: metronomegosdk.String("946g9bepi1-uniqueness-key"),
 			},
 		},
 		NextPage: nil,
@@ -120,7 +122,6 @@ func TestCustomerCommits_CreateCustomerCommit_(t *testing.T) {
 				operations.CreateCustomerCommitCustomerCommitsScheduleItems{
 					UnitPrice: metronomegosdk.Float64(10000000),
 					Quantity:  metronomegosdk.Float64(1),
-					Amount:    metronomegosdk.Float64(10000000),
 					Timestamp: types.MustTimeFromString("2020-03-01T00:00:00.000Z"),
 				},
 			},

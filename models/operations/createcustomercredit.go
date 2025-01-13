@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/speakeasy-sdks/metronome-go-sdk/internal/utils"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/components"
 	"time"
@@ -50,6 +52,7 @@ func (o *CreateCustomerCreditScheduleItems) GetEndingBefore() time.Time {
 
 // CreateCustomerCreditAccessSchedule - Schedule for distributing the credit to the customer.
 type CreateCustomerCreditAccessSchedule struct {
+	// Defaults to USD (cents) if not passed
 	CreditTypeID  *string                             `json:"credit_type_id,omitempty"`
 	ScheduleItems []CreateCustomerCreditScheduleItems `json:"schedule_items"`
 }
@@ -66,6 +69,38 @@ func (o *CreateCustomerCreditAccessSchedule) GetScheduleItems() []CreateCustomer
 		return []CreateCustomerCreditScheduleItems{}
 	}
 	return o.ScheduleItems
+}
+
+type CreateCustomerCreditRateType string
+
+const (
+	CreateCustomerCreditRateTypeCommitRateUpper CreateCustomerCreditRateType = "COMMIT_RATE"
+	CreateCustomerCreditRateTypeCommitRateLower CreateCustomerCreditRateType = "commit_rate"
+	CreateCustomerCreditRateTypeListRateUpper   CreateCustomerCreditRateType = "LIST_RATE"
+	CreateCustomerCreditRateTypeListRateLower   CreateCustomerCreditRateType = "list_rate"
+)
+
+func (e CreateCustomerCreditRateType) ToPointer() *CreateCustomerCreditRateType {
+	return &e
+}
+func (e *CreateCustomerCreditRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "commit_rate":
+		fallthrough
+	case "LIST_RATE":
+		fallthrough
+	case "list_rate":
+		*e = CreateCustomerCreditRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateCustomerCreditRateType: %v", v)
+	}
 }
 
 // CreateCustomerCreditRequestBody - Create a credit
@@ -89,8 +124,11 @@ type CreateCustomerCreditRequestBody struct {
 	// This field's availability is dependent on your client's configuration.
 	NetsuiteSalesOrderID *string `json:"netsuite_sales_order_id,omitempty"`
 	// This field's availability is dependent on your client's configuration.
-	SalesforceOpportunityID *string           `json:"salesforce_opportunity_id,omitempty"`
-	CustomFields            map[string]string `json:"custom_fields,omitempty"`
+	SalesforceOpportunityID *string                       `json:"salesforce_opportunity_id,omitempty"`
+	CustomFields            map[string]string             `json:"custom_fields,omitempty"`
+	RateType                *CreateCustomerCreditRateType `json:"rate_type,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *CreateCustomerCreditRequestBody) GetCustomerID() string {
@@ -175,6 +213,20 @@ func (o *CreateCustomerCreditRequestBody) GetCustomFields() map[string]string {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *CreateCustomerCreditRequestBody) GetRateType() *CreateCustomerCreditRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
+}
+
+func (o *CreateCustomerCreditRequestBody) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 type CreateCustomerCreditData struct {

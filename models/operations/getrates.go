@@ -219,7 +219,7 @@ type GetRatesRate struct {
 	UseListPrices *bool `json:"use_list_prices,omitempty"`
 	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
 	Quantity *float64 `json:"quantity,omitempty"`
-	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+	// Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
 	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for TIERED rate_type.
 	Tiers []GetRatesTiers `json:"tiers,omitempty"`
@@ -291,15 +291,117 @@ func (o *GetRatesRate) GetCreditType() *GetRatesCreditType {
 	return o.CreditType
 }
 
+type GetRatesRateCardsRateType string
+
+const (
+	GetRatesRateCardsRateTypeFlatUpper         GetRatesRateCardsRateType = "FLAT"
+	GetRatesRateCardsRateTypeFlatLower         GetRatesRateCardsRateType = "flat"
+	GetRatesRateCardsRateTypePercentageUpper   GetRatesRateCardsRateType = "PERCENTAGE"
+	GetRatesRateCardsRateTypePercentageLower   GetRatesRateCardsRateType = "percentage"
+	GetRatesRateCardsRateTypeSubscriptionUpper GetRatesRateCardsRateType = "SUBSCRIPTION"
+	GetRatesRateCardsRateTypeSubscriptionLower GetRatesRateCardsRateType = "subscription"
+	GetRatesRateCardsRateTypeTieredUpper       GetRatesRateCardsRateType = "TIERED"
+	GetRatesRateCardsRateTypeTieredLower       GetRatesRateCardsRateType = "tiered"
+	GetRatesRateCardsRateTypeCustomUpper       GetRatesRateCardsRateType = "CUSTOM"
+	GetRatesRateCardsRateTypeCustomLower       GetRatesRateCardsRateType = "custom"
+)
+
+func (e GetRatesRateCardsRateType) ToPointer() *GetRatesRateCardsRateType {
+	return &e
+}
+func (e *GetRatesRateCardsRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
+		*e = GetRatesRateCardsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for GetRatesRateCardsRateType: %v", v)
+	}
+}
+
+type GetRatesRateCardsTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *GetRatesRateCardsTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *GetRatesRateCardsTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+// GetRatesCommitRate - A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+type GetRatesCommitRate struct {
+	RateType GetRatesRateCardsRateType `json:"rate_type"`
+	// Commit rate price. For FLAT rate_type, this must be >=0.
+	Price *float64 `json:"price,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers []GetRatesRateCardsTiers `json:"tiers,omitempty"`
+}
+
+func (o *GetRatesCommitRate) GetRateType() GetRatesRateCardsRateType {
+	if o == nil {
+		return GetRatesRateCardsRateType("")
+	}
+	return o.RateType
+}
+
+func (o *GetRatesCommitRate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *GetRatesCommitRate) GetTiers() []GetRatesRateCardsTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
 type GetRatesData struct {
-	ProductID          string            `json:"product_id"`
-	ProductName        string            `json:"product_name"`
-	ProductTags        []string          `json:"product_tags"`
-	PricingGroupValues map[string]string `json:"pricing_group_values,omitempty"`
-	StartingAt         time.Time         `json:"starting_at"`
-	EndingBefore       *time.Time        `json:"ending_before,omitempty"`
-	Entitled           bool              `json:"entitled"`
-	Rate               GetRatesRate      `json:"rate"`
+	ProductID           string            `json:"product_id"`
+	ProductName         string            `json:"product_name"`
+	ProductTags         []string          `json:"product_tags"`
+	ProductCustomFields map[string]string `json:"product_custom_fields"`
+	PricingGroupValues  map[string]string `json:"pricing_group_values,omitempty"`
+	StartingAt          time.Time         `json:"starting_at"`
+	EndingBefore        *time.Time        `json:"ending_before,omitempty"`
+	Entitled            bool              `json:"entitled"`
+	Rate                GetRatesRate      `json:"rate"`
+	// A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+	CommitRate *GetRatesCommitRate `json:"commit_rate,omitempty"`
 }
 
 func (g GetRatesData) MarshalJSON() ([]byte, error) {
@@ -332,6 +434,13 @@ func (o *GetRatesData) GetProductTags() []string {
 		return []string{}
 	}
 	return o.ProductTags
+}
+
+func (o *GetRatesData) GetProductCustomFields() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.ProductCustomFields
 }
 
 func (o *GetRatesData) GetPricingGroupValues() map[string]string {
@@ -367,6 +476,13 @@ func (o *GetRatesData) GetRate() GetRatesRate {
 		return GetRatesRate{}
 	}
 	return o.Rate
+}
+
+func (o *GetRatesData) GetCommitRate() *GetRatesCommitRate {
+	if o == nil {
+		return nil
+	}
+	return o.CommitRate
 }
 
 // GetRatesResponseBody - Success

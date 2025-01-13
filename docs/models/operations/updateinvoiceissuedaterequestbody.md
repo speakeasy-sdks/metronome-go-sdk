@@ -1,0 +1,11 @@
+# UpdateInvoiceIssueDateRequestBody
+
+The invoice_id and new issue_date
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `InvoiceID`                                                                                                            | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | ID of the invoice to update. The invoice must still be in DRAFT status.                                                |
+| `IssueDate`                                                                                                            | [time.Time](https://pkg.go.dev/time#Time)                                                                              | :heavy_check_mark:                                                                                                     | RFC 3339 timestamp. This will be the new issue date of the invoice. It must not be after the end date of the contract. |

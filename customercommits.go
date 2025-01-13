@@ -231,6 +231,7 @@ func (s *CustomerCommits) List(ctx context.Context, request *operations.ListCust
 					IncludeContractCommits: request.IncludeContractCommits,
 					IncludeArchived:        request.IncludeArchived,
 					IncludeLedgers:         request.IncludeLedgers,
+					IncludeBalance:         request.IncludeBalance,
 					NextPage:               &nCVal,
 				},
 				opts...,

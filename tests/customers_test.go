@@ -6,6 +6,7 @@ import (
 	"context"
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -15,9 +16,13 @@ func TestCustomers_SetCustomerBillableStatus_(t *testing.T) {
 	s := metronomegosdk.New(
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	require.NoError(t, err)
 	assert.Equal(t, 200, res.HTTPMeta.Response.StatusCode)
 	assert.Equal(t, operations.SetCustomerBillableStatusResponseBody{

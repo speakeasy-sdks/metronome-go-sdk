@@ -79,6 +79,105 @@ func (o *Tiers) GetPrice() float64 {
 	return o.Price
 }
 
+type AddRateRateType string
+
+const (
+	AddRateRateTypeFlatUpper         AddRateRateType = "FLAT"
+	AddRateRateTypeFlatLower         AddRateRateType = "flat"
+	AddRateRateTypePercentageUpper   AddRateRateType = "PERCENTAGE"
+	AddRateRateTypePercentageLower   AddRateRateType = "percentage"
+	AddRateRateTypeSubscriptionUpper AddRateRateType = "SUBSCRIPTION"
+	AddRateRateTypeSubscriptionLower AddRateRateType = "subscription"
+	AddRateRateTypeTieredUpper       AddRateRateType = "TIERED"
+	AddRateRateTypeTieredLower       AddRateRateType = "tiered"
+	AddRateRateTypeCustomUpper       AddRateRateType = "CUSTOM"
+	AddRateRateTypeCustomLower       AddRateRateType = "custom"
+)
+
+func (e AddRateRateType) ToPointer() *AddRateRateType {
+	return &e
+}
+func (e *AddRateRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
+		*e = AddRateRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AddRateRateType: %v", v)
+	}
+}
+
+type AddRateTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *AddRateTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *AddRateTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+// CommitRate - A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+type CommitRate struct {
+	RateType AddRateRateType `json:"rate_type"`
+	// Commit rate price. For FLAT rate_type, this must be >=0.
+	Price *float64 `json:"price,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers []AddRateTiers `json:"tiers,omitempty"`
+}
+
+func (o *CommitRate) GetRateType() AddRateRateType {
+	if o == nil {
+		return AddRateRateType("")
+	}
+	return o.RateType
+}
+
+func (o *CommitRate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *CommitRate) GetTiers() []AddRateTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
 // AddRateRequestBody - Add a new rate
 type AddRateRequestBody struct {
 	// ID of the rate card to update
@@ -95,11 +194,11 @@ type AddRateRequestBody struct {
 	RateType     RateType   `json:"rate_type"`
 	// Default price. For FLAT and SUBSCRIPTION rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
 	Price *float64 `json:"price,omitempty"`
-	// "The Metronome ID of the credit type to associate with price, defaults to USD (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE rates use the credit type of associated rates."
+	// The Metronome ID of the credit type to associate with price, defaults to USD (cents) if not passed. Used by all rate_types except type PERCENTAGE. PERCENTAGE rates use the credit type of associated rates.
 	CreditTypeID *string `json:"credit_type_id,omitempty"`
 	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
 	Quantity *float64 `json:"quantity,omitempty"`
-	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+	// Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
 	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
 	UseListPrices *bool `json:"use_list_prices,omitempty"`
@@ -107,6 +206,8 @@ type AddRateRequestBody struct {
 	Tiers []Tiers `json:"tiers,omitempty"`
 	// Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
 	CustomRate map[string]any `json:"custom_rate,omitempty"`
+	// A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+	CommitRate *CommitRate `json:"commit_rate,omitempty"`
 }
 
 func (a AddRateRequestBody) MarshalJSON() ([]byte, error) {
@@ -218,25 +319,32 @@ func (o *AddRateRequestBody) GetCustomRate() map[string]any {
 	return o.CustomRate
 }
 
-type AddRateRateType string
+func (o *AddRateRequestBody) GetCommitRate() *CommitRate {
+	if o == nil {
+		return nil
+	}
+	return o.CommitRate
+}
+
+type AddRateRateCardsRateType string
 
 const (
-	AddRateRateTypeFlatUpper         AddRateRateType = "FLAT"
-	AddRateRateTypeFlatLower         AddRateRateType = "flat"
-	AddRateRateTypePercentageUpper   AddRateRateType = "PERCENTAGE"
-	AddRateRateTypePercentageLower   AddRateRateType = "percentage"
-	AddRateRateTypeSubscriptionUpper AddRateRateType = "SUBSCRIPTION"
-	AddRateRateTypeSubscriptionLower AddRateRateType = "subscription"
-	AddRateRateTypeCustomUpper       AddRateRateType = "CUSTOM"
-	AddRateRateTypeCustomLower       AddRateRateType = "custom"
-	AddRateRateTypeTieredUpper       AddRateRateType = "TIERED"
-	AddRateRateTypeTieredLower       AddRateRateType = "tiered"
+	AddRateRateCardsRateTypeFlatUpper         AddRateRateCardsRateType = "FLAT"
+	AddRateRateCardsRateTypeFlatLower         AddRateRateCardsRateType = "flat"
+	AddRateRateCardsRateTypePercentageUpper   AddRateRateCardsRateType = "PERCENTAGE"
+	AddRateRateCardsRateTypePercentageLower   AddRateRateCardsRateType = "percentage"
+	AddRateRateCardsRateTypeSubscriptionUpper AddRateRateCardsRateType = "SUBSCRIPTION"
+	AddRateRateCardsRateTypeSubscriptionLower AddRateRateCardsRateType = "subscription"
+	AddRateRateCardsRateTypeCustomUpper       AddRateRateCardsRateType = "CUSTOM"
+	AddRateRateCardsRateTypeCustomLower       AddRateRateCardsRateType = "custom"
+	AddRateRateCardsRateTypeTieredUpper       AddRateRateCardsRateType = "TIERED"
+	AddRateRateCardsRateTypeTieredLower       AddRateRateCardsRateType = "tiered"
 )
 
-func (e AddRateRateType) ToPointer() *AddRateRateType {
+func (e AddRateRateCardsRateType) ToPointer() *AddRateRateCardsRateType {
 	return &e
 }
-func (e *AddRateRateType) UnmarshalJSON(data []byte) error {
+func (e *AddRateRateCardsRateType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -261,26 +369,26 @@ func (e *AddRateRateType) UnmarshalJSON(data []byte) error {
 	case "TIERED":
 		fallthrough
 	case "tiered":
-		*e = AddRateRateType(v)
+		*e = AddRateRateCardsRateType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AddRateRateType: %v", v)
+		return fmt.Errorf("invalid value for AddRateRateCardsRateType: %v", v)
 	}
 }
 
-type AddRateTiers struct {
+type AddRateRateCardsTiers struct {
 	Size  *float64 `json:"size,omitempty"`
 	Price float64  `json:"price"`
 }
 
-func (o *AddRateTiers) GetSize() *float64 {
+func (o *AddRateRateCardsTiers) GetSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.Size
 }
 
-func (o *AddRateTiers) GetPrice() float64 {
+func (o *AddRateRateCardsTiers) GetPrice() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -306,8 +414,107 @@ func (o *CreditType) GetID() string {
 	return o.ID
 }
 
+type AddRateRateCardsResponseRateType string
+
+const (
+	AddRateRateCardsResponseRateTypeFlatUpper         AddRateRateCardsResponseRateType = "FLAT"
+	AddRateRateCardsResponseRateTypeFlatLower         AddRateRateCardsResponseRateType = "flat"
+	AddRateRateCardsResponseRateTypePercentageUpper   AddRateRateCardsResponseRateType = "PERCENTAGE"
+	AddRateRateCardsResponseRateTypePercentageLower   AddRateRateCardsResponseRateType = "percentage"
+	AddRateRateCardsResponseRateTypeSubscriptionUpper AddRateRateCardsResponseRateType = "SUBSCRIPTION"
+	AddRateRateCardsResponseRateTypeSubscriptionLower AddRateRateCardsResponseRateType = "subscription"
+	AddRateRateCardsResponseRateTypeTieredUpper       AddRateRateCardsResponseRateType = "TIERED"
+	AddRateRateCardsResponseRateTypeTieredLower       AddRateRateCardsResponseRateType = "tiered"
+	AddRateRateCardsResponseRateTypeCustomUpper       AddRateRateCardsResponseRateType = "CUSTOM"
+	AddRateRateCardsResponseRateTypeCustomLower       AddRateRateCardsResponseRateType = "custom"
+)
+
+func (e AddRateRateCardsResponseRateType) ToPointer() *AddRateRateCardsResponseRateType {
+	return &e
+}
+func (e *AddRateRateCardsResponseRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
+		*e = AddRateRateCardsResponseRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AddRateRateCardsResponseRateType: %v", v)
+	}
+}
+
+type AddRateRateCardsResponseTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *AddRateRateCardsResponseTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *AddRateRateCardsResponseTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+// AddRateCommitRate - A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+type AddRateCommitRate struct {
+	RateType AddRateRateCardsResponseRateType `json:"rate_type"`
+	// Commit rate price. For FLAT rate_type, this must be >=0.
+	Price *float64 `json:"price,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers []AddRateRateCardsResponseTiers `json:"tiers,omitempty"`
+}
+
+func (o *AddRateCommitRate) GetRateType() AddRateRateCardsResponseRateType {
+	if o == nil {
+		return AddRateRateCardsResponseRateType("")
+	}
+	return o.RateType
+}
+
+func (o *AddRateCommitRate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *AddRateCommitRate) GetTiers() []AddRateRateCardsResponseTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
 type AddRateData struct {
-	RateType AddRateRateType `json:"rate_type"`
+	RateType AddRateRateCardsRateType `json:"rate_type"`
 	// Default price. For FLAT rate_type, this must be >=0. For PERCENTAGE rate_type, this is a decimal fraction, e.g. use 0.1 for 10%; this must be >=0 and <=1.
 	Price *float64 `json:"price,omitempty"`
 	// Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
@@ -316,18 +523,20 @@ type AddRateData struct {
 	UseListPrices *bool `json:"use_list_prices,omitempty"`
 	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
 	Quantity *float64 `json:"quantity,omitempty"`
-	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+	// Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
 	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for TIERED rate_type.
-	Tiers []AddRateTiers `json:"tiers,omitempty"`
+	Tiers []AddRateRateCardsTiers `json:"tiers,omitempty"`
 	// if pricing groups are used, this will contain the values used to calculate the price
 	PricingGroupValues map[string]string `json:"pricing_group_values,omitempty"`
 	CreditType         *CreditType       `json:"credit_type,omitempty"`
+	// A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+	CommitRate *AddRateCommitRate `json:"commit_rate,omitempty"`
 }
 
-func (o *AddRateData) GetRateType() AddRateRateType {
+func (o *AddRateData) GetRateType() AddRateRateCardsRateType {
 	if o == nil {
-		return AddRateRateType("")
+		return AddRateRateCardsRateType("")
 	}
 	return o.RateType
 }
@@ -367,7 +576,7 @@ func (o *AddRateData) GetIsProrated() *bool {
 	return o.IsProrated
 }
 
-func (o *AddRateData) GetTiers() []AddRateTiers {
+func (o *AddRateData) GetTiers() []AddRateRateCardsTiers {
 	if o == nil {
 		return nil
 	}
@@ -386,6 +595,13 @@ func (o *AddRateData) GetCreditType() *CreditType {
 		return nil
 	}
 	return o.CreditType
+}
+
+func (o *AddRateData) GetCommitRate() *AddRateCommitRate {
+	if o == nil {
+		return nil
+	}
+	return o.CommitRate
 }
 
 // AddRateResponseBody - Success

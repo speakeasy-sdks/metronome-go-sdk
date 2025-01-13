@@ -12,3 +12,9 @@ targets:
     metronome:
         target: go
         source: Metronome-OAS
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/metronome/metronome/metronome-oas-go-code-samples
+            labelOverride:
+                fixedValue: Go (SDK)
+            blocking: false

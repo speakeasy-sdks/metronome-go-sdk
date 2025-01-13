@@ -231,6 +231,7 @@ func (s *CustomerBalances) List(ctx context.Context, request *operations.ListCus
 					IncludeContractBalances: request.IncludeContractBalances,
 					IncludeArchived:         request.IncludeArchived,
 					IncludeLedgers:          request.IncludeLedgers,
+					IncludeBalance:          request.IncludeBalance,
 					NextPage:                &nCVal,
 				},
 				opts...,

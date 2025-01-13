@@ -27,6 +27,8 @@ type ListCustomerCreditsRequestBody struct {
 	IncludeArchived *bool `json:"include_archived,omitempty"`
 	// Include credit ledgers in the response. Setting this flag may cause the query to be slower.
 	IncludeLedgers *bool `json:"include_ledgers,omitempty"`
+	// Include the balance in the response. Setting this flag may cause the query to be slower.
+	IncludeBalance *bool `json:"include_balance,omitempty"`
 	// The next page token from a previous response.
 	NextPage *string `json:"next_page,omitempty"`
 }
@@ -96,6 +98,13 @@ func (o *ListCustomerCreditsRequestBody) GetIncludeLedgers() *bool {
 		return nil
 	}
 	return o.IncludeLedgers
+}
+
+func (o *ListCustomerCreditsRequestBody) GetIncludeBalance() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeBalance
 }
 
 func (o *ListCustomerCreditsRequestBody) GetNextPage() *string {
@@ -832,6 +841,32 @@ func (u ListCustomerCreditsLedger) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListCustomerCreditsLedger: all fields are null")
 }
 
+type ListCustomerCreditsRateType string
+
+const (
+	ListCustomerCreditsRateTypeCommitRate ListCustomerCreditsRateType = "COMMIT_RATE"
+	ListCustomerCreditsRateTypeListRate   ListCustomerCreditsRateType = "LIST_RATE"
+)
+
+func (e ListCustomerCreditsRateType) ToPointer() *ListCustomerCreditsRateType {
+	return &e
+}
+func (e *ListCustomerCreditsRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "LIST_RATE":
+		*e = ListCustomerCreditsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListCustomerCreditsRateType: %v", v)
+	}
+}
+
 type ListCustomerCreditsData struct {
 	ID       string                       `json:"id"`
 	Contract *ListCustomerCreditsContract `json:"contract,omitempty"`
@@ -851,8 +886,13 @@ type ListCustomerCreditsData struct {
 	// This field's availability is dependent on your client's configuration.
 	SalesforceOpportunityID *string `json:"salesforce_opportunity_id,omitempty"`
 	// A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
-	Ledger       []ListCustomerCreditsLedger `json:"ledger,omitempty"`
-	CustomFields map[string]string           `json:"custom_fields,omitempty"`
+	Ledger []ListCustomerCreditsLedger `json:"ledger,omitempty"`
+	// The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+	Balance      *float64                     `json:"balance,omitempty"`
+	CustomFields map[string]string            `json:"custom_fields,omitempty"`
+	RateType     *ListCustomerCreditsRateType `json:"rate_type,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *ListCustomerCreditsData) GetID() string {
@@ -953,11 +993,32 @@ func (o *ListCustomerCreditsData) GetLedger() []ListCustomerCreditsLedger {
 	return o.Ledger
 }
 
+func (o *ListCustomerCreditsData) GetBalance() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Balance
+}
+
 func (o *ListCustomerCreditsData) GetCustomFields() map[string]string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *ListCustomerCreditsData) GetRateType() *ListCustomerCreditsRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
+}
+
+func (o *ListCustomerCreditsData) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 // ListCustomerCreditsResponseBody - Success

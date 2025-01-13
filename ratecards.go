@@ -34,7 +34,7 @@ func newRateCards(sdkConfig sdkConfiguration) *RateCards {
 }
 
 // GetRateSchedule - Get a rate schedule
-// Get a specific rate schedule including all rate card entries
+// Get all rates for a rate card from starting_at (either in perpetuity or until ending_before, if provided)
 func (s *RateCards) GetRateSchedule(ctx context.Context, limit *int64, nextPage *string, requestBody *operations.GetRateScheduleRequestBody, opts ...operations.Option) (*operations.GetRateScheduleResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -230,7 +230,7 @@ func (s *RateCards) GetRateSchedule(ctx context.Context, limit *int64, nextPage 
 }
 
 // GetRates - Get rates
-// Get rate card rates for a specific time.
+// Get all rates for a rate card at a point in time
 func (s *RateCards) GetRates(ctx context.Context, limit *int64, nextPage *string, requestBody *operations.GetRatesRequestBody, opts ...operations.Option) (*operations.GetRatesResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -426,7 +426,7 @@ func (s *RateCards) GetRates(ctx context.Context, limit *int64, nextPage *string
 }
 
 // Get a rate card
-// Get a specific rate card
+// Get a specific rate card NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 func (s *RateCards) Get(ctx context.Context, request *operations.GetRateCardRequestBody, opts ...operations.Option) (*operations.GetRateCardResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -624,7 +624,7 @@ func (s *RateCards) Get(ctx context.Context, request *operations.GetRateCardRequ
 }
 
 // List rate cards
-// List rate cards
+// List rate cards NOTE: Use `/contract-pricing/rate-cards/getRates` to retrieve rate card rates.
 func (s *RateCards) List(ctx context.Context, limit *int64, nextPage *string, requestBody *operations.ListRateCardsRequestBody, opts ...operations.Option) (*operations.ListRateCardsResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

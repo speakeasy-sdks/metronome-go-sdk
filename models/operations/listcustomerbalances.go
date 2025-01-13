@@ -27,6 +27,8 @@ type ListCustomerBalancesRequestBody struct {
 	IncludeArchived *bool `json:"include_archived,omitempty"`
 	// Include ledgers in the response. Setting this flag may cause the query to be slower.
 	IncludeLedgers *bool `json:"include_ledgers,omitempty"`
+	// Include the balance of credits and commits in the response. Setting this flag may cause the query to be slower.
+	IncludeBalance *bool `json:"include_balance,omitempty"`
 	// The next page token from a previous response.
 	NextPage *string `json:"next_page,omitempty"`
 }
@@ -96,6 +98,13 @@ func (o *ListCustomerBalancesRequestBody) GetIncludeLedgers() *bool {
 		return nil
 	}
 	return o.IncludeLedgers
+}
+
+func (o *ListCustomerBalancesRequestBody) GetIncludeBalance() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeBalance
 }
 
 func (o *ListCustomerBalancesRequestBody) GetNextPage() *string {
@@ -832,6 +841,32 @@ func (u ListCustomerBalancesDataLedger) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type ListCustomerBalancesDataLedger: all fields are null")
 }
 
+type ListCustomerBalancesDataRateType string
+
+const (
+	ListCustomerBalancesDataRateTypeCommitRate ListCustomerBalancesDataRateType = "COMMIT_RATE"
+	ListCustomerBalancesDataRateTypeListRate   ListCustomerBalancesDataRateType = "LIST_RATE"
+)
+
+func (e ListCustomerBalancesDataRateType) ToPointer() *ListCustomerBalancesDataRateType {
+	return &e
+}
+func (e *ListCustomerBalancesDataRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "LIST_RATE":
+		*e = ListCustomerBalancesDataRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListCustomerBalancesDataRateType: %v", v)
+	}
+}
+
 type Two struct {
 	ID       string                            `json:"id"`
 	Contract *ListCustomerBalancesDataContract `json:"contract,omitempty"`
@@ -851,8 +886,13 @@ type Two struct {
 	// This field's availability is dependent on your client's configuration.
 	SalesforceOpportunityID *string `json:"salesforce_opportunity_id,omitempty"`
 	// A list of ordered events that impact the balance of a credit. For example, an invoice deduction or an expiration.
-	Ledger       []ListCustomerBalancesDataLedger `json:"ledger,omitempty"`
-	CustomFields map[string]string                `json:"custom_fields,omitempty"`
+	Ledger []ListCustomerBalancesDataLedger `json:"ledger,omitempty"`
+	// The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+	Balance      *float64                          `json:"balance,omitempty"`
+	CustomFields map[string]string                 `json:"custom_fields,omitempty"`
+	RateType     *ListCustomerBalancesDataRateType `json:"rate_type,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *Two) GetID() string {
@@ -953,11 +993,32 @@ func (o *Two) GetLedger() []ListCustomerBalancesDataLedger {
 	return o.Ledger
 }
 
+func (o *Two) GetBalance() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Balance
+}
+
 func (o *Two) GetCustomFields() map[string]string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *Two) GetRateType() *ListCustomerBalancesDataRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
+}
+
+func (o *Two) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 type DataContract struct {
@@ -994,6 +1055,32 @@ func (e *DataType) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for DataType: %v", v)
+	}
+}
+
+type DataRateType string
+
+const (
+	DataRateTypeCommitRate DataRateType = "COMMIT_RATE"
+	DataRateTypeListRate   DataRateType = "LIST_RATE"
+)
+
+func (e DataRateType) ToPointer() *DataRateType {
+	return &e
+}
+func (e *DataRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "LIST_RATE":
+		*e = DataRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DataRateType: %v", v)
 	}
 }
 
@@ -2471,6 +2558,7 @@ type One struct {
 	ID       string        `json:"id"`
 	Contract *DataContract `json:"contract,omitempty"`
 	Type     DataType      `json:"type"`
+	RateType *DataRateType `json:"rate_type,omitempty"`
 	Name     *string       `json:"name,omitempty"`
 	// If multiple credits or commits are applicable, the one with the lower priority will apply first.
 	Priority *float64    `json:"priority,omitempty"`
@@ -2494,8 +2582,12 @@ type One struct {
 	// This field's availability is dependent on your client's configuration.
 	SalesforceOpportunityID *string `json:"salesforce_opportunity_id,omitempty"`
 	// A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
-	Ledger       []DataLedger      `json:"ledger,omitempty"`
+	Ledger []DataLedger `json:"ledger,omitempty"`
+	// The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+	Balance      *float64          `json:"balance,omitempty"`
 	CustomFields map[string]string `json:"custom_fields,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *One) GetID() string {
@@ -2517,6 +2609,13 @@ func (o *One) GetType() DataType {
 		return DataType("")
 	}
 	return o.Type
+}
+
+func (o *One) GetRateType() *DataRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
 }
 
 func (o *One) GetName() *string {
@@ -2631,11 +2730,25 @@ func (o *One) GetLedger() []DataLedger {
 	return o.Ledger
 }
 
+func (o *One) GetBalance() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Balance
+}
+
 func (o *One) GetCustomFields() map[string]string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *One) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 type ListCustomerBalancesDataUnionType string
