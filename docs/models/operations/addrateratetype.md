@@ -11,7 +11,7 @@
 | `AddRateRateTypePercentageLower`   | percentage                         |
 | `AddRateRateTypeSubscriptionUpper` | SUBSCRIPTION                       |
 | `AddRateRateTypeSubscriptionLower` | subscription                       |
-| `AddRateRateTypeCustomUpper`       | CUSTOM                             |
-| `AddRateRateTypeCustomLower`       | custom                             |
 | `AddRateRateTypeTieredUpper`       | TIERED                             |
 | `AddRateRateTypeTieredLower`       | tiered                             |
+| `AddRateRateTypeCustomUpper`       | CUSTOM                             |
+| `AddRateRateTypeCustomLower`       | custom                             |

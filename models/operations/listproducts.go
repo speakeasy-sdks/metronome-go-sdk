@@ -260,9 +260,9 @@ type ListProductsInitial struct {
 	IsRefundable     *bool    `json:"is_refundable,omitempty"`
 	Tags             []string `json:"tags,omitempty"`
 	ExcludeFreeUsage *bool    `json:"exclude_free_usage,omitempty"`
-	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole.
+	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PricingGroupKey []string `json:"pricing_group_key,omitempty"`
-	// For USAGE products only. Groups usage line items on invoices.
+	// For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PresentationGroupKey []string `json:"presentation_group_key,omitempty"`
 }
 
@@ -531,9 +531,9 @@ type ListProductsCurrent struct {
 	IsRefundable     *bool    `json:"is_refundable,omitempty"`
 	Tags             []string `json:"tags,omitempty"`
 	ExcludeFreeUsage *bool    `json:"exclude_free_usage,omitempty"`
-	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole.
+	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PricingGroupKey []string `json:"pricing_group_key,omitempty"`
-	// For USAGE products only. Groups usage line items on invoices.
+	// For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PresentationGroupKey []string `json:"presentation_group_key,omitempty"`
 }
 
@@ -801,9 +801,9 @@ type ListProductsUpdates struct {
 	CompositeTags         []string `json:"composite_tags,omitempty"`
 	Tags                  []string `json:"tags,omitempty"`
 	ExcludeFreeUsage      *bool    `json:"exclude_free_usage,omitempty"`
-	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole.
+	// For USAGE products only. If set, pricing for this product will be determined for each pricing_group_key value, as opposed to the product as a whole. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PricingGroupKey []string `json:"pricing_group_key,omitempty"`
-	// For USAGE products only. Groups usage line items on invoices.
+	// For USAGE products only. Groups usage line items on invoices. The superset of values in the pricing group key and presentation group key must be set as one compound group key on the billable metric.
 	PresentationGroupKey []string `json:"presentation_group_key,omitempty"`
 }
 

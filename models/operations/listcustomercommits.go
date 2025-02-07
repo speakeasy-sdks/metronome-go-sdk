@@ -27,6 +27,8 @@ type ListCustomerCommitsRequestBody struct {
 	IncludeArchived *bool `json:"include_archived,omitempty"`
 	// Include commit ledgers in the response. Setting this flag may cause the query to be slower.
 	IncludeLedgers *bool `json:"include_ledgers,omitempty"`
+	// Include the balance in the response. Setting this flag may cause the query to be slower.
+	IncludeBalance *bool `json:"include_balance,omitempty"`
 	// The next page token from a previous response.
 	NextPage *string `json:"next_page,omitempty"`
 }
@@ -98,6 +100,13 @@ func (o *ListCustomerCommitsRequestBody) GetIncludeLedgers() *bool {
 	return o.IncludeLedgers
 }
 
+func (o *ListCustomerCommitsRequestBody) GetIncludeBalance() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IncludeBalance
+}
+
 func (o *ListCustomerCommitsRequestBody) GetNextPage() *string {
 	if o == nil {
 		return nil
@@ -139,6 +148,32 @@ func (e *ListCustomerCommitsType) UnmarshalJSON(data []byte) error {
 		return nil
 	default:
 		return fmt.Errorf("invalid value for ListCustomerCommitsType: %v", v)
+	}
+}
+
+type ListCustomerCommitsRateType string
+
+const (
+	ListCustomerCommitsRateTypeCommitRate ListCustomerCommitsRateType = "COMMIT_RATE"
+	ListCustomerCommitsRateTypeListRate   ListCustomerCommitsRateType = "LIST_RATE"
+)
+
+func (e ListCustomerCommitsRateType) ToPointer() *ListCustomerCommitsRateType {
+	return &e
+}
+func (e *ListCustomerCommitsRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "LIST_RATE":
+		*e = ListCustomerCommitsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ListCustomerCommitsRateType: %v", v)
 	}
 }
 
@@ -1613,10 +1648,11 @@ func (u Ledger) MarshalJSON() ([]byte, error) {
 }
 
 type ListCustomerCommitsData struct {
-	ID       string                  `json:"id"`
-	Contract *Contract               `json:"contract,omitempty"`
-	Type     ListCustomerCommitsType `json:"type"`
-	Name     *string                 `json:"name,omitempty"`
+	ID       string                       `json:"id"`
+	Contract *Contract                    `json:"contract,omitempty"`
+	Type     ListCustomerCommitsType      `json:"type"`
+	RateType *ListCustomerCommitsRateType `json:"rate_type,omitempty"`
+	Name     *string                      `json:"name,omitempty"`
 	// If multiple credits or commits are applicable, the one with the lower priority will apply first.
 	Priority *float64 `json:"priority,omitempty"`
 	Product  Product  `json:"product"`
@@ -1639,8 +1675,12 @@ type ListCustomerCommitsData struct {
 	// This field's availability is dependent on your client's configuration.
 	SalesforceOpportunityID *string `json:"salesforce_opportunity_id,omitempty"`
 	// A list of ordered events that impact the balance of a commit. For example, an invoice deduction or a rollover.
-	Ledger       []Ledger          `json:"ledger,omitempty"`
+	Ledger []Ledger `json:"ledger,omitempty"`
+	// The current balance of the credit or commit. This balance reflects the amount of credit or commit that the customer has access to use at this moment - thus, expired and upcoming credit or commit segments contribute 0 to the balance. The balance will match the sum of all ledger entries with the exception of the case where the sum of negative manual ledger entries exceeds the positive amount remaining on the credit or commit - in that case, the balance will be 0. All manual ledger entries associated with active credit or commit segments are included in the balance, including future-dated manual ledger entries.
+	Balance      *float64          `json:"balance,omitempty"`
 	CustomFields map[string]string `json:"custom_fields,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *ListCustomerCommitsData) GetID() string {
@@ -1662,6 +1702,13 @@ func (o *ListCustomerCommitsData) GetType() ListCustomerCommitsType {
 		return ListCustomerCommitsType("")
 	}
 	return o.Type
+}
+
+func (o *ListCustomerCommitsData) GetRateType() *ListCustomerCommitsRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
 }
 
 func (o *ListCustomerCommitsData) GetName() *string {
@@ -1776,11 +1823,25 @@ func (o *ListCustomerCommitsData) GetLedger() []Ledger {
 	return o.Ledger
 }
 
+func (o *ListCustomerCommitsData) GetBalance() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Balance
+}
+
 func (o *ListCustomerCommitsData) GetCustomFields() map[string]string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *ListCustomerCommitsData) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 // ListCustomerCommitsResponseBody - Success

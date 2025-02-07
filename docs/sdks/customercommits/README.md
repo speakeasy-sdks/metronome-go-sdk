@@ -119,7 +119,6 @@ func main() {
                 operations.CreateCustomerCommitCustomerCommitsScheduleItems{
                     UnitPrice: metronomegosdk.Float64(10000000),
                     Quantity: metronomegosdk.Float64(1),
-                    Amount: metronomegosdk.Float64(10000000),
                     Timestamp: types.MustTimeFromString("2020-03-01T00:00:00.000Z"),
                 },
             },

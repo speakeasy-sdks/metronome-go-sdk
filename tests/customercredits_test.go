@@ -68,6 +68,8 @@ func TestCustomerCredits_ListCustomerCredits_(t *testing.T) {
 						},
 					),
 				},
+				RateType:      operations.ListCustomerCreditsRateTypeListRate.ToPointer(),
+				UniquenessKey: metronomegosdk.String("372p7cvwr3-uniqueness-key"),
 			},
 		},
 		NextPage: nil,

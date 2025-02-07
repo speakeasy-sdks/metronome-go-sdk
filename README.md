@@ -27,6 +27,7 @@ import (
 	"context"
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -34,9 +35,13 @@ func main() {
 	s := metronomegosdk.New(
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -92,16 +97,8 @@ func main() {
 
 ### [Contracts](docs/sdks/contracts/README.md)
 
-* [Get](docs/sdks/contracts/README.md#get) - Get a contract
-* [List](docs/sdks/contracts/README.md#list) - List customer contracts
-* [Create](docs/sdks/contracts/README.md#create) - Create a contract
-* [Amend](docs/sdks/contracts/README.md#amend) - Amend a contract
-* [Archive](docs/sdks/contracts/README.md#archive) - Archive a contract
-* [SetUsageFilter](docs/sdks/contracts/README.md#setusagefilter) - Set a contract usage filter
-* [AddManualBalanceEntry](docs/sdks/contracts/README.md#addmanualbalanceentry) - Add a manual balance entry
-* [UpdateEndDate](docs/sdks/contracts/README.md#updateenddate) - Update the contract end date
-* [GetRateSchedule](docs/sdks/contracts/README.md#getrateschedule) - Get the rate schedule for a contract
-* [ScheduleProServicesInvoice](docs/sdks/contracts/README.md#scheduleproservicesinvoice) - Schedule ProService invoice
+* [UpdateInvoiceIssueDate](docs/sdks/contracts/README.md#updateinvoiceissuedate) - Update invoice issue date
+* [CreateHistoricalContractUsageInvoices](docs/sdks/contracts/README.md#createhistoricalcontractusageinvoices) - Create historical invoices
 
 ### [Contracts.NamedSchedules](docs/sdks/metronomenamedschedules/README.md)
 
@@ -113,6 +110,10 @@ func main() {
 * [List](docs/sdks/customercommits/README.md#list) - List commits
 * [Create](docs/sdks/customercommits/README.md#create) - Create a commit
 * [UpdateEndDate](docs/sdks/customercommits/README.md#updateenddate) - Update the commit end date
+
+### [CreditsAndCommits](docs/sdks/creditsandcommits/README.md)
+
+* [DisableCommitTrueup](docs/sdks/creditsandcommits/README.md#disablecommittrueup) - Disable trueup for commit
 
 ### [CustomerCredits](docs/sdks/customercredits/README.md)
 
@@ -139,6 +140,7 @@ import (
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 	"models/operations"
 )
@@ -147,9 +149,13 @@ func main() {
 	s := metronomegosdk.New(
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil, operations.WithRetries(
+	res, err := s.Customers.SetBillableStatus(ctx, request, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -179,6 +185,7 @@ import (
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"github.com/speakeasy-sdks/metronome-go-sdk/retry"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -197,9 +204,13 @@ func main() {
 			}),
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -233,6 +244,7 @@ import (
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/sdkerrors"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -240,9 +252,13 @@ func main() {
 	s := metronomegosdk.New(
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 
 		var e *sdkerrors.BadRequest
@@ -288,6 +304,7 @@ import (
 	"context"
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -296,9 +313,13 @@ func main() {
 		metronomegosdk.WithServerIndex(0),
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -320,6 +341,7 @@ import (
 	"context"
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -328,9 +350,13 @@ func main() {
 		metronomegosdk.WithServerURL("https://api.metronome.com/v1"),
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -390,6 +416,7 @@ import (
 	"context"
 	metronomegosdk "github.com/speakeasy-sdks/metronome-go-sdk"
 	"github.com/speakeasy-sdks/metronome-go-sdk/models/operations"
+	"github.com/speakeasy-sdks/metronome-go-sdk/types"
 	"log"
 )
 
@@ -397,9 +424,13 @@ func main() {
 	s := metronomegosdk.New(
 		metronomegosdk.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
+	var request *operations.SetCustomerBillableStatusRequestBody = &operations.SetCustomerBillableStatusRequestBody{
+		CustomerID:     "04ca7e72-4229-4a6e-ab11-9f7376fccbcb",
+		BillableStatus: operations.BillableStatusBillable,
+		EffectiveAt:    types.MustTimeFromString("2021-01-01T00:00:00Z"),
+	}
 	ctx := context.Background()
-	res, err := s.Customers.SetBillableStatus(ctx, nil)
+	res, err := s.Customers.SetBillableStatus(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}

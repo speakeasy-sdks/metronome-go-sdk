@@ -42,6 +42,38 @@ func (e *CreateCustomerCommitType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type CreateCustomerCommitRateType string
+
+const (
+	CreateCustomerCommitRateTypeCommitRateUpper CreateCustomerCommitRateType = "COMMIT_RATE"
+	CreateCustomerCommitRateTypeCommitRateLower CreateCustomerCommitRateType = "commit_rate"
+	CreateCustomerCommitRateTypeListRateUpper   CreateCustomerCommitRateType = "LIST_RATE"
+	CreateCustomerCommitRateTypeListRateLower   CreateCustomerCommitRateType = "list_rate"
+)
+
+func (e CreateCustomerCommitRateType) ToPointer() *CreateCustomerCommitRateType {
+	return &e
+}
+func (e *CreateCustomerCommitRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "COMMIT_RATE":
+		fallthrough
+	case "commit_rate":
+		fallthrough
+	case "LIST_RATE":
+		fallthrough
+	case "list_rate":
+		*e = CreateCustomerCommitRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for CreateCustomerCommitRateType: %v", v)
+	}
+}
+
 type CreateCustomerCommitScheduleItems struct {
 	Amount float64 `json:"amount"`
 	// RFC 3339 timestamp (inclusive)
@@ -84,6 +116,7 @@ func (o *CreateCustomerCommitScheduleItems) GetEndingBefore() time.Time {
 
 // CreateCustomerCommitAccessSchedule - Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
 type CreateCustomerCommitAccessSchedule struct {
+	// Defaults to USD (cents) if not passed
 	CreditTypeID  *string                             `json:"credit_type_id,omitempty"`
 	ScheduleItems []CreateCustomerCommitScheduleItems `json:"schedule_items"`
 }
@@ -312,7 +345,7 @@ func (o *CreateCustomerCommitRecurringSchedule) GetAmountDistribution() CreateCu
 
 // CreateCustomerCommitInvoiceSchedule - Required for "POSTPAID" commits: the true up invoice will be generated at this time and only one schedule item is allowed; the total must match accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this will be a "complimentary" commit with no invoice.
 type CreateCustomerCommitInvoiceSchedule struct {
-	// Defaults to USD if not passed. Only USD is supported at this time.
+	// Defaults to USD (cents) if not passed.
 	CreditTypeID *string `json:"credit_type_id,omitempty"`
 	// Either provide amount or provide both unit_price and quantity.
 	ScheduleItems []CreateCustomerCommitCustomerCommitsScheduleItems `json:"schedule_items,omitempty"`
@@ -343,15 +376,17 @@ func (o *CreateCustomerCommitInvoiceSchedule) GetRecurringSchedule() *CreateCust
 
 // CreateCustomerCommitRequestBody - Create a commit
 type CreateCustomerCommitRequestBody struct {
-	CustomerID string                   `json:"customer_id"`
-	Type       CreateCustomerCommitType `json:"type"`
+	CustomerID string                        `json:"customer_id"`
+	Type       CreateCustomerCommitType      `json:"type"`
+	RateType   *CreateCustomerCommitRateType `json:"rate_type,omitempty"`
 	// displayed on invoices
 	Name *string `json:"name,omitempty"`
 	// Used only in UI/API. It is not exposed to end customers.
 	Description *string `json:"description,omitempty"`
 	// If multiple credits or commits are applicable, the one with the lower priority will apply first.
-	Priority  float64 `json:"priority"`
-	ProductID string  `json:"product_id"`
+	Priority float64 `json:"priority"`
+	// ID of the fixed product associated with the commit. This is required because products are used to invoice the commit amount.
+	ProductID string `json:"product_id"`
 	// Schedule for distributing the commit to the customer. For "POSTPAID" commits only one schedule item is allowed and amount must match invoice_schedule total.
 	AccessSchedule CreateCustomerCommitAccessSchedule `json:"access_schedule"`
 	// Required for "POSTPAID" commits: the true up invoice will be generated at this time and only one schedule item is allowed; the total must match accesss_schedule amount. Optional for "PREPAID" commits: if not provided, this will be a "complimentary" commit with no invoice.
@@ -369,6 +404,8 @@ type CreateCustomerCommitRequestBody struct {
 	// This field's availability is dependent on your client's configuration.
 	SalesforceOpportunityID *string           `json:"salesforce_opportunity_id,omitempty"`
 	CustomFields            map[string]string `json:"custom_fields,omitempty"`
+	// Prevents the creation of duplicates. If a request to create a commit or credit is made with a uniqueness key that was previously used to create a commit or credit, a new record will not be created and the request will fail with a 409 error.
+	UniquenessKey *string `json:"uniqueness_key,omitempty"`
 }
 
 func (o *CreateCustomerCommitRequestBody) GetCustomerID() string {
@@ -383,6 +420,13 @@ func (o *CreateCustomerCommitRequestBody) GetType() CreateCustomerCommitType {
 		return CreateCustomerCommitType("")
 	}
 	return o.Type
+}
+
+func (o *CreateCustomerCommitRequestBody) GetRateType() *CreateCustomerCommitRateType {
+	if o == nil {
+		return nil
+	}
+	return o.RateType
 }
 
 func (o *CreateCustomerCommitRequestBody) GetName() *string {
@@ -474,6 +518,13 @@ func (o *CreateCustomerCommitRequestBody) GetCustomFields() map[string]string {
 		return nil
 	}
 	return o.CustomFields
+}
+
+func (o *CreateCustomerCommitRequestBody) GetUniquenessKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UniquenessKey
 }
 
 type CreateCustomerCommitData struct {

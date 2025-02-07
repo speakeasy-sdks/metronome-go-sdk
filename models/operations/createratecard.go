@@ -70,7 +70,7 @@ type CreateRateCardRequestBody struct {
 	// Used only in UI/API. It is not exposed to end customers.
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
-	// "The Metronome ID of the credit type to associate with the rate card, defaults to USD (cents) if not passed."
+	// The Metronome ID of the credit type to associate with the rate card, defaults to USD (cents) if not passed.
 	FiatCreditTypeID *string `json:"fiat_credit_type_id,omitempty"`
 	// Required when using custom pricing units in rates.
 	CreditTypeConversions []CreditTypeConversions `json:"credit_type_conversions,omitempty"`

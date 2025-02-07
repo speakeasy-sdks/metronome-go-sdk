@@ -59,9 +59,9 @@ func TestCustomerBalances_ListCustomerBalances_(t *testing.T) {
 						"d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
 					},
 					Ledger: []operations.ListCustomerBalancesDataLedger{
-						operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances2(
-							operations.ListCustomerBalancesLedgerCustomerBalances2{
-								Type:      operations.ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22TypeCreditAutomatedInvoiceDeduction,
+						operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances4(
+							operations.ListCustomerBalancesLedgerCustomerBalances4{
+								Type:      operations.ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData24TypeCreditCanceled,
 								Timestamp: types.MustTimeFromString("2020-03-01T00:00:00.000Z"),
 								Amount:    10000000,
 								SegmentID: "2d45952c-5a6e-43a9-8aab-f61ee21be81a",
@@ -69,25 +69,27 @@ func TestCustomerBalances_ListCustomerBalances_(t *testing.T) {
 							},
 						),
 					},
+					RateType:      operations.ListCustomerBalancesDataRateTypeListRate.ToPointer(),
+					UniquenessKey: metronomegosdk.String("946g9bepi1-uniqueness-key"),
 				},
 			),
-			operations.CreateListCustomerBalancesDataOne(
-				operations.One{
+			operations.CreateListCustomerBalancesDataTwo(
+				operations.Two{
 					ID:       "fa411f5b-fb85-4755-9d4d-530717be083c",
-					Type:     operations.DataTypePrepaid,
+					Type:     operations.ListCustomerBalancesDataTypeCredit,
 					Name:     metronomegosdk.String("My test credit"),
 					Priority: metronomegosdk.Float64(100),
-					Product: operations.DataProduct{
+					Product: operations.ListCustomerBalancesDataProduct{
 						ID:   "2e30f074-d04c-412e-a134-851ebfa5ceb2",
 						Name: "My product A",
 					},
-					AccessSchedule: &operations.DataAccessSchedule{
-						CreditType: &operations.DataCreditType{
+					AccessSchedule: &operations.ListCustomerBalancesDataAccessSchedule{
+						CreditType: &operations.ListCustomerBalancesDataCustomerBalancesCreditType{
 							Name: "USD (cents)",
 							ID:   "2714e483-4ff1-48e4-9e25-ac732e8f24f2",
 						},
-						ScheduleItems: []operations.DataScheduleItems{
-							operations.DataScheduleItems{
+						ScheduleItems: []operations.ListCustomerBalancesDataCustomerBalancesScheduleItems{
+							operations.ListCustomerBalancesDataCustomerBalancesScheduleItems{
 								ID:           "2d45952c-5a6e-43a9-8aab-f61ee21be81a",
 								Amount:       10000000,
 								StartingAt:   types.MustTimeFromString("2020-02-01T00:00:00.000Z"),
@@ -102,16 +104,19 @@ func TestCustomerBalances_ListCustomerBalances_(t *testing.T) {
 					ApplicableContractIds: []string{
 						"d7abd0cd-4ae9-4db7-8676-e986a4ebd8dc",
 					},
-					Ledger: []operations.DataLedger{
-						operations.CreateDataLedgerLedger10(
-							operations.Ledger10{
-								Type:      operations.ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData110TypePostpaidCommitTrueup,
+					Ledger: []operations.ListCustomerBalancesDataLedger{
+						operations.CreateListCustomerBalancesDataLedgerListCustomerBalancesLedgerCustomerBalances2(
+							operations.ListCustomerBalancesLedgerCustomerBalances2{
+								Type:      operations.ListCustomerBalancesLedgerCustomerBalancesResponse200ApplicationJSONResponseBodyData22TypeCreditAutomatedInvoiceDeduction,
 								Timestamp: types.MustTimeFromString("2020-03-01T00:00:00.000Z"),
 								Amount:    10000000,
+								SegmentID: "2d45952c-5a6e-43a9-8aab-f61ee21be81a",
 								InvoiceID: "525b9759-7bbd-4a05-aab1-d7c43c976b57",
 							},
 						),
 					},
+					RateType:      operations.ListCustomerBalancesDataRateTypeListRate.ToPointer(),
+					UniquenessKey: metronomegosdk.String("372p7cvwr3-uniqueness-key"),
 				},
 			),
 		},

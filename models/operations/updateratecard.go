@@ -54,8 +54,7 @@ type UpdateRateCardRequestBody struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Reference this alias when creating a contract. If the same alias is assigned to multiple rate cards, it will reference the rate card to which it was most recently assigned. It is not exposed to end customers.
-	Aliases      []UpdateRateCardAliases `json:"aliases,omitempty"`
-	CustomFields map[string]string       `json:"custom_fields,omitempty"`
+	Aliases []UpdateRateCardAliases `json:"aliases,omitempty"`
 }
 
 func (o *UpdateRateCardRequestBody) GetRateCardID() string {
@@ -84,13 +83,6 @@ func (o *UpdateRateCardRequestBody) GetAliases() []UpdateRateCardAliases {
 		return nil
 	}
 	return o.Aliases
-}
-
-func (o *UpdateRateCardRequestBody) GetCustomFields() map[string]string {
-	if o == nil {
-		return nil
-	}
-	return o.CustomFields
 }
 
 type UpdateRateCardData struct {

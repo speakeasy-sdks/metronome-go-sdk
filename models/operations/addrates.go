@@ -79,6 +79,105 @@ func (o *AddRatesTiers) GetPrice() float64 {
 	return o.Price
 }
 
+type AddRatesRateCardsRateType string
+
+const (
+	AddRatesRateCardsRateTypeFlatUpper         AddRatesRateCardsRateType = "FLAT"
+	AddRatesRateCardsRateTypeFlatLower         AddRatesRateCardsRateType = "flat"
+	AddRatesRateCardsRateTypePercentageUpper   AddRatesRateCardsRateType = "PERCENTAGE"
+	AddRatesRateCardsRateTypePercentageLower   AddRatesRateCardsRateType = "percentage"
+	AddRatesRateCardsRateTypeSubscriptionUpper AddRatesRateCardsRateType = "SUBSCRIPTION"
+	AddRatesRateCardsRateTypeSubscriptionLower AddRatesRateCardsRateType = "subscription"
+	AddRatesRateCardsRateTypeTieredUpper       AddRatesRateCardsRateType = "TIERED"
+	AddRatesRateCardsRateTypeTieredLower       AddRatesRateCardsRateType = "tiered"
+	AddRatesRateCardsRateTypeCustomUpper       AddRatesRateCardsRateType = "CUSTOM"
+	AddRatesRateCardsRateTypeCustomLower       AddRatesRateCardsRateType = "custom"
+)
+
+func (e AddRatesRateCardsRateType) ToPointer() *AddRatesRateCardsRateType {
+	return &e
+}
+func (e *AddRatesRateCardsRateType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FLAT":
+		fallthrough
+	case "flat":
+		fallthrough
+	case "PERCENTAGE":
+		fallthrough
+	case "percentage":
+		fallthrough
+	case "SUBSCRIPTION":
+		fallthrough
+	case "subscription":
+		fallthrough
+	case "TIERED":
+		fallthrough
+	case "tiered":
+		fallthrough
+	case "CUSTOM":
+		fallthrough
+	case "custom":
+		*e = AddRatesRateCardsRateType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AddRatesRateCardsRateType: %v", v)
+	}
+}
+
+type AddRatesRateCardsTiers struct {
+	Size  *float64 `json:"size,omitempty"`
+	Price float64  `json:"price"`
+}
+
+func (o *AddRatesRateCardsTiers) GetSize() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Size
+}
+
+func (o *AddRatesRateCardsTiers) GetPrice() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Price
+}
+
+// AddRatesCommitRate - A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+type AddRatesCommitRate struct {
+	RateType AddRatesRateCardsRateType `json:"rate_type"`
+	// Commit rate price. For FLAT rate_type, this must be >=0.
+	Price *float64 `json:"price,omitempty"`
+	// Only set for TIERED rate_type.
+	Tiers []AddRatesRateCardsTiers `json:"tiers,omitempty"`
+}
+
+func (o *AddRatesCommitRate) GetRateType() AddRatesRateCardsRateType {
+	if o == nil {
+		return AddRatesRateCardsRateType("")
+	}
+	return o.RateType
+}
+
+func (o *AddRatesCommitRate) GetPrice() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.Price
+}
+
+func (o *AddRatesCommitRate) GetTiers() []AddRatesRateCardsTiers {
+	if o == nil {
+		return nil
+	}
+	return o.Tiers
+}
+
 type Rates struct {
 	// ID of the product to add a rate for
 	ProductID string `json:"product_id"`
@@ -96,7 +195,7 @@ type Rates struct {
 	CreditTypeID *string `json:"credit_type_id,omitempty"`
 	// Default quantity. For SUBSCRIPTION rate_type, this must be >=0.
 	Quantity *float64 `json:"quantity,omitempty"`
-	// Default proration configuration. Only valid for SUBSCRIPTION rate_type.
+	// Default proration configuration. Only valid for SUBSCRIPTION rate_type. Must be set to true.
 	IsProrated *bool `json:"is_prorated,omitempty"`
 	// Only set for PERCENTAGE rate_type. Defaults to false. If true, rate is computed using list prices rather than the standard rates for this product on the contract.
 	UseListPrices *bool `json:"use_list_prices,omitempty"`
@@ -104,6 +203,8 @@ type Rates struct {
 	Tiers []AddRatesTiers `json:"tiers,omitempty"`
 	// Only set for CUSTOM rate_type. This field is interpreted by custom rate processors.
 	CustomRate map[string]any `json:"custom_rate,omitempty"`
+	// A distinct rate on the rate card. You can choose to use this rate rather than list rate when consuming a credit or commit.
+	CommitRate *AddRatesCommitRate `json:"commit_rate,omitempty"`
 }
 
 func (r Rates) MarshalJSON() ([]byte, error) {
@@ -208,22 +309,29 @@ func (o *Rates) GetCustomRate() map[string]any {
 	return o.CustomRate
 }
 
-// AddRatesRequestBody - Add new rates
-type AddRatesRequestBody struct {
-	RateCardID *string `json:"rate_card_id,omitempty"`
-	Rates      []Rates `json:"rates,omitempty"`
-}
-
-func (o *AddRatesRequestBody) GetRateCardID() *string {
+func (o *Rates) GetCommitRate() *AddRatesCommitRate {
 	if o == nil {
 		return nil
+	}
+	return o.CommitRate
+}
+
+// AddRatesRequestBody - Add new rates
+type AddRatesRequestBody struct {
+	RateCardID string  `json:"rate_card_id"`
+	Rates      []Rates `json:"rates"`
+}
+
+func (o *AddRatesRequestBody) GetRateCardID() string {
+	if o == nil {
+		return ""
 	}
 	return o.RateCardID
 }
 
 func (o *AddRatesRequestBody) GetRates() []Rates {
 	if o == nil {
-		return nil
+		return []Rates{}
 	}
 	return o.Rates
 }
